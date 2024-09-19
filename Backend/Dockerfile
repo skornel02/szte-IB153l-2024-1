@@ -8,6 +8,7 @@ EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
+RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq wget
 WORKDIR /src
 COPY ["Backend/Backend.csproj", "Backend/"]
 RUN dotnet restore "./Backend/Backend.csproj"
@@ -22,5 +23,4 @@ RUN dotnet publish "./Backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-RUN apt-get update && apt-get install -y wget
 ENTRYPOINT ["dotnet", "Backend.dll"]
