@@ -21,7 +21,9 @@ RUN dotnet publish "./Backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p
 
 FROM base AS final
 
+USER root
 RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq wget curl
+USER 1001
 
 WORKDIR /app
 COPY --from=publish /app/publish .
