@@ -22,4 +22,5 @@ RUN dotnet publish "./Backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
 ENTRYPOINT ["dotnet", "Backend.dll"]
