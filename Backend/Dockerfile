@@ -8,7 +8,6 @@ EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq wget
 WORKDIR /src
 COPY ["Backend/Backend.csproj", "Backend/"]
 RUN dotnet restore "./Backend/Backend.csproj"
@@ -21,6 +20,11 @@ ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./Backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT false
+RUN apk add --no-cache icu-libs tzdata
+RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq wget curl
+
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Backend.dll"]
