@@ -13,6 +13,16 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.MapHealthChecks("/health", new()
+{
+    AllowCachingResponses = true,
+})
+    .WithOpenApi();
+
 //app.UseHttpsRedirection();
 app.UseStaticFiles();
 
