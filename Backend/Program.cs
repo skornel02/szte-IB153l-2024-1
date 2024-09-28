@@ -1,3 +1,7 @@
+using Backend;
+using HealthChecks.UI.Client;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,7 +10,25 @@ builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddHealthChecks();
+var connectionString = builder.Configuration.GetConnectionString("Database");
+
+// maybe we don't need this, but it is cool!.
+//builder.Services.AddHealthChecksUI(_ =>
+//{
+//    _.AddHealthCheckEndpoint("backend", "/health");
+//})
+//    .AddInMemoryStorage();
+
+builder.Services.AddHealthChecks()
+    .AddNpgSql(connectionString!);
+
+builder.Services.AddDbContext<BellaDbContext>(_ =>
+{
+    _
+        .EnableDetailedErrors()
+        .EnableSensitiveDataLogging()
+        .UseNpgsql(connectionString);
+});
 
 var app = builder.Build();
 
@@ -23,17 +45,27 @@ app.UseSwaggerUI();
 
 app.MapHealthChecks("/health", new()
 {
-    AllowCachingResponses = true,
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 })
     .WithOpenApi();
 
-//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+// maybe we don't need this, but it is cool!.
+//  .UseEndpoints(config => config.MapHealthChecksUI());
 
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+await using(var scope = app.Services.CreateAsyncScope())
+{
+    var provider = scope.ServiceProvider;
+    var context = provider.GetRequiredService<BellaDbContext>();
+
+    await context.Database.MigrateAsync();
+}
 
 app.Run();
