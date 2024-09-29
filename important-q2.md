@@ -5,3 +5,4 @@ Kérdőív: Kutya vagy macska?
 | Stefán Kornél    |   kutya          |
 | Vad Avar         |   kucska         |
 | Vass Kinga       |   macska         |
+| Pilter Zsófia    |   kutya          |
