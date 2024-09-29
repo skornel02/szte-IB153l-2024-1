@@ -6,3 +6,4 @@ Kérdőív: Kutya vagy macska?
 | Vad Avar         |   kucska         |
 | Vass Kinga       |   macska         |
 | Pilter Zsófia    |   kutya          |
+| Farkas Dominika  |   macska         |
