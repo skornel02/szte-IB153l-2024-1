@@ -6,3 +6,4 @@ Kérdőív: kinek mi a kedvenc sós süteménye?
 | Vad Avar         |   pizzás csiga   |
 | Vass Kinga       |   sajtos rúd     |
 | Pilter Zsófia    |   pogácsa        |
+| Farkas Dominika  |   sajtos perec   |
