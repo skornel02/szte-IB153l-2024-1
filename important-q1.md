@@ -4,3 +4,4 @@ Kérdőív: kinek mi a kedvenc sós süteménye?
 |------------------|------------------|
 | Stefán Kornél    |   pogácsa        |
 | Vass Kinga       |   sajtos rúd     |
+| Pilter Zsófia    |   pogácsa        |
