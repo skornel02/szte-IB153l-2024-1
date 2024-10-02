@@ -8,3 +8,4 @@ Kérdőív: Kutya vagy macska?
 | Pilter Zsófia    |   kutya          |
 | Farkas Dominika  |   macska         |
 | Gyenge Angéla    |   kutya          |
+| Horváth Gergely  |   macska         |
