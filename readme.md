@@ -2,29 +2,29 @@
 
 ## 1. Összefoglaló 
 
-Mi, franciák, nagyon büszkék vagyunk arra, hogy a baggettjeink finomak. Az ügyfél azzal az igénnyel fordult hozzánk, hogy átfogó üzletviteli rendszerre van szüksége. A rendszer főoldala egy publikusan látható webshop, ami mögött egy összetett rendszer található egy captive portálról elérhető. A vásárlók egy regisztráció után vásárolhatnak a kínálatból; a kollégák bejelentkezés után intézhetik az ügyviteli igényeiket. Az ügyviteli igények a következők: alapanyagok kezelése, termékek feltárása és mennyiségűk aktualizálása és legvégső soron a rendelések felügyelése és engedélyeztetése.
+Mi, franciák, nagyon büszkék vagyunk arra, hogy a baggettjeink finomak. Az ügyfél azzal az igénnyel fordult hozzánk, hogy átfogó üzletviteli rendszerre van szüksége. A rendszer főoldala egy publikusan látható webshop. Mögötte egy összetett rendszer található, ami egy captive portálról érhető el. A vásárlók regisztráció után vásárolhatnak a kínálatból; a kollégák bejelentkezés után intézhetik az ügyviteli igényeiket. Az ügyviteli igények a következők: alapanyagok kezelése, termékek feltárása és mennyiségük aktualizálása és legvégső soron a rendelések felügyelése és engedélyeztetése.
 
 ## 2. A projekt bemutatása
 
-Ez a projektterv a Bella Croissant Lyonnass projektet mutatja be, amely 2024-9-25-től 2021-12-03-ig tart, azaz összesen 69 napon keresztül fog futni. A projekten hat fejlesztő fog dolgozni, az elvégzett feladatokat pedig négy alkalommal fogjuk prezentálni a megrendelőnek, annak érdekében, hogy biztosítsuk a projekt folyamatos előrehaladását. A projekt emellett folyamatos tesztkörnyezetben elérhető lesz az ügyfél számára egy [teszt környezet](https://bellacroissant.app.skornel02.hu/)ben a hatékony rugalmas fejlesztés érdekében.
+Ez a projektterv a Bella Croissant Lyonnass projektet mutatja be, amely 2024-9-25-től 2024-12-03-ig tart, azaz összesen 69 napon keresztül fog futni. A projekten hat fejlesztő fog dolgozni, az elvégzett feladatokat pedig négy alkalommal fogjuk prezentálni a megrendelőnek, annak érdekében, hogy biztosítsuk a projekt folyamatos előrehaladását. A projekt emellett folyamatos tesztkörnyezetben elérhető lesz az ügyfél számára egy [teszt környezet](https://bellacroissant.app.skornel02.hu/)ben a hatékony és rugalmas fejlesztés érdekében.
 
 ### 2.1. Rendszerspecifikáció
 
 A Bella Croissant Lyonnass cégnak egy átfogó ügyviteli rendszerre van szüksége ami több modulból áll.
 
-Az elsődleges modul, amire a legnagyobb szükségük van, az egy webshop modul, amivel elérhetővé válik az ügyfelek számára az otthoni megrendelés funkció. Ezen funkció egy belépés nélküli főoldalt tartalmaz, ahol az összes termék látható. Ezen termékek kívánt mennyiségben egy kosárba helyezhető, és egy összefoglaló oldalon a rendelést leadhatjuk. A rendelés leadásához fiókra van szükség, ez piaci sztenderd módon kezelésre kerül. A fizetési folyamat túlmutat a rendszer igényein, ezért egy külső szolgáltató fogja ezt elvégezni a rendszerünk számára egy rugalmas integráción keresztül.
+Az elsődleges modul, amire a legnagyobb szükségük van, egy webshop modul, amivel elérhetővé válik az ügyfelek számára az otthoni megrendelés funkció. Ezen funkció egy belépés nélküli főoldalt tartalmaz, ahol az összes termék látható. Ezen termékek kívánt mennyiségben kosárba helyezhetőek, és a rendelés leadható egy összefoglaló oldalon. A rendelés leadásához fiókra van szükség, ez piaci sztenderd módon kezelésre kerül. A fizetési folyamat túlmutat a rendszer igényein, ezért egy külső szolgáltató fogja ezt elvégezni a rendszerünk számára egy rugalmas integráción keresztül.
 
-A webshop modulnak része egy adminisztratív felület, ahol a rendelések jóváhagyása és visszavonása történik. Ez egy egységes kaptív portálon keresztül elérhető, ahol a regisztrált felhasználók a megfelelő jogkörükhöz tartozó oldalt érhetik el. A leadott rendelések egy feltételezett raktármennyiség alapján automatizáltan követve vannak, viszont mivel az ügyfél emellett egy fizikai boltot is üzemeltet, így szükség van arra, hogy valaki kézzel engedélyezze az eladásokat. Amikor az eladás véglegesítve lett egy kolléga által, akkor az integrált futár szolgálat renderének jelezzük, hogy a csomag hova szállítandó.
+A webshop modulnak része egy adminisztratív felület, ahol a rendelések jóváhagyása és visszavonása történik. Ez egy egységes kaptív portálon keresztül elérhető, ahol a regisztrált felhasználók a megfelelő jogkörükhöz tartozó oldalt érhetik el. A leadott rendelések egy feltételezett raktármennyiség alapján automatizáltan követve vannak, viszont mivel az ügyfél emellett egy fizikai boltot is üzemeltet, így szükség van arra, hogy valaki kézzel engedélyezze az eladásokat. Amikor az eladás véglegesítve lett egy kolléga által, akkor az integrált futár szolgálat rendszerének jelezzük, hogy a csomag hova szállítandó.
 
-Második fontos modul a rendszer hátterében lévő termelés és logisztikai terhek levétele az ügyfélről. Az első szintje ennek a rendszernek egy alapanyagok követésére tervezet rendszer, amely lehetővé teszi a raktáros kollégáknak, hogy az aktuális alapanyag szinteket nyomon kövesse és érkeztesse fizikailag és logikailag (aktualizálja a mennyiségűket a rendszerben) a megrendelt alapanyagokat. 
+Második fontos modul a rendszer hátterében lévő termelés és logisztikai terhek levétele az ügyfélről. Az első szintje ennek a rendszernek egy alapanyagok követésére tervezett rendszer, amely lehetővé teszi a raktáros kollégáknak, hogy az aktuális alapanyag szinteket nyomon kövesse és érkeztesse fizikailag és logikailag (aktualizálja a mennyiségüket a rendszerben) a megrendelt alapanyagokat. 
 A szakács kollégák ezen rendszeren belül egy egyszerűsített felületet kapnak, ahol ők adott recepteket megtudnak valósítani. Ez azt segíti elő, hogy nem kell neki növelnie a termék raktár készletet, sem amortizálnia az alapanyag készletet, így automatizálva az ő adminisztratív munkáját. 
 Elengedhetetlen funkció az is, hogy a séf tudja a létező termékeket kezelni, és újakat létrehozni. Ezek a termékek rendelkeznek a recepttel, amit a szakácsok eltudnak készíteni és ezek maguk azok a termékek amiket a vásárlók a webshoppon megtudnak rendelni.
 
-A fizikai Bella Croissant Lyonnnass kiegészítő módulra tart igényt. A helyszíni kollégának adunk egy felületet, ahol a valós eladásokkal tudja a raktár készletet aktualizálni. 
+A fizikai Bella Croissant Lyonnnass kiegészítő modulra tart igényt. A helyszíni kollégának adunk egy felületet, ahol a valós eladásokkal tudja a raktár készletet aktualizálni. 
 
 A raktáras kollégának igénye lehet egy kiegészítő modulra, ami segíti az alapanyagok szinten tartását. Ha a kolléga látja, hogy az alapanyag szint megcsappan, akkor berendelést kezdeményezhet a saját felületéről. 
 
-A vásárlók felületén is felmerült igény egy kiegészítő modul fejlesztésére. Ez a modul azt tartalmazza, hogy a vásárló látja a rendelésének az aktuális állapotát, egyenesen a rendeleés leadásától a házhoz szállítás pillanatáig. Ezt egy futárszolgálat integrálásával tehetjük meg.
+A vásárlók felületén is felmerült igény egy kiegészítő modul fejlesztésére. Ez a modul azt tartalmazza, hogy a vásárló látja a rendelésének az aktuális állapotát, egyenesen a rendelés leadásától a házhoz szállítás pillanatáig. Ezt egy futárszolgálat integrálásával tehetjük meg.
 
 ![alt text](Administration/UseCaseDiagram.png)
 
@@ -86,13 +86,13 @@ A vásárlók felületén is felmerült igény egy kiegészítő modul fejleszt�
 
 ## 3. Költség- és erőforrás-szükségletek
 
-Személyek száma: 7
-szmély napok összesen: 119
-Fejlesztés: 68
+- Személyek száma: 7
+- Személy napok összesen: 119
+- Fejlesztés: 68
 
 Az erőforrásigényünk összesen 119 személynap, átlagosan 17 $\frac{személynap}{fo}$.
 
-A rendelkezésünkre áll összesen $3\cdot70=490$ pont.
+A rendelkezésünkre áll összesen $7\cdot70=490$ pont.
 
 ## 4. Szervezeti felépítés és felelősségmegosztás
 
@@ -126,7 +126,7 @@ A projekt a következő emberekből áll:
 A projekt a következő munkaállomásokat fogja használni a munka során:
 
  - Fejlesztői Munkaállomások: Minden csapattag saját rendszere, Modern Windows operációs rendszerrel. Minimum követelményeknél a Visual Studio az iránymutató.
- - Kiszolgáló környezet: Dockerizált futattási környezt Alpine linux alapon. Minimum követelnmények: fél Gb memória és 1 processzor mag.
+ - Kiszolgáló környezet: Dockerizált futattási környezt Alpine linux alapon. Minimum követelmények: fél Gb memória és 1 processzor mag.
 
 A projekt a következő technológiákat/szoftvereket fogja használni a munka során: 
 
@@ -191,7 +191,7 @@ Az elfogadás feltételeire és beadás formájára vonatkozó részletes leír�
 
 ### 6.5. Státuszjelentés
 
-Minden mérföldkő leadásnál a projekten dolgozók jelentést tesznek a mérföldkőben végzett munkájukról a a megadott sablon alapján. A gyakorlatvezetővel folytatott csapatmegbeszéléseken a csapat áttekintik és felmérik az eredményeket és teendőket. Továbbá gazdálkodnak az erőforrásokkal és szükség esetén a megrendelővel egyeztetnek a projektterv módosításáról.
+Minden mérföldkő leadásnál a projekten dolgozók jelentést tesznek a mérföldkőben végzett munkájukról a megadott sablon alapján. A gyakorlatvezetővel folytatott csapatmegbeszéléseken a csapat áttekintik és felmérik az eredményeket és teendőket. Továbbá gazdálkodnak az erőforrásokkal és szükség esetén a megrendelővel egyeztetnek a projektterv módosításáról.
 
 ## 7. A munka tartalma
 
