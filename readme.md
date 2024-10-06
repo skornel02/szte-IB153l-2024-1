@@ -1,4 +1,4 @@
-# Bella Croissant Lyonnass Projektterv `2024`
+# Bella Croissant Lyonnass Projektterv 2024
 
 ## 1. Összefoglaló 
 
@@ -197,12 +197,7 @@ Minden mérföldkő leadásnál a projekten dolgozók jelentést tesznek a mérf
 
 A szoftver fejlesztése során az agilis fejlesztési modellt alkalmazzuk, mivel a fejlesztés során nagy hangsúlyt fektetünk a folyamatos kommunikcióra. Ezzel a módszertannal biztosítani tudjuk a csapat és a megrendelő közti folyamatos kommunikciót és visszajelzés-áramlást.
 
-`A webalkalmazás az MVC (modell-view-controller) felépítést követi, a szerver és a kliens függetlenek, csupán API végpontok segítségével kommunikálnak.`
-
-```
-Milyen szoftverfolyamat modellt követve állítja elő a csapat a specifikációnak megfelelő prototípusokat? Miért ezt választja? 
-A csapat milyen architektúrát választ a projekt megvalósításához? Milyen rétegek (logikai, adat, GUI) lesznek?`
-```
+A rendszerünk egy több rétegű modern webalkalmazás mintájára készül. A program rendszerünk alapköve a felhasználóknál megtalálható böngésző, ami a kliens szerepét fogja betölteni. A kiszolgáló egy alkalmazott MVC paradigmának megfelelően a Razor Pages technológiával lesz megvalósítva. Az adatokat egy PostgresQL adatbázisban fogjuk tárolni, amivel csak a kiszolgáló veszi fel a kapcsolatot.
 
 ### 7.2. Átadandók és határidők
 
@@ -211,19 +206,14 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
 | Szállítandó |                 Neve                                                        |   Határideje  |
 |:-----------:|:---------------------------------------------------------------------------:|:-------------:|
-|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | `2024-10-07`  |
-|    P1+D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | `2024-10-21`  |
-|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | `2024-11-11`  |
-|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | `2024-12-02`  |
+|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | 2024-10-07  |
+|    P1+D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | 2024-10-21  |
+|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | 2024-11-11  |
+|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | 2024-12-02  |
 
 ## 8. Feladatlista
 
 A következőkben a tervezett feladatok részletes összefoglalása található.
-
-```
-Alapvetően egy feladatnak 1 felelőse lehet, de kivételt képez pl. a 9.1.1. részfeladat, mivel az első mérföldkőben
-2 kötelező feladat van, ezt nem bontjuk részfeladatokra.
-```
 
 ### 8.1. Projektterv (1. mérföldkő)
 
@@ -243,7 +233,7 @@ Erőforrásigény:  1 személynap/fő
 
 Felelős: Vass Kinga, Pilter Zsófia
 
-Tartam:  `2 nap`
+Tartam:  2 nap
 
 Erőforrásigény:  0.5 személynap/fő
 
@@ -526,10 +516,6 @@ Erőforrásigény:  1 személynap
 
 ![image](./MINTA-gantt-diagram.png)
 
-```
-Ide kell berakni a Gantt diagramot, amely a 9. fejezetben található részfeladatokat tartalmazza felelős/tartam bontásban.
-```
-
 ## 10. Projekt költségvetés
 
 ### 10.1. Részletes erőforrásigény (személynap)
@@ -570,4 +556,4 @@ Ide kell berakni a Gantt diagramot, amely a 9. fejezetben található részfelad
 | Vad Avar   | 7   | 13 | 22 | 28 | 70     |
 | Vass Kinga   | 7   | 20 | 28 | 15 | 70     |
 
-Szeged, `2024-10-06`.
+Szeged, 2024-10-06.
