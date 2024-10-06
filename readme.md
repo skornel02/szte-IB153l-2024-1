@@ -142,17 +142,9 @@ A projekt a következő technológiákat/szoftvereket fogja használni a munka s
 
 | Kockázat                                    | Leírás                                                                                                                                                                                     | Valószínűség | Hatás  |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|--------|
-| `Betegség`                                  | `Súlyosságtól függően hátráltatja vagy bizonyos esetekben teljes mértékben korlátozza a munkavégzőt, így az egész projektre kihatással van. Megoldás: a feladatok átcsoportosítása`        | `nagy`       | `erős` |
-| `Kommunikációs fennakadás a csapattagokkal` | `A csapattagok között nem elégséges az információ áramlás, nem pontosan, esetleg késve vagy nem egyértelműen tájékoztatjuk egymást. Megoldás: még gyakoribb megbeszélések és ellenőrzések` | `kis`        | `erős` |
-
-```
-A rizikótényezők bemutatása, amely hátráltathatja a projekt befejezését. 
-Minden rizikót érdemes megemlíteni, részletezve, hogy mit jelent, 
-milyen valószínűséggel következhet be (kis, közepes és nagy), 
-mekkora a várható hatása (gyenge, közepes és erős) 
-és hogy milyen tervvel készültök, amennyiben egy ilyen esemény bekövetkezik. 
-Pl.: betegség, szoftver-hardver probléma, tag kiesése, extrém ZH időszak, pandémia, stb. 
-```
+| Áramkimaradás csapattagnál                  | Súlyosságtól függően hátráltatja vagy bizonyos esetekben teljes mértékben korlátozza a munkavégzőt, így az egész projektre kihatással van. Megoldás: a feladatok átcsoportosítása          | kis          | erős   |
+| Kommunikációs fennakadás a csapattagokkal   | A csapattagok között nem elégséges az információ áramlás, nem pontosan, esetleg késve vagy nem egyértelműen tájékoztatjuk egymást. Megoldás: még gyakoribb megbeszélések és ellenőrzések   | közepes      | erős   |
+| Sűrű szorgalmi időszak                      | Adott csapattag terhelése bizonyos időszakokban erősen növekedhet, ami kihatással lehet a munkavégzésre. Megoldás: gyakori egyeztetés és a feladatok szükség szerinti átcsoportosítása     | nagy         | kis    |
 
 ## 6. Jelentések
 
@@ -175,6 +167,12 @@ A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problém�
  - Résztvevők: Teljes csoport
  - Érintett témák: Ismerkedés 2, projekttéma végigtárgyalása, részletek kifejtése, technológiai eszközök feltárása.
 
+3. megbeszélés:
+ - Időpont: 2021.10.02.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Horváth Gergely Zsolt, Pilter Zsófia, Vad Avar, Vass Kinga, Gyenge Angéla
+ - Érintett témák: Git használati szabályok (merge requestek) megbeszélése 
+
 ### 6.3. Minőségbiztosítás
 
 Az elkészült terveket a terveken nem dolgozó csapattársak közül átnézik, hogy megfelel-e a specifikációnak és az egyes diagramtípusok összhangban vannak-e egymással. A meglévő rendszerünk helyes működését a prototípusok bemutatása előtt a tesztelési dokumentumban leírtak végrehajtása alapján ellenőrizzük és összevetjük a specifikációval, hogy az elvárt eredményt kapjuk-e. További tesztelési lehetőségek: unit tesztek írása az egyes modulokhoz vagy a kód közös átnézése (code review) egy, a vizsgált modul programozásában nem résztvevő csapattaggal. Szoftverünk minőségét a végső leadás előtt javítani kell a rendszerünkre lefuttatott kódelemzés során kapott metrikaértékek és szabálysértések figyelembevételével.
@@ -186,7 +184,7 @@ Az alábbi lehetőségek vannak a szoftver megfelelő minőségének biztosítá
 
 ### 6.4. Átadás, eredmények elfogadása
 
-A projekt eredményeit a megrendelő, `Dr. Márkus András` fogja elfogadni. A projektterven változásokat csak a megrendelő írásos engedélyével lehet tenni. A projekt eredményesnek bizonyul, ha specifikáció helyes és határidőn belül készül el. Az esetleges késések pontlevonást eredményeznek. 
+A projekt eredményeit a megrendelő, XIV. Lajos fogja elfogadni. A projektterven változásokat csak a megrendelő írásos engedélyével lehet tenni. A projekt eredményesnek bizonyul, ha specifikáció helyes és határidőn belül készül el. Az esetleges késések pontlevonást eredményeznek. 
 Az elfogadás feltételeire és beadás formájára vonatkozó részletes leírás a következő honlapon olvasható: https://okt.inf.szte.hu/rf1/
 
 ### 6.5. Státuszjelentés
@@ -197,7 +195,7 @@ Minden mérföldkő leadásnál a projekten dolgozók jelentést tesznek a mérf
 
 ### 7.1. Tervezett szoftverfolyamat modell és architektúra
 
-`A szoftver fejlesztése során az agilis fejlesztési modellt alkalmazzuk, mivel a fejlesztés során nagy hangsúlyt fektetünk a folyamatos kommunikcióra. A fejlesztés során a szoftver specifikációi rugalmasan vátozhatnak, és ezzel a módszertannal tudunk a leggyorsabban alkalmazkodni az új elvárásokhoz.`
+A szoftver fejlesztése során az agilis fejlesztési modellt alkalmazzuk, mivel a fejlesztés során nagy hangsúlyt fektetünk a folyamatos kommunikcióra. Ezzel a módszertannal biztosítani tudjuk a csapat és a megrendelő közti folyamatos kommunikciót és visszajelzés-áramlást.
 
 `A webalkalmazás az MVC (modell-view-controller) felépítést követi, a szerver és a kliens függetlenek, csupán API végpontok segítségével kommunikálnak.`
 
@@ -213,14 +211,10 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
 | Szállítandó |                 Neve                                                        |   Határideje  |
 |:-----------:|:---------------------------------------------------------------------------:|:-------------:|
-|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | `2021-10-04`  |
-|    P1+D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | `2021-10-18`  |
-|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | `2021-11-08`  |
-|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | `2021-11-27`  |
-
-```
-D - dokumentáció, P - prototípus
-```
+|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | `2024-10-07`  |
+|    P1+D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | `2024-10-21`  |
+|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | `2024-11-11`  |
+|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | `2024-12-02`  |
 
 ## 8. Feladatlista
 
@@ -233,371 +227,301 @@ Alapvetően egy feladatnak 1 felelőse lehet, de kivételt képez pl. a 9.1.1. r
 
 ### 8.1. Projektterv (1. mérföldkő)
 
-Ennek a feladatnak az a célja, hogy `megvalósításhoz szükséges lépéseket, az erőforrásigényeket, az ütemezést, a felelősöket és a feladatok sorrendjét meghatározzuk, majd vizualizáljuk Gantt diagram segítségével.`
+Ennek a feladatnak az a célja, hogy a megvalósításhoz szükséges lépéseket, az erőforrásigényeket, az ütemezést, a felelősöket és a feladatok sorrendjét meghatározzuk, majd vizualizáljuk Gantt diagram segítségével.
 
 Részfeladatai a következők:
 
 #### 8.1.1. Projektterv kitöltése
 
-Felelős: `Mindenki`
+Felelős: Mindenki
 
-Tartam:  `4 nap`
+Tartam:  7 nap
 
-Erőforrásigény:  `1 személynap/fő`
-
+Erőforrásigény:  1 személynap/fő
 
 #### 8.1.2. Bemutató elkészítése
 
-Felelős: `Teszt Elek`
+Felelős: Vass Kinga, Pilter Zsófia
 
 Tartam:  `2 nap`
 
-Erőforrásigény:  `0.5 személynap`
-
-```
-A mérföldkőhöz tartozó feladatok bemutatása PPT keretében, pl. téma, tervezett funkciók, tagok, Gantt diagram.`
-```
+Erőforrásigény:  0.5 személynap/fő
 
 ### 8.2. UML és adatbázis- és képernyőtervek (2. mérföldkő)
 
-Ennek a feladatnak az a célja, hogy `a rendszerarchitektúrát, az adatbázist és webalkalmazás kinézetét megtervezzük.`
+Ennek a feladatnak az a célja, hogy a rendszerarchitektúrát, az adatbázist és webalkalmazás kinézetét megtervezzük.
 
 Részfeladatai a következők:
 
 #### 8.2.1. Use Case diagram
 
-Felelős: `Teszt Elek`
+Felelős: Stefán Kornél
 
-Tartam:  `3 nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  1 személynap
 
 #### 8.2.2. Class diagram
 
-Felelős: `Lev Elek`
+Felelős: Vad Avar
 
-Tartam:  `4 nap`
+Tartam:  2 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  2 személynap
 
 #### 8.2.3. Sequence diagram
 
-Felelős: `Remek Elek`
+Felelős: Vass Kinga
 
-Tartam:  `3 nap`
+Tartam:  4 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  4 személynap
 
 #### 8.2.4. Egyed-kapcsolat diagram adatbázishoz
 
-Felelős: `Remek Elek`
+Felelős: Farkas Dominika Eliza
 
-Tartam:  `4 nap`
+Tartam:  4 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  4 személynap
 
 #### 8.2.5. Package diagram
 
-Felelős: `Teszt Elek`
+Felelős: Gyenge Angéla
 
-Tartam:  `3 nap`
+Tartam:  4 nap
 
-Erőforrásigény:  `0.5 személynap`
+Erőforrásigény:  4 személynap
 
 #### 8.2.6. Képernyőtervek
 
-Felelős: `Teszt Elek`
+Felelős: Horváth Gergely
 
-Tartam:  `3 nap`
+Tartam:  4 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  3 személynap
 
 #### 8.2.7. Bemutató elkészítése
 
-Felelős: `Lev Elek`
+Felelős: Pilter Zsófia
 
-Tartam:  `1 nap`
+Tartam:  2 nap
 
-Erőforrásigény:  `0.5 személynap`
-
-```
-A mérföldkőhöz tartozó feladatok bemutatása PPT keretében (elkészült diagramok és képernyőtervek)`
-```
+Erőforrásigény:  2 személynap
 
 ### 8.3. Prototípus I. (3. mérföldkő)
 
-Ennek a feladatnak az a célja, hogy `egy működő prototípust hozzunk létre, ahol a vállalt funkcionális követelmények nagy része már prezentálható állapotban van.` 
+A feladat célja egy prezentálható prototípus létrehozása, demózható állapotú funkiconalitással.
 
 Részfeladatai a következők:
 
-#### `8.3.1. Felhasználók kezelése (admin, raktáros, sofőr) (CR)`
+#### 8.3.1. Adminisztratív felhasználók kezelése (kolléga, ügyfél) (CRUD)
 
-Felelős: `Teszt Elek`
+Felelős: Horváth Gergely
 
-Tartam:  `5 nap`
+Tartam:  8 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  4 személynap
 
-#### `8.3.2. Felhasználók kezelése (admin, raktáros, sofőr) (UD)`
+#### 8.3.2. Felhasználói munkamenet megvalósítása több jogosultsági szinttel
 
-Felelős: `Remek Elek`
+Felelős: Stefán Kornél
 
-Tartam:  `4 nap`
+Tartam:  4 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  4 személynap
 
-#### `8.3.3. Felhasználók kezeléséhez szükséges adatok létrehozása az adatbázisban`
+#### 8.3.3. Alapanyagok kezelése (CRUD)
 
-Felelős: `Lev Elek`
+Felelős: Vad Avar
 
-Tartam:  `3 nap`
+Tartam:  12 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  8 személynap
 
-#### `8.3.4. Felhasználói munkamenet megvalósítása több jogosultsági szinttel`
+#### 8.3.4.1 Termékek kezelése (CR)
 
-Felelős: `Teszt Elek `
+Felelős: Farkas Dominika Eliza
 
-Tartam:  `10 nap`
+Tartam:  8 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  8 személynap
 
-#### `8.3.5. Raktárak kezelése (CRUD)`
+#### 8.3.4.2 Termékek kezelése (UD)
 
-Felelős: `Teszt Elek`
+Felelős: Stefán Kornél
 
-Tartam:  `3 nap`
+Tartam:  8 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  8 személynap
 
-#### `8.3.6. Raktárkezeléshez szükséges adatok létrehozása az adatbázisban`
+#### 8.3.5. Termékek alapanyag igényének karbantartása (RU)
 
-Felelős: `Remek Elek`
+Felelős: Gyenge Angéla
 
-Tartam:  `4 nap`
+Tartam:  10 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  8 személynap
 
-#### `8.3.7. Árukészletek kezelése (C)`
+#### 8.3.6. Szakács felület elkészítése (RU)
 
-Felelős: `Remek Elek `
+Felelős: Vass Kinga
 
-Tartam:  `4 nap`
+Tartam:  10 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  6 személynap
 
-#### `8.3.8. Árukészletek kezelése (R)`
+#### 8.3.7. Webshop felület elkészítése (termékek, kosár) (CRU)
 
-Felelős: `Lev Elek`
+Felelős: Horváth Gergely
 
-Tartam:  `3 nap`
+Tartam:  10 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  8 személynap
 
-#### `8.3.9. Árukészletek kezelése (UD)`
+#### 8.3.8. Webshop felület elkészítése (adatbekérés, rendelés állapota) (RU)
 
-Felelős: `Lev Elek`
+Felelős: Pilter Zsófia
 
-Tartam:  `5 nap`
+Tartam:  8 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  4 személynap
 
-#### `8.3.10. Árukészletek kezeléséhez szükséges adatok létrehozása az adatbázisban`
+#### 8.3.9. Rendelések állapota oldal (R)
 
-Felelős: `Lev Elek`
+Felelős: Farkas Dominika Eliza
 
-Tartam:  `5 nap`
+Tartam:  4 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  2 személynap
 
-#### `8.3.11. Járművek kezelése (CRUD) és a szükséges adatok létrehozása az adatbázisban`
+#### 8.3.10. Webshop Értékesítő felület (RUD)
 
-Felelős: `Lev Elek`
+Felelős: Vass Kinga
 
-Tartam:  `3 nap`
+Tartam:  10 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  10 személynap
 
-#### `8.3.12. Fuvarok/szállítmányok kezelése (CR)`
+#### 8.3.11. Fizikai értékesítő felület
 
-Felelős: `Teszt Elek`
+Felelős: Pilter Zsófia
 
-Tartam:  `4 nap`
+Tartam:  12 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  10 személynap
 
-#### `8.3.13. Fuvarok/szállítmányok kezelése (UD)`
+#### 8.3.12. Tesztelési dokumentum a felhasználókezeléshez
 
-Felelős: `Teszt Elek `
+Felelős: Farkas Dominika Eliza
 
-Tartam:  `5 nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  2 személynap
 
-#### `8.3.14. Fuvarok/szállítmányok szükséges adatok létrehozása az adatbázisban`
+#### 8.3.13. Tesztelési dokumentum az alapanyagkezeléshez
 
-Felelős: `Remek Elek `
+Felelős: Gyenge Angéla
 
-Tartam:  `3 nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  2 személynap
 
-#### `8.3.15. Email-es kiértesítés új szállítmány esetén az adott raktárosnak és sofőrnek`
+#### 8.3.14. Tesztelési dokumentum a termékkezelés funkciókhoz
 
-Felelős: `Remek Elek`
+Felelős: Gyenge Angéla
 
-Tartam:  `4 nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  2 személynap
 
-#### `8.3.16. Fuvar útvonalának megjelenítése térképen a kezdő és a végponttal együtt`
+#### 8.3.15. Tesztelési dokumentum a szakács felülethez
 
-Felelős: `Remek Elek`
+Felelős: Vass Kinga
 
-Tartam:  `5 nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `3 személynap`
+Erőforrásigény:  2 személynap
 
-#### `8.3.17. Biztonsági mentés automatikus létrehozása`
+#### 8.3.16. Tesztelési dokumentum a webshop funkcióihoz
 
-Felelős: `Lev Elek`
+Felelős: Vass Kinga
 
-Tartam:  `3 nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `1 személynap`
-
-#### 8.3.18. Tesztelési dokumentum az összes funkcióhoz (TP, TC)
-
-Felelős: `Mindenki`
-
-Tartam:  `7 nap`
-
-Erőforrásigény:  `1 személynap/fő`
-
-```
-Itt csak a könnyebb áttekinthetőség végett szerepel mindenki felelősként, azonban ezt a feladatot is részfeladatokra kell bontani.
-```
-
-#### `8.3.19. A prototípus kitelepítése éles környezetbe` 
-
-Felelős: `Teszt Elek`
-
-Tartam:  `1 nap`
-
-Erőforrásigény:  `1 személynap`
-
-```
-A feladatokat a 2.2-es és a 2.3-as pont alapján kell meghatározni és lehető legrészletesebben definiálni.
-Lehetőség szerint az összetett feladatokat bontsuk fel részfeladatokra. 
-A bemutató során a prototípus aktuális állását kell prezentálni.
-```
+Erőforrásigény:  2 személynap
 
 ### 8.4. Prototípus II. (4. mérföldkő)
 
-Ennek a feladatnak az a célja, hogy `az előző mérföldkő hiányzó funkcióit pótoljuk, illetve a hibásan működő funkciókat és az esetlegesen felmerülő új funkciókat megvalósítsuk. Továbbá az alkalmazás alapos tesztelése is a mérföldkőben történik az előző mérföldkőben összeállított tesztesetek alapján.`
+A feladat célja az előző mérföldkő során felmerült hiányosságok pótlása, illetve a hibák javítása, esetlegesen felmerülő új funkcionalitás implementálása. A korábbi és új funkcionalitás tesztzelése is ezen mérföldkő során történik.
 
 Részfeladatai a következők:
 
 #### 8.4.1. Javított minőségű prototípus új funkciókkal
 
-Felelős: `Teszt Elek`
+Felelős: Vad Avar
 
-Tartam:  `5 nap`
+Tartam:  5 nap
 
-Erőforrásigény:  `2.5 személynap`
+Erőforrásigény:  3 személynap
 
 #### 8.4.2. Javított minőségű prototípus javított funkciókkal
 
-Felelős: `Lev Elek`
+Felelős: Horváth Gergely
 
-Tartam:  `5 nap`
+Tartam:  6 nap
 
-Erőforrásigény:  `2 személynap`
+Erőforrásigény:  4 személynap
 
 #### 8.4.3. Javított minőségű prototípus a korábbi hiányzó funkciókkal
 
-Felelős: `Remek Elek`
+Felelős: Stefán Kornél
 
-Tartam:  `5 nap`
+Tartam:  7 nap
 
-Erőforrásigény:  `1.5 személynap`
+Erőforrásigény:  4 személynap
 
-#### `8.4.4. Felhasználói munkamenet tesztelése (TR)`
+#### 8.4.4. Felhasználókezelés tesztelése (TR)
 
-Felelős: `Teszt Elek`
+Felelős: Farkas Dominika Eliza
 
-Tartam:  `1 nap`
+Tartam:  1 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  1 személynap
 
-#### `8.4.5. Raktárak kezelésének tesztelése (TR)`
+#### 8.4.5. Alapanyagkezelés tesztelése (TR)
 
-Felelős: `Remek Elek`
+Felelős: Gyenge Angéla
 
-Tartam:  `1 nap`
+Tartam:  1 nap
 
-Erőforrásigény:  `0.5 személynap`
+Erőforrásigény:  1 személynap
 
-#### `8.4.6. Árukészletek kezelésének tesztelése (TR)`
+#### 8.4.6. Termékkezelés funkciók tesztelése (TR)
 
-Felelős: `Teszt Elek`
+Felelős: Gyenge Angéla
 
-Tartam:  `1 nap`
+Tartam:  1 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  1 személynap
 
-#### `8.4.7. Járművek kezelésének tesztelése (TR)`
+#### 8.4.7. Szakács felület tesztelése (TR)
 
-Felelős: `Remek Elek`
+Felelős: Vass Kinga
 
-Tartam:  `1 nap`
+Tartam:  1 nap
 
-Erőforrásigény:  `0.5 személynap`
+Erőforrásigény:  1 személynap
 
-#### `8.4.8. Fuvarok kezelésének tesztelése (TR)`
+#### 8.4.8. Webshop tesztelése (TR)
 
-Felelős: `Lev Elek`
+Felelős: Pilter Zsófia
 
-Tartam:  `1 nap`
+Tartam:  1 nap
 
-Erőforrásigény:  `0.5 személynap`
+Erőforrásigény:  1 személynap
 
-#### `8.4.9. Email-es funkciók tesztelése (TR)`
 
-Felelős: `Remek Elek`
-
-Tartam:  `1 nap`
-
-Erőforrásigény:  `0.5 személynap`
-
-#### `8.4.10. Térképes funkciók tesztelése (TR)`
-
-Felelős: `Lev Elek`
-
-Tartam:  `1 nap`
-
-Erőforrásigény:  `0.5 személynap`
-
-#### `8.4.11. Biztonsági mentés tesztelése (TR)`
-
-Felelős: `Lev Elek`
-
-Tartam:  `1 nap`
-
-Erőforrásigény:  `0.5 személynap`
-
-#### `8.4.12. A prototípus kitelepítésének frissítése`
-
-Felelős: `Teszt Elek`
-
-Tartam:  `1 nap`
-
-Erőforrásigény:  `0.5 személynap`
-
-```
-Működő végleges program, a frissített tesztelési dokumentációval. A 3. mérföldkőhöz képest funkiconálisan többet kell tudnia az oldalnak.
-
-```
 ## 9. Részletes időbeosztás
 
 ![image](./MINTA-gantt-diagram.png)
@@ -608,38 +532,42 @@ Ide kell berakni a Gantt diagramot, amely a 9. fejezetben található részfelad
 
 ## 10. Projekt költségvetés
 
-```
-Az egyes leadások alkalmával rögzített erőforrásigényt, az elvállalt feladatok számát 
-és az adott mérföldkőben végzett munkáért szerezhető pontszámot kell beírni minden emberre külön-külön.
-Figyeljünk arra, hogy mivel mindenkinek minden mérföldkövön dolgoznia kell, ezért a 10.3-as táblázat
-minden módosítható oszlopában legalább 1 pontnak szerepelni kell.
-```
-
 ### 10.1. Részletes erőforrásigény (személynap)
 
 
 | Név          |   M1  |   M2  |   M3 |   M4  | Összesen |
 |--------------|-------|-------|------|-------|----------|
-| `Teszt Elek` | `1.5` | `1.5` | `11` | `5`   | `19`     |
-| `Remek Elek` | `1`   | `4`   | `13` | `3`   | `21`     |
-| `Lev Elek`   | `1`   | `2.5` | `10` | `3.5` | `17`     |
-
+| Stefán Kornél | 1 | 4 | 12 | 4   | 21    |
+| Farkas Dominika Eliza | 1   | 4   | 12 | 1   | 18     |
+| Gyenge Angéla   | 1   | 4 | 12 | 2 | 19     |
+| Horváth Gergely Zsolt   | 1   | 4 | 12 | 4 | 21     |
+| Pilter Zsófia   | 3   | 2 | 14 | 1 | 20     |
+| Vad Avar   | 3   | 2 | 14 | 3 | 22     |
+| Vass Kinga   | 1   | 4 | 12 | 1 | 18     |
 
 ### 10.2. Részletes feladatszámok
 
 | Név          |   M1  |   M2  |   M3 |   M4 | Összesen |
 |--------------|-------|-------|------|------|----------|
-| `Teszt Elek` | `2`   | `2`   | `7`  | `4`  | `15`     |
-| `Remek Elek` | `1`   | `2`   | `7`  | `4`  | `14`     |
-| `Lev Elek`   | `1`   | `2`   | `7`  | `4`  | `14`     |
+| Stefán Kornél | 1 | 1 | 2 | 1   | 5     |
+| Farkas Dominika Eliza | 1   | 1   | 3 | 1   | 6     |
+| Gyenge Angéla   | 1   | 1 | 3 | 2 | 7     |
+| Horváth Gergely Zsolt   | 1   | 1 | 2 | 1 | 5     |
+| Pilter Zsófia   | 2   | 1 | 2 | 2 | 7     |
+| Vad Avar   | 1   | 1 | 1 | 1 | 4     |
+| Vass Kinga   | 2   | 1 | 4 | 1 | 8     |
 
 ### 10.3. Részletes költségvetés
 
 | Név                                 | M1      | M2       | M3       | M4       | Összesen  |
 |-------------------------------------|---------|----------|----------|----------|-----------|
 | Maximálisan megszerezhető pontszám  |  (7)    | (20)     | (35)     |  (28)    | 100% (70) |
-| `Teszt Elek`                        | `7`     | `10`     | `28`     |  `25`    | 70        |
-| `Remek Elek`                        | `4`     | `15`     | `35`     |  `16`    | 70        |
-| `Lev Elek`                          | `4`     | `12`     | `30`     |  `24`    | 70        |
+| Stefán Kornél | 7 | 20 | 23 | 20   | 70    |
+| Farkas Dominika Eliza | 7   | 13   | 30 | 20   | 70     |
+| Gyenge Angéla   | 7   | 20 | 30 | 13 | 70    |
+| Horváth Gergely Zsolt   | 7   | 15 | 28 | 20 | 70     |
+| Pilter Zsófia   | 7   | 16 | 25 | 22 | 70    |
+| Vad Avar   | 7   | 13 | 22 | 28 | 70     |
+| Vass Kinga   | 7   | 20 | 28 | 15 | 70     |
 
-Szeged, `2021-10-25`.
+Szeged, `2024-10-06`.
