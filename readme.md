@@ -514,7 +514,7 @@ Erőforrásigény:  1 személynap
 
 ## 9. Részletes időbeosztás
 
-![image](./MINTA-gantt-diagram.png)
+![image](./Administration/MINTA-gantt-diagram.png)
 
 ## 10. Projekt költségvetés
 
