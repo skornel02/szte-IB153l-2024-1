@@ -30,46 +30,46 @@ A vásárlók felületén is felmerült igény egy kiegészítő modul fejleszt�
 
 ### 2.2. Funkcionális követelmények
 
- - Adminisztratív felhasználók kezelése (kolléga, ügyfél) (CRUD) *szn: 4*
+ - Adminisztratív felhasználók kezelése (kolléga, ügyfél) (CRUD)
    - Administratív felület, ahol kolléga felvehető, szerkeszthető, törölhető
    - Áttekintő a regisztrált ügyfelekről
  - Felhasználói munkamenet megvalósítása több jogosultsági szinttel
-   - Egységes bejelentkezési felület, ami jogosultság alapján a megfelelő helyre továbbít *szn: 2*
+   - Egységes bejelentkezési felület, ami jogosultság alapján a megfelelő helyre továbbít
    - Regisztráció felhasználók számára
-     - Vásárlás előtt *szn: 2*
-     - Vásárlás közben *szn: 2*
- - Alapanyagok kezelése (CRUD) *szn: 8*
+     - Vásárlás előtt
+     - Vásárlás közben
+ - Alapanyagok kezelése (CRUD)
    - Táblázatos megjelenítése az adatoknak
    - Táblázatban inline sliderrel állítható raktárkészlet
    - Új alapnyag felvétele
    - Meglévő alapanyag szerkesztése
    - Meglévő alapanyag törlése
- - Termékek kezelése (CRUD) *szn: 8*
+ - Termékek kezelése (CRUD)
    - Táblázatos megjelenítés a termékekről, elérhető és lefoglalt mennyiség
    - Új termék létrehozása, alapinformációk
    - Termékek szerkesztése, alapinformációk
    - Termék törlése
- - Termékek alapanyag igényének karbantartása *szn: 4*
+ - Termékek alapanyag igényének karbantartása
    - Termék szerkesztés kibővítése alapanyag meghatározással
- - Szakács felület elkészítése *szn: 6*
+ - Szakács felület elkészítése
    - Elkészíthető termékek képpel való megjelenítése
    - Minden terméken gomb, ami a termék elkészítését kezdeményezi, mennyiség bekérővel.
  - Webshop felület elkészítése
-   - Termékek megjelenítése kártyákban *szn: 2*
-   - Termékek mellett termék szám bekérő és kosárhoz adás gomb *szn: 2*
-   - Kosár felület, ahol a kosár tartalma látszódik *szn: 2*
-   - Kosár felületen vásárlás leadása gomb *szn: 2*
-   - Adatbekérő felület, ami nem regisztrált felhasználóktól jelszót is kér be (webshop mintára) *szn: 4*
-   - Adatbekérő felület alján fizetési gombok *szn: 2*
-   - Fizetés után a rendelés állapota oldal *szn: 2*
- - Rendelések állapota oldal  *szn: 2*
+   - Termékek megjelenítése kártyákban
+   - Termékek mellett termék szám bekérő és kosárhoz adás gomb
+   - Kosár felület, ahol a kosár tartalma látszódik
+   - Kosár felületen vásárlás leadása gomb
+   - Adatbekérő felület, ami nem regisztrált felhasználóktól jelszót is kér be (webshop mintára)
+   - Adatbekérő felület alján fizetési gombok
+   - Fizetés után a rendelés állapota oldal
+ - Rendelések állapota oldal
    - Belépett felhasználóknak egy lista ahol a rendeléseik láthatóak időrendben csökkenően, hogy milyen állapotban vannak
- - Webshop Értékesítő felület  *szn: 8*
+ - Webshop Értékesítő felület
    - Aktív, el nem fogadott rendelések megmutatása
    - Elfogadás gomb, ha a rendelés teljesíthető
    - Elutasítás gomb
    - Elfogadás esetén a termékek lefoglalásra kerülnek.
- - Fizikai értékesítő felület  *szn: 6*
+ - Fizikai értékesítő felület
    - Termékek listás megjelenítése
    - Minden termék mellett számbekérő
    - Oldal alján egy "Rendelés véglegesítése" gomb
@@ -331,7 +331,7 @@ Erőforrásigény:  8 személynap
 
 #### 8.3.4.1 Termékek kezelése (CR)
 
-Felelős: Farkas Dominika Eliza
+Felelős: Stefán Kornél
 
 Tartam:  8 nap
 
@@ -339,7 +339,7 @@ Erőforrásigény:  8 személynap
 
 #### 8.3.4.2 Termékek kezelése (UD)
 
-Felelős: Stefán Kornél
+Felelős: Farkas Dominika Eliza
 
 Tartam:  8 nap
 
