@@ -1,31 +1,31 @@
-### Összefoglaló az `1.` mérföldkõben végzett munkáról
+### Ã–sszefoglalÃ³ az `1.` mÃ©rfÃ¶ldkÅ‘ben vÃ©gzett munkÃ¡rÃ³l
 
-### Projekt tag: `Pilter Zaófia`
+### Projekt tag: `Pilter ZsÃ³fia`
 
 ___
 
-#### Vállalásaim a mérföldkõben: 
+#### VÃ¡llalÃ¡saim a mÃ©rfÃ¶ldkÅ‘ben: 
 
- - 8.1.1. Projektterv kitöltése és átnézése, commit tesztelése
+ - 8.1.1. Projektterv kitÃ¶ltÃ©se Ã©s Ã¡tnÃ©zÃ¡se, commit tesztelÃ©se
 
-    ##### A feladathoz tartozó issue(k):
+    ##### A feladathoz tartozÃ³ issue(k):
 
      - #2 - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/issues/2
 
-    ##### A feladat elvégzését alátámasztó commit(ok):
+    ##### A feladat elvÃ©gzÃ©sÃ©t alÃ¡tÃ¡masztÃ³ commit(ok):
 
      - 65f4d487 - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/commit/65f4d487c1f19e214e4d456715279b5447c795dc
      - 51db25b8 - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/commit/51db25b813e0d390c6de35872ccbe01580eb87ba
      
- - 8.1.2 Bemutató elkészítése
+ - 8.1.2 BemutatÃ³ elkÃ©szÃ­tÃ©se
 
-     ##### A feladathoz tartozó issue(k):
+     ##### A feladathoz tartozÃ³ issue(k):
 
-     - Ehhez nem tartozik issue tõlem.
+     - Ehhez nem tartozik issue tÅ‘lem.
     
-     ##### A feladat elvégzését alátámasztó commit(ok):
+     ##### A feladat elvÃ©gzÃ©sÃ©t alÃ¡tÃ¡masztÃ³ commit(ok):
 
-     - Kinga commitolta a bemutatót, én az elkészítésben segítettem neki.
+     - Kinga commitolta a bemutatÃ³t, Ã©n az elkÃ©szÃ©tÃ©sben segÃ­tettem neki.
  
      
-#### Megjegyzések
+#### MegjegyzÃ©sek
