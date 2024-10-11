@@ -1,5 +1,9 @@
 # Bella Croissant Lyonnass Projektterv 2024
 
+<p align="center"><img src="Logo.png" width="200"></p>
+
+---
+
 ## 1. Összefoglaló 
 
 Mi, franciák, nagyon büszkék vagyunk arra, hogy a baggettjeink finomak. Az ügyfél azzal az igénnyel fordult hozzánk, hogy átfogó üzletviteli rendszerre van szüksége. A rendszer főoldala egy publikusan látható webshop. Mögötte egy összetett rendszer található, ami egy captive portálról érhető el. A vásárlók regisztráció után vásárolhatnak a kínálatból; a kollégák bejelentkezés után intézhetik az ügyviteli igényeiket. Az ügyviteli igények a következők: alapanyagok kezelése, termékek feltárása és mennyiségük aktualizálása és legvégső soron a rendelések felügyelése és engedélyeztetése.
