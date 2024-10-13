@@ -1,6 +1,6 @@
 # Bella Croissant Lyonnass Projektterv 2024
 
-<p align="center"><img src="Logo.png" width="200"></p>
+<div  align="center"><img src="Logo.png" width="200"></div>
 
 ---
 
