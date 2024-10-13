@@ -147,8 +147,12 @@ A projekt a következő technológiákat/szoftvereket fogja használni a munka s
 | Kockázat                                    | Leírás                                                                                                                                                                                     | Valószínűség | Hatás  |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|--------|
 | Áramkimaradás csapattagnál                  | Súlyosságtól függően hátráltatja vagy bizonyos esetekben teljes mértékben korlátozza a munkavégzőt, így az egész projektre kihatással van. Megoldás: a feladatok átcsoportosítása          | kis          | erős   |
+| Áramütés éri egy csapattagot                      | Hosszútávú hatással lehet az adott csapattag munkavégzésére. Megoldás: biztonsági előírások betartása.     | kis         | nagy    |
 | Kommunikációs fennakadás a csapattagokkal   | A csapattagok között nem elégséges az információ áramlás, nem pontosan, esetleg késve vagy nem egyértelműen tájékoztatjuk egymást. Megoldás: még gyakoribb megbeszélések és ellenőrzések   | közepes      | erős   |
 | Sűrű szorgalmi időszak                      | Adott csapattag terhelése bizonyos időszakokban erősen növekedhet, ami kihatással lehet a munkavégzésre. Megoldás: gyakori egyeztetés és a feladatok szükség szerinti átcsoportosítása     | nagy         | kis    |
+| Meteor csapódik be Szegedbe                      | Katasztrofális hatása lenne az egész csapata mukavégzési képességeire és a morálra is.     | kis         | nagy    |
+| Elszabadulnak a dínók                      | A futás közben való programozás negatív hatással lehet a koncentrációra, így kihatással lehet a kód minőségére. Megoldás: hangsúly fektetése a tesztelésre.     | közepes         | közepes    |
+| Átállás online oktatásra                      | Az órák utáni személyes megbeszéléseket felborítaná. Megoldás: megbeszélések áthelyezése online térbe     | kis         | kis    |
 
 ## 6. Jelentések
 
