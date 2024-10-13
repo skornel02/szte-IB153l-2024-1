@@ -91,10 +91,10 @@ A vásárlók felületén is felmerült igény egy kiegészítő modul fejleszt�
 ## 3. Költség- és erőforrás-szükségletek
 
 - Személyek száma: 7
-- Személy napok összesen: 119
+- Személy napok összesen: 139
 - Fejlesztés: 68
 
-Az erőforrásigényünk összesen 119 személynap, átlagosan 17 $\frac{személynap}{fo}$.
+Az erőforrásigényünk összesen 139 személynap, átlagosan 19 $\frac{személynap}{fo}$.
 
 A rendelkezésünkre áll összesen $7\cdot70=490$ pont.
 
@@ -229,13 +229,61 @@ Ennek a feladatnak az a célja, hogy a megvalósításhoz szükséges lépéseke
 
 Részfeladatai a következők:
 
-#### 8.1.1. Projektterv kitöltése
+#### 8.1.1.1 Összefoglaló, projektbemutató, rendszerspecifikáció és követelmények összeírása
 
-Felelős: Mindenki
+Felelős: Stefán Kornél
 
-Tartam:  7 nap
+Tartam:  2 nap
 
-Erőforrásigény:  1 személynap/fő
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.2 Költség- és erőforrás-szükségletek összeírása
+
+Felelős: Vad Avar
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.3 Szervezeti felépítés dokumentálása
+
+Felelős: Gyenge Angéla
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.4 Munkakörnyezet és rizikómenedzsment felvázolása
+
+Felelős: Pilter Zsófia
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.5 Munkamenedzsment és csoportgyűlések számontartása
+
+Felelős: Farkas Dominika Eliza
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.6 Projektterv 7. pont kitöltése
+
+Felelős: Vass Kinga
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.7 Projektterv 8-10. pont kitöltése
+
+Felelős: Horváth Gergely Zsolt
+
+Tartam:  2 nap
+
+Erőforrásigény:  1 személynap
 
 #### 8.1.2. Bemutató elkészítése
 
