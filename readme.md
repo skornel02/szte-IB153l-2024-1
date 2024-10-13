@@ -91,10 +91,10 @@ A vásárlók felületén is felmerült igény egy kiegészítő modul fejleszt�
 ## 3. Költség- és erőforrás-szükségletek
 
 - Személyek száma: 7
-- Személy napok összesen: 119
+- Személy napok összesen: 139
 - Fejlesztés: 68
 
-Az erőforrásigényünk összesen 119 személynap, átlagosan 17 $\frac{személynap}{fo}$.
+Az erőforrásigényünk összesen 139 személynap, átlagosan 19 $\frac{személynap}{fo}$.
 
 A rendelkezésünkre áll összesen $7\cdot70=490$ pont.
 
@@ -147,8 +147,12 @@ A projekt a következő technológiákat/szoftvereket fogja használni a munka s
 | Kockázat                                    | Leírás                                                                                                                                                                                     | Valószínűség | Hatás  |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|--------|
 | Áramkimaradás csapattagnál                  | Súlyosságtól függően hátráltatja vagy bizonyos esetekben teljes mértékben korlátozza a munkavégzőt, így az egész projektre kihatással van. Megoldás: a feladatok átcsoportosítása          | kis          | erős   |
+| Áramütés éri egy csapattagot                      | Hosszútávú hatással lehet az adott csapattag munkavégzésére. Megoldás: biztonsági előírások betartása.     | kis         | nagy    |
 | Kommunikációs fennakadás a csapattagokkal   | A csapattagok között nem elégséges az információ áramlás, nem pontosan, esetleg késve vagy nem egyértelműen tájékoztatjuk egymást. Megoldás: még gyakoribb megbeszélések és ellenőrzések   | közepes      | erős   |
 | Sűrű szorgalmi időszak                      | Adott csapattag terhelése bizonyos időszakokban erősen növekedhet, ami kihatással lehet a munkavégzésre. Megoldás: gyakori egyeztetés és a feladatok szükség szerinti átcsoportosítása     | nagy         | kis    |
+| Meteor csapódik be Szegedbe                      | Katasztrofális hatása lenne az egész csapata mukavégzési képességeire és a morálra is.     | kis         | nagy    |
+| Elszabadulnak a dínók                      | A futás közben való programozás negatív hatással lehet a koncentrációra, így kihatással lehet a kód minőségére. Megoldás: hangsúly fektetése a tesztelésre.     | közepes         | közepes    |
+| Átállás online oktatásra                      | Az órák utáni személyes megbeszéléseket felborítaná. Megoldás: megbeszélések áthelyezése online térbe     | kis         | kis    |
 
 ## 6. Jelentések
 
@@ -225,13 +229,61 @@ Ennek a feladatnak az a célja, hogy a megvalósításhoz szükséges lépéseke
 
 Részfeladatai a következők:
 
-#### 8.1.1. Projektterv kitöltése
+#### 8.1.1.1 Összefoglaló, projektbemutató, rendszerspecifikáció és követelmények összeírása
 
-Felelős: Mindenki
+Felelős: Stefán Kornél
 
-Tartam:  7 nap
+Tartam:  2 nap
 
-Erőforrásigény:  1 személynap/fő
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.2 Költség- és erőforrás-szükségletek összeírása
+
+Felelős: Vad Avar
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.3 Szervezeti felépítés dokumentálása
+
+Felelős: Gyenge Angéla
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.4 Munkakörnyezet és rizikómenedzsment felvázolása
+
+Felelős: Pilter Zsófia
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.5 Munkamenedzsment és csoportgyűlések számontartása
+
+Felelős: Farkas Dominika Eliza
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.6 Projektterv 7. pont kitöltése
+
+Felelős: Vass Kinga
+
+Tartam:  1 nap
+
+Erőforrásigény:  1 személynap
+
+#### 8.1.1.7 Projektterv 8-10. pont kitöltése
+
+Felelős: Horváth Gergely Zsolt
+
+Tartam:  2 nap
+
+Erőforrásigény:  1 személynap
 
 #### 8.1.2. Bemutató elkészítése
 
