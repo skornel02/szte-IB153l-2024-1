@@ -7,6 +7,6 @@ public enum UserRole
     DigitalSales,
     PhysicalSales,
     Baker,
-    Cheff,
+    Chef,
     Inventory,
 }
