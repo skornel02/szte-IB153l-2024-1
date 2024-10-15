@@ -60,7 +60,7 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-await using(var scope = app.Services.CreateAsyncScope())
+await using (var scope = app.Services.CreateAsyncScope())
 {
     var provider = scope.ServiceProvider;
     var context = provider.GetRequiredService<BellaDbContext>();
