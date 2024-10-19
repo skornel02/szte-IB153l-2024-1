@@ -1,0 +1,80 @@
+using Backend.Entities;
+using Backend.Persistence;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+
+namespace Backend.Pages;
+
+public class LoginModel : BasePageModel
+{
+    private readonly BellaDbContext _context;
+
+    [BindProperty]
+    [Required(ErrorMessage = "E-Mail is required!")]
+    [Display(Name = "Email Address")]
+    [DataType(DataType.EmailAddress)]
+    public string EmailAddress { get; set; }
+
+    [BindProperty]
+    [Length(3, 20), Required]
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
+
+    [BindProperty(SupportsGet = true)]
+    public string? RedirectTo { get; set; }
+
+    public LoginModel(BellaDbContext context)
+    {
+        _context = context;
+    }
+
+
+    public void OnGet()
+    {
+    }
+
+    public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
+    {
+        var user = await _context.Users
+            .FirstOrDefaultAsync(_ => _.EmailAddress == EmailAddress, cancellationToken);
+
+        if (user is null)
+        {
+            ErrorMessage = "User does not exist with that E-mail address!";
+            return Page();
+        }
+
+        var hasher = new PasswordHasher<UserEntity>();
+
+        if (hasher.VerifyHashedPassword(user, user.PasswordHash, Password) == PasswordVerificationResult.Failed)
+        {
+            ErrorMessage = "Invalid password!";
+            return Page();
+        }
+
+        user.LastSeen = DateTime.UtcNow;
+        await _context.SaveChangesAsync();
+
+        var claims = new List<Claim>()
+        {
+            new Claim(ClaimTypes.Email, EmailAddress),
+        };
+
+        var principal = new ClaimsPrincipal([new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme)]);
+
+        await HttpContext.SignInAsync(principal);
+
+        if (RedirectTo is not null)
+        {
+            return Redirect(RedirectTo);
+        }
+
+        return RedirectToPage("/Index");
+    }
+}

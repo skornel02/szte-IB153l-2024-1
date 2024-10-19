@@ -24,3 +24,7 @@ body {
 .navbar img {
     max-height: 64px;
 }
+
+.login-image {
+    max-height: 50vh;
+}

@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Pages;
-public class PrivacyModel : PageModel
+
+[Authorize]
+public class PrivacyModel : BasePageModel
 {
     private readonly ILogger<PrivacyModel> _logger;
 

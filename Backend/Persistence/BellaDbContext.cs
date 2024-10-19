@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend;
+namespace Backend.Persistence;
 
 public class BellaDbContext : DbContext
 {
