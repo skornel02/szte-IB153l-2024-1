@@ -334,6 +334,7 @@ Erőforrásigény:  4 személynap
 ![image](./Administration/EK_diagram.png)
 
 #### 8.2.5. Package diagram
+![alt text](Administration/package_diagram.png)
 
 Felelős: Gyenge Angéla
 
