@@ -331,6 +331,8 @@ Tartam:  4 nap
 
 Erőforrásigény:  4 személynap
 
+![image](./Administration/EK_diagram.png)
+
 #### 8.2.5. Package diagram
 
 Felelős: Gyenge Angéla
