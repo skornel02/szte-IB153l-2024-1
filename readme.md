@@ -323,6 +323,8 @@ Tartam:  4 nap
 
 Erőforrásigény:  4 személynap
 
+<div  align="center"><img src="Administration/SequenceDiagram.png" height="500"></div>
+
 #### 8.2.4. Egyed-kapcsolat diagram adatbázishoz
 
 Felelős: Farkas Dominika Eliza
