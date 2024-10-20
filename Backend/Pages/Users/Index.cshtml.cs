@@ -1,11 +1,12 @@
+using Backend.Attributes;
 using Backend.Entities;
 using Backend.Persistence;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Pages.Users;
 
-public class IndexModel : PageModel
+[RoleAuthorize(Enums.UserRole.Admin)]
+public class IndexModel : BasePageModel
 {
     private readonly BellaDbContext _context;
 

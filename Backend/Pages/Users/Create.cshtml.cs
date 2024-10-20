@@ -1,13 +1,14 @@
+using Backend.Attributes;
 using Backend.Entities;
 using Backend.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Pages.Users;
 
-public class CreateModel : PageModel
+[RoleAuthorize(Enums.UserRole.Admin)]
+public class CreateModel : BasePageModel
 {
     private readonly BellaDbContext _context;
 

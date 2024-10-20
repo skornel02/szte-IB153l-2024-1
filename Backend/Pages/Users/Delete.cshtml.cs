@@ -1,12 +1,13 @@
+using Backend.Attributes;
 using Backend.Entities;
 using Backend.Persistence;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Pages.Users;
 
-public class DeleteModel : PageModel
+[RoleAuthorize(Enums.UserRole.Admin)]
+public class DeleteModel : BasePageModel
 {
     private readonly BellaDbContext _context;
 

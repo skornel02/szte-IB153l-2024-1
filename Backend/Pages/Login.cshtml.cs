@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
@@ -34,7 +33,6 @@ public class LoginModel : BasePageModel
         _context = context;
     }
 
-
     public void OnGet()
     {
     }
@@ -63,7 +61,8 @@ public class LoginModel : BasePageModel
 
         var claims = new List<Claim>()
         {
-            new Claim(ClaimTypes.Email, EmailAddress),
+            new(ClaimTypes.Email, EmailAddress),
+            new(ClaimTypes.Role, user.Role.ToString()),
         };
 
         var principal = new ClaimsPrincipal([new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme)]);
@@ -75,6 +74,6 @@ public class LoginModel : BasePageModel
             return Redirect(RedirectTo);
         }
 
-        return RedirectToPage("/Index");
+        return RedirectToPage("/Index", new { SuccessMessage = "You logged in successfully!" });
     }
 }

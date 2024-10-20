@@ -12,6 +12,7 @@ builder.Services.AddAuthentication()
     {
         _.LoginPath = "/Login";
         _.LogoutPath = "/Logout";
+        _.AccessDeniedPath = "/AccessDenied";
         _.ReturnUrlParameter = "RedirectTo";
     });
 

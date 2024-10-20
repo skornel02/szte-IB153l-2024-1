@@ -1,12 +1,13 @@
+using Backend.Attributes;
 using Backend.Entities;
 using Backend.Persistence;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Pages.Users;
 
-public class DetailsModel : PageModel
+[RoleAuthorize(Enums.UserRole.Admin)]
+public class DetailsModel : BasePageModel
 {
     private readonly BellaDbContext _context;
 

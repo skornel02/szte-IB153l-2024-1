@@ -2,7 +2,6 @@
 
 namespace Backend.Pages;
 
-[Authorize]
 public class PrivacyModel : BasePageModel
 {
     private readonly ILogger<PrivacyModel> _logger;
