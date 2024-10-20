@@ -331,7 +331,7 @@ Tartam:  4 nap
 
 Erőforrásigény:  4 személynap
 
-<div align="center"><img src="Administration/EK_diagram.png" height="500"></div>
+![image](./Administration/EK_diagram.png)
 
 #### 8.2.5. Package diagram
 
