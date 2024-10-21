@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Backend.Entities.IngredientEntity">
+    <Position X="1" Y="1" Width="3.75" />
+    <AssociationLine Name="Products" Type="Backend.Entities.ProductIngredientsEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="3.562" Y="2.873" />
+        <Point X="3.562" Y="4" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.01" Y="0.014" Height="0.182" Width="2.638" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACQAAAAAAAAACAAAAAAAQAgAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Entities\IngredientEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Backend.Entities.OrderEntity">
+    <Position X="6.25" Y="5.5" Width="3.25" />
+    <AssociationLine Name="OrderItems" Type="Backend.Entities.OrderItemEntity" FixedToPoint="true">
+      <Path>
+        <Point X="7.812" Y="5.5" />
+        <Point X="7.812" Y="5.123" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.413" Y="0.119" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Customer" Type="Backend.Entities.UserEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="7.5" Y="8.142" />
+        <Point X="7.5" Y="8.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.042" Y="0.201" Height="0.182" Width="0.867" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAECAAAEAAEAAAAAAAIAAAAAAAAAQBAQCgAABAAAQAA=</HashCode>
+      <FileName>Entities\OrderEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+      <Property Name="Customer" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="OrderItems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Backend.Entities.OrderItemEntity">
+    <Position X="7" Y="3.25" Width="2.5" />
+    <AssociationLine Name="Order" Type="Backend.Entities.OrderEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="7.5" Y="5.123" />
+        <Point X="7.5" Y="5.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.085" Y="0.12" Height="0.182" Width="0.666" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Product" Type="Backend.Entities.ProductEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="7.5" Y="3.25" />
+        <Point X="7.5" Y="2.757" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.052" Y="0.159" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\OrderItemEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Order" />
+      <Property Name="Product" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Backend.Entities.ProductEntity">
+    <Position X="5.75" Y="0.5" Width="3.75" />
+    <AssociationLine Name="Ingredients" Type="Backend.Entities.ProductIngredientsEntity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="2.757" />
+        <Point X="6.25" Y="4.875" />
+        <Point X="3.75" Y="4.875" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.129" Y="-0.266" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="OrderItems" Type="Backend.Entities.OrderItemEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="7.812" Y="2.757" />
+        <Point X="7.812" Y="3.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.404" Y="0.141" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACQAAAAQkgAAAAAAAAACQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ProductEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Ingredients" />
+      <Property Name="OrderItems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Backend.Entities.ProductIngredientsEntity">
+    <Position X="1" Y="4" Width="2.75" />
+    <AssociationLine Name="Ingredient" Type="Backend.Entities.IngredientEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="1.688" Y="4" />
+        <Point X="1.688" Y="2.873" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.986" Y="0.116" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Product" Type="Backend.Entities.ProductEntity" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="4.625" />
+        <Point X="6" Y="4.625" />
+        <Point X="6" Y="2.757" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.048" Y="0.412" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAACBAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\ProductIngredientsEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Ingredient" />
+      <Property Name="Product" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Backend.Entities.UserEntity">
+    <Position X="6.75" Y="8.75" Width="2.75" />
+    <AssociationLine Name="Orders" Type="Backend.Entities.OrderEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="7.812" Y="8.75" />
+        <Point X="7.812" Y="8.142" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.852" Y="0.12" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAGCAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgAgAAAAA=</HashCode>
+      <FileName>Entities\UserEntity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Role" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Orders" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="Backend.Enums.OrderStatus">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAABAAAAAAAAAJAAAQAAAAJAAAAAA=</HashCode>
+      <FileName>Enums\OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Backend.Enums.UserRole">
+    <Position X="4" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAQBAAAACAAAAAAAAAgAAgQA=</HashCode>
+      <FileName>Enums\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
