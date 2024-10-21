@@ -350,6 +350,13 @@ Tartam:  4 nap
 
 Erőforrásigény:  3 személynap
 
+![Belépés](./Administration/ui/Belépés.png)
+![Felhasználók kezelése](./Administration/ui/Felhasználók%20kezelése.png)
+![Alapanyagok kezelése](./Administration/ui/Alapanyagok%20kezelése.png)
+![Szakács felület](./Administration/ui/Szakács%20felület.png)
+![Webshop](./Administration/ui/Webshop%20-%20termékek.png)
+![Fizikai értékesítő felület](./Administration/ui/Webshop%20-%20fizikai%20értékesítő.png)
+
 #### 8.2.7. Bemutató elkészítése
 
 Felelős: Pilter Zsófia
