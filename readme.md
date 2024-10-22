@@ -113,15 +113,15 @@ A projekt megrendelője XIV. Lajos. A Bella Croissant Lyonnass projektet a proje
 
 A projekt a következő emberekből áll:
 
-| Név                      | Pozíció          |   E-mail cím (stud-os)      |
-|--------------------------|------------------|-----------------------------|
-| Stefán Kornél            | Projektmenedzser | h269206@stud.u-szeged.hu    |
-| Farkas Dominika Eliza    | Projekt tag      | h355566@stud.u-szeged.hu    |
-| Gyenge Angéla            | Projekt tag      | h158044@stud.u-szeged.hu    |
-| Horváth Gergely Zsolt    | Projekt tag      | h262095@stud.u-szeged.hu    |
-| Pilter Zsófia            | Projekt tag      | h268457@stud.u-szeged.hu    |
-| Vad Avar                 | Projekt tag      | h270402@stud.u-szeged.hu    |
-| Vass Kinga               | Projekt tag      | h270572@stud.u-szeged.hu    |
+| Név                   | Pozíció          | E-mail cím (stud-os)     |
+| --------------------- | ---------------- | ------------------------ |
+| Stefán Kornél         | Projektmenedzser | h269206@stud.u-szeged.hu |
+| Farkas Dominika Eliza | Projekt tag      | h355566@stud.u-szeged.hu |
+| Gyenge Angéla         | Projekt tag      | h158044@stud.u-szeged.hu |
+| Horváth Gergely Zsolt | Projekt tag      | h262095@stud.u-szeged.hu |
+| Pilter Zsófia         | Projekt tag      | h268457@stud.u-szeged.hu |
+| Vad Avar              | Projekt tag      | h270402@stud.u-szeged.hu |
+| Vass Kinga            | Projekt tag      | h270572@stud.u-szeged.hu |
 
 ## 5. A munka feltételei
 
@@ -144,15 +144,15 @@ A projekt a következő technológiákat/szoftvereket fogja használni a munka s
 
 ### 5.2. Rizikómenedzsment
 
-| Kockázat                                    | Leírás                                                                                                                                                                                     | Valószínűség | Hatás  |
-|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|--------|
-| Áramkimaradás csapattagnál                  | Súlyosságtól függően hátráltatja vagy bizonyos esetekben teljes mértékben korlátozza a munkavégzőt, így az egész projektre kihatással van. Megoldás: a feladatok átcsoportosítása          | kis          | erős   |
-| Áramütés éri egy csapattagot                      | Hosszútávú hatással lehet az adott csapattag munkavégzésére. Megoldás: biztonsági előírások betartása.     | kis         | nagy    |
-| Kommunikációs fennakadás a csapattagokkal   | A csapattagok között nem elégséges az információ áramlás, nem pontosan, esetleg késve vagy nem egyértelműen tájékoztatjuk egymást. Megoldás: még gyakoribb megbeszélések és ellenőrzések   | közepes      | erős   |
-| Sűrű szorgalmi időszak                      | Adott csapattag terhelése bizonyos időszakokban erősen növekedhet, ami kihatással lehet a munkavégzésre. Megoldás: gyakori egyeztetés és a feladatok szükség szerinti átcsoportosítása     | nagy         | kis    |
-| Meteor csapódik be Szegedbe                      | Katasztrofális hatása lenne az egész csapata mukavégzési képességeire és a morálra is.     | kis         | nagy    |
-| Elszabadulnak a dínók                      | A futás közben való programozás negatív hatással lehet a koncentrációra, így kihatással lehet a kód minőségére. Megoldás: hangsúly fektetése a tesztelésre.     | közepes         | közepes    |
-| Átállás online oktatásra                      | Az órák utáni személyes megbeszéléseket felborítaná. Megoldás: megbeszélések áthelyezése online térbe     | kis         | kis    |
+| Kockázat                                  | Leírás                                                                                                                                                                                   | Valószínűség | Hatás   |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------- |
+| Áramkimaradás csapattagnál                | Súlyosságtól függően hátráltatja vagy bizonyos esetekben teljes mértékben korlátozza a munkavégzőt, így az egész projektre kihatással van. Megoldás: a feladatok átcsoportosítása        | kis          | erős    |
+| Áramütés éri egy csapattagot              | Hosszútávú hatással lehet az adott csapattag munkavégzésére. Megoldás: biztonsági előírások betartása.                                                                                   | kis          | nagy    |
+| Kommunikációs fennakadás a csapattagokkal | A csapattagok között nem elégséges az információ áramlás, nem pontosan, esetleg késve vagy nem egyértelműen tájékoztatjuk egymást. Megoldás: még gyakoribb megbeszélések és ellenőrzések | közepes      | erős    |
+| Sűrű szorgalmi időszak                    | Adott csapattag terhelése bizonyos időszakokban erősen növekedhet, ami kihatással lehet a munkavégzésre. Megoldás: gyakori egyeztetés és a feladatok szükség szerinti átcsoportosítása   | nagy         | kis     |
+| Meteor csapódik be Szegedbe               | Katasztrofális hatása lenne az egész csapata mukavégzési képességeire és a morálra is.                                                                                                   | kis          | nagy    |
+| Elszabadulnak a dínók                     | A futás közben való programozás negatív hatással lehet a koncentrációra, így kihatással lehet a kód minőségére. Megoldás: hangsúly fektetése a tesztelésre.                              | közepes      | közepes |
+| Átállás online oktatásra                  | Az órák utáni személyes megbeszéléseket felborítaná. Megoldás: megbeszélések áthelyezése online térbe                                                                                    | kis          | kis     |
 
 ## 6. Jelentések
 
@@ -212,12 +212,12 @@ A rendszerünk egy több rétegű modern webalkalmazás mintájára készül. A 
 A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
 
-| Szállítandó |                 Neve                                                        |   Határideje  |
-|:-----------:|:---------------------------------------------------------------------------:|:-------------:|
-|      D1     |      Projektterv és Gantt chart, prezentáció, egyéni jelentés               | 2024-10-07  |
-|    P1+D2    |      UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés        | 2024-10-21  |
-|    P1+D3    |      Prototípus I. és tesztelési dokumentáció, egyéni jelentés              | 2024-11-11  |
-|    P2+D4    |      Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés  | 2024-12-02  |
+| Szállítandó |                                 Neve                                  | Határideje |
+| :---------: | :-------------------------------------------------------------------: | :--------: |
+|     D1      |       Projektterv és Gantt chart, prezentáció, egyéni jelentés        | 2024-10-07 |
+|    P1+D2    |    UML, adatbázis- és képernyőtervek, prezentáció, egyéni jelentés    | 2024-10-21 |
+|    P1+D3    |       Prototípus I. és tesztelési dokumentáció, egyéni jelentés       | 2024-11-11 |
+|    P2+D4    | Prototípus II. és frissített tesztelési dokumentáció, egyéni jelentés | 2024-12-02 |
 
 ## 8. Feladatlista
 
@@ -315,6 +315,8 @@ Tartam:  2 nap
 
 Erőforrásigény:  2 személynap
 
+<div  align="center"><img src="Administration/ClassDiagram.png" height="500"></div>
+
 #### 8.2.3. Sequence diagram
 
 Felelős: Vass Kinga
@@ -333,16 +335,26 @@ Tartam:  4 nap
 
 Erőforrásigény:  4 személynap
 
-![image](./Administration/EK_diagram.png)
+<table>
+  <tr>
+    <td>
+      <div  align="center"><img src="Administration/EK_diagram.png" height="500"></div>
+    </td>
+    <td>
+      <div  align="center"><img src="Administration/ERD.png" height="500"></div>    
+    </td>
+  </tr>
+</table>
 
 #### 8.2.5. Package diagram
-![alt text](Administration/package_diagram.png)
 
 Felelős: Gyenge Angéla
 
 Tartam:  4 nap
 
 Erőforrásigény:  4 személynap
+
+<div  align="center"><img src="Administration/package_diagram.png" height="500"></div>
 
 #### 8.2.6. Képernyőtervek
 
@@ -352,12 +364,34 @@ Tartam:  4 nap
 
 Erőforrásigény:  3 személynap
 
-![Belépés](./Administration/ui/Belépés.png)
-![Felhasználók kezelése](./Administration/ui/Felhasználók%20kezelése.png)
-![Alapanyagok kezelése](./Administration/ui/Alapanyagok%20kezelése.png)
-![Szakács felület](./Administration/ui/Szakács%20felület.png)
-![Webshop](./Administration/ui/Webshop%20-%20termékek.png)
-![Fizikai értékesítő felület](./Administration/ui/Webshop%20-%20fizikai%20értékesítő.png)
+
+<table>
+  <tr>
+    <td>
+      <div  align="center"><img src="Administration/ui/Belépés.png" border="1"></div>
+    </td>
+    <td>
+      <div  align="center"><img src="Administration/ui/Felhasználók%20kezelése.png" border="1"></div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div  align="center"><img src="Administration/ui/Alapanyagok%20kezelése.png" border="1"></div>
+    </td>
+    <td>
+      <div  align="center"><img src="Administration/ui/Szakács%20felület.png" border="1"></div>
+    </td>
+  </tr>
+    <tr>
+    <td>
+      <div  align="center"><img src="Administration/ui/Webshop%20-%20termékek.png" border="1"></div>
+    </td>
+    <td>
+      <div  align="center"><img src="Administration/ui/Webshop%20-%20fizikai%20értékesítő.png" border="1"></div>
+    </td>
+  </tr>
+</table>
+
 
 #### 8.2.7. Bemutató elkészítése
 
@@ -589,39 +623,39 @@ Erőforrásigény:  1 személynap
 ### 10.1. Részletes erőforrásigény (személynap)
 
 
-| Név          |   M1  |   M2  |   M3 |   M4  | Összesen |
-|--------------|-------|-------|------|-------|----------|
-| Stefán Kornél | 1 | 4 | 12 | 4   | 21    |
-| Farkas Dominika Eliza | 1   | 4   | 12 | 1   | 18     |
-| Gyenge Angéla   | 1   | 4 | 12 | 2 | 19     |
-| Horváth Gergely Zsolt   | 1   | 4 | 12 | 4 | 21     |
-| Pilter Zsófia   | 3   | 2 | 14 | 1 | 20     |
-| Vad Avar   | 3   | 2 | 14 | 3 | 22     |
-| Vass Kinga   | 1   | 4 | 12 | 1 | 18     |
+| Név                   | M1  | M2  | M3  | M4  | Összesen |
+| --------------------- | --- | --- | --- | --- | -------- |
+| Stefán Kornél         | 1   | 4   | 12  | 4   | 21       |
+| Farkas Dominika Eliza | 1   | 4   | 12  | 1   | 18       |
+| Gyenge Angéla         | 1   | 4   | 12  | 2   | 19       |
+| Horváth Gergely Zsolt | 1   | 4   | 12  | 4   | 21       |
+| Pilter Zsófia         | 3   | 2   | 14  | 1   | 20       |
+| Vad Avar              | 3   | 2   | 14  | 3   | 22       |
+| Vass Kinga            | 1   | 4   | 12  | 1   | 18       |
 
 ### 10.2. Részletes feladatszámok
 
-| Név          |   M1  |   M2  |   M3 |   M4 | Összesen |
-|--------------|-------|-------|------|------|----------|
-| Stefán Kornél | 1 | 1 | 2 | 1   | 5     |
-| Farkas Dominika Eliza | 1   | 1   | 3 | 1   | 6     |
-| Gyenge Angéla   | 1   | 1 | 3 | 2 | 7     |
-| Horváth Gergely Zsolt   | 1   | 1 | 2 | 1 | 5     |
-| Pilter Zsófia   | 2   | 1 | 2 | 2 | 7     |
-| Vad Avar   | 1   | 1 | 1 | 1 | 4     |
-| Vass Kinga   | 2   | 1 | 4 | 1 | 8     |
+| Név                   | M1  | M2  | M3  | M4  | Összesen |
+| --------------------- | --- | --- | --- | --- | -------- |
+| Stefán Kornél         | 1   | 1   | 2   | 1   | 5        |
+| Farkas Dominika Eliza | 1   | 1   | 3   | 1   | 6        |
+| Gyenge Angéla         | 1   | 1   | 3   | 2   | 7        |
+| Horváth Gergely Zsolt | 1   | 1   | 2   | 1   | 5        |
+| Pilter Zsófia         | 2   | 1   | 2   | 2   | 7        |
+| Vad Avar              | 1   | 1   | 1   | 1   | 4        |
+| Vass Kinga            | 2   | 1   | 4   | 1   | 8        |
 
 ### 10.3. Részletes költségvetés
 
-| Név                                 | M1      | M2       | M3       | M4       | Összesen  |
-|-------------------------------------|---------|----------|----------|----------|-----------|
-| Maximálisan megszerezhető pontszám  |  (7)    | (20)     | (35)     |  (28)    | 100% (70) |
-| Stefán Kornél | 7 | 20 | 23 | 20   | 70    |
-| Farkas Dominika Eliza | 7   | 13   | 30 | 20   | 70     |
-| Gyenge Angéla   | 7   | 20 | 30 | 13 | 70    |
-| Horváth Gergely Zsolt   | 7   | 15 | 28 | 20 | 70     |
-| Pilter Zsófia   | 7   | 16 | 25 | 22 | 70    |
-| Vad Avar   | 7   | 13 | 22 | 28 | 70     |
-| Vass Kinga   | 7   | 20 | 28 | 15 | 70     |
+| Név                                | M1  | M2   | M3   | M4   | Összesen  |
+| ---------------------------------- | --- | ---- | ---- | ---- | --------- |
+| Maximálisan megszerezhető pontszám | (7) | (20) | (35) | (28) | 100% (70) |
+| Stefán Kornél                      | 7   | 20   | 23   | 20   | 70        |
+| Farkas Dominika Eliza              | 7   | 13   | 30   | 20   | 70        |
+| Gyenge Angéla                      | 7   | 20   | 30   | 13   | 70        |
+| Horváth Gergely Zsolt              | 7   | 15   | 28   | 20   | 70        |
+| Pilter Zsófia                      | 7   | 16   | 25   | 22   | 70        |
+| Vad Avar                           | 7   | 13   | 22   | 28   | 70        |
+| Vass Kinga                         | 7   | 20   | 28   | 15   | 70        |
 
 Szeged, 2024-10-06.
