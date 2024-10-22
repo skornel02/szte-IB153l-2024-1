@@ -338,10 +338,10 @@ Erőforrásigény:  4 személynap
 <table>
   <tr>
     <td>
-      <div  align="center"><img src="Administration/EK_diagram.png" height="500"></div>
+      <div  align="center"><img src="Administration/EK_diagram.png"></div>
     </td>
     <td>
-      <div  align="center"><img src="Administration/ERD.png" height="500"></div>    
+      <div  align="center"><img src="Administration/ERD.png"></div>    
     </td>
   </tr>
 </table>
