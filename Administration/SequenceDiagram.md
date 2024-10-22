@@ -6,16 +6,30 @@
 
 ```mermaid
 sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail...
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
-```
+    autonumber
 
-```mermaid
+    participant Payment provider
+    actor Customer
+    participant Webshop
+    participant Order Management System
+
+    Customer->>+Webshop: Place order
+
+    Webshop->>+Payment provider: Create payment request
+    Payment provider-->>Webshop: Payment url
+
+    Webshop-->>Customer: Payment url
+
+    Customer->>Payment provider: Pays
+    Payment provider-->>Customer: Redirects to order stats
+    
+    Payment provider->>-Webshop: Payment confirmation
+
+    Webshop->>-Order Management System: Reserve order items
+
+
+    loop Check order status
+        Customer->>+Webshop: Request order status
+        Webshop-->>-Customer: Order status
+    end
+```
