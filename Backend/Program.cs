@@ -1,4 +1,4 @@
-using Backend;
+using Backend.Persistence;
 using HealthChecks.UI.Client;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +6,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddAuthentication()
+    .AddCookie(_ =>
+    {
+        _.LoginPath = "/Login";
+        _.LogoutPath = "/Logout";
+        _.AccessDeniedPath = "/AccessDenied";
+        _.ReturnUrlParameter = "RedirectTo";
+    });
+
+builder.Services.AddAuthorization();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -48,7 +59,8 @@ app.MapHealthChecks("/health", new()
     Predicate = _ => true,
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 })
-    .WithOpenApi();
+    .WithOpenApi()
+    .AllowAnonymous();
 
 app.UseStaticFiles();
 
@@ -56,6 +68,7 @@ app.UseRouting();
 // maybe we don't need this, but it is cool!.
 //  .UseEndpoints(config => config.MapHealthChecksUI());
 
+app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapRazorPages();

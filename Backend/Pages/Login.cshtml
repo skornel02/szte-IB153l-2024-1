@@ -1,0 +1,37 @@
+﻿@page
+@model Backend.Pages.LoginModel
+@{
+}
+
+<div class="row mt-4">
+    <div class="col-md-6 d-none d-md-flex align-content-center justify-content-center">
+        <img src="~/images/bread-normal.png" class="login-image img-fluid" />
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+        <div class="card">
+            <h5 class="card-header">
+                Login
+            </h5>
+            <div class="card-body">
+                <form method="post">
+                    <input asp-for="RedirectTo" value="@Model.RedirectTo" type="hidden"/>
+                    <div class="form-floating my-2">
+                        <input asp-for="EmailAddress" class="form-control" placeholder="address@example.com" />
+                        <label asp-for="EmailAddress" class="form-label">E-mail</label>
+                        <span class="form-text text-danger" asp-validation-for="EmailAddress">
+
+                        </span>
+                    </div>
+                    <div class="form-floating my-2">
+                        <input asp-for="Password" class="form-control" placeholder="*******"/>
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <span class="form-text text-danger" asp-validation-for="Password">
+
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

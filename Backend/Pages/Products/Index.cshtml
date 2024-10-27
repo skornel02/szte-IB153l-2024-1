@@ -1,0 +1,66 @@
+﻿@page
+@model Backend.Pages.Products.IndexModel
+@{
+}
+
+<h1>Products</h1>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Description
+                    </td>
+                    <td>
+                        Price
+                    </td>
+                    <td>
+                        Image
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.ImageUrl
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-12">
+        <form method="post">
+            <div class="form-floating">
+                <input asp-for="Name" class="form-control" placeholder="name"/>
+                <label asp-for="Name" class="form-label"></label>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Description" class="form-control" placeholder="name"/>
+                <label asp-for="Description" class="form-label"></label>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Price" class="form-control" placeholder="name" />
+                <label asp-for="Price" class="form-label"></label>
+            </div>
+
+            <input type="submit" value="Create" class="btn btn-primary"/>
+        </form>
+    </div>
+</div>
