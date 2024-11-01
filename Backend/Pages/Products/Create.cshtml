@@ -1,0 +1,51 @@
+@page
+@using Backend.Enums
+@using Backend.Helpers
+@model CreateModel
+
+@{
+    ViewData["Title"] = "Create product";
+}
+
+<h1>Create product</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ProductEntity.Name" class="control-label"></label>
+                        <input asp-for="ProductEntity.Name" class="form-control" />
+                        <span asp-validation-for="ProductEntity.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input type="number" min="0" asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductEntity.ImageUrl" class="control-label"></label>
+                        @Html.DropDownListFor(_ => _.ProductEntity.ImageUrl, ImageHelper.ImagesDropdown, null, new
+                            {
+                                @class = "form-control"
+                            })
+                        <span asp-validation-for="ProductEntity.ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex justify-content-between my-4">
+                        <a asp-page="Index" class="btn btn-warning">Back to List</a>
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
