@@ -1,0 +1,37 @@
+﻿@page
+@model Backend.Pages.BakerPage.IndexModel
+@{
+    ViewData["Title"] = "BakerPage";
+}
+
+<h1>Baker Page</h1>
+
+<div class="row gap-4">
+    @foreach (var item in Model.Products)
+    {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
+            <div class="card ">
+                <img src="@item.ImageUrl" class="card-img-top" alt="@item.Description">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    @foreach (var ingredient in item.Ingredients)
+                    {
+                        <p class="card-text">@ingredient</p>
+                    }
+                    <div class="form-group col-12 col-md-3">
+                    </div>
+                    <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
+                        <a href="#" class="btn btn-warning">Make product</a>
+                        <div class="form-group col-12 col-md-4 ">
+                            <input asp-for="NumberToMake" type="number" class="form-control" min="1" step="1" />
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
