@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Webshop";
+}
+
+<h1 class="mb-4">Webshop</h1>
+
+<div class="row gap-4">
+    @foreach (var product in Model.Products)
+    {
+        <div class="card p-0 col-12 col-md-4 col-lg-3">
+            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Description">
+            <div class="card-body">
+                <h5 class="card-title">@product.Name</h5>
+                <p class="card-text">@product.Description</p>
+                <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
+                    <a href="#" class="btn btn-warning">Buy</a>
+                    <div class="form-group col-12 col-md-3">
+                        <input asp-for="NumberToBuy" class="form-control" />
+                        <span asp-validation-for="NumberToBuy" class="text-danger"></span>
+                    </div>
+                    <p class="m-0 fw-bold">@product.Price Ft</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
