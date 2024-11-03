@@ -11,23 +11,36 @@
     {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
 
-            <div class="card ">
+            <div class="card">
                 <img src="@item.ImageUrl" class="card-img-top" alt="@item.Description">
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
-                    @foreach (var ingredient in item.Ingredients)
-                    {
-                        <p class="card-text">@ingredient</p>
-                    }
-                    <div class="form-group col-12 col-md-3">
+                    <div class="form-group col-12 mb-2">
+                        <p class="card-text">In stock: @item.Stock</p>
                     </div>
-                    <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
+                    <div class="form-group">
+                        <p class="card-text">Ingerdients: </p>
+
+                    </div>
+                    <ul class="list-group list-group-flush mb-3">
+                        @foreach (var ingredient in item.Ingredients)
+                        {
+                            <li class="list-group-item">@ingredient</li>
+                        }
+                    </ul>
+                    
+                    <div class="d-flex flex-column flex-md-row align-items-md-center gap-3">
                         <form method="post">
-                            <div class="input-group col-12 col-md-4">
-                                <input type="submit" class="btn btn-warning" value="Make product">
-                                <input asp-for="NumberToMake" type="number" class="form-control" min="1" step="1" />
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="numberToMake">Number of products</span>
+                                <input asp-for="NumberToMake" type="number" class="form-control" min="1" step="1" aria-describedby="numberToMake" />
                                 <span asp-validation-for="NumberToMake" class="text-danger"></span>
-                                <input type="hidden" name="id" value="@item.Id"/>
+                            </div>
+                            <div class="input-group ">
+                                <input type="submit" class="btn btn-warning" value="Make product(s)">
+                            </div>
+                            <div class="input-group ">
+                                <input type="hidden" name="id" value="@item.Id" />
                             </div>
                         </form>
 
