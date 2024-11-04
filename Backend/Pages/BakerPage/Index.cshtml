@@ -22,10 +22,14 @@
                         <p class="card-text">Ingredients: </p>
                     </div>
                     <ul class="list-group list-group-flush mb-3">
+
                         @if (item.Ingredients.Count == 0)
                         {
-                            <p>There is no ingredients for this product!</p>
+                            <li class="list-group-item">
+                                This product has no ingredients!
+                            </li>
                         }
+
                         @foreach (var ingredient in item.Ingredients)
                         {
                             <li class="list-group-item">@ingredient.Ingredient.Name</li>
