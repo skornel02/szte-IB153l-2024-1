@@ -30,7 +30,8 @@ public class BellaDbContext : DbContext
 
         modelBuilder.Entity<UserEntity>()
             .HasData([
-                new UserEntity() {
+                new UserEntity()
+                {
                     Id = Guid.Parse("4ab7c985-1a55-4866-90b3-fd9678d32203"),
                     EmailAddress = "admin@bellacroissant.fr",
                     PasswordHash = hasher.HashPassword(null!, "admin"),

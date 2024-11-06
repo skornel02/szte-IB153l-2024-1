@@ -7,7 +7,7 @@ public class UserEntity
     public Guid Id { get; set; }
 
     public string EmailAddress { get; set; } = null!;
-    
+
     public string PasswordHash { get; set; } = null!;
 
     public DateTime LastSeen { get; set; } = DateTime.MinValue;
