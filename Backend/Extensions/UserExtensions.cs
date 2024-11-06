@@ -14,4 +14,9 @@ public static class UserExtensions
     {
         return user.Identity?.IsAuthenticated ?? false;
     }
+
+    public static string? GetEmail(this ClaimsPrincipal? user)
+    {
+        return user?.FindFirst(ClaimTypes.Email)?.Value;
+    }
 }
