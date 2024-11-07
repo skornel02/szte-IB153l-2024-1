@@ -15,7 +15,6 @@ public class IndexModel : BasePageModel
     public List<ProductEntity> Products { get; set; } = null!;
 
     [BindProperty]
-    [Range(1, int.MaxValue, ErrorMessage = "The number of products must be between {1} and {2}.")]
     public int NumberToMake { get; set; }
 
     public IndexModel(BellaDbContext context)
