@@ -1,4 +1,4 @@
-﻿@using Backend.Extensions
+@using Backend.Extensions
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +47,12 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Orders/Pending/Index">Pending Orders</a>
+                            </li>
+                        }
+                        @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.Baker))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/BakerPage/Index">Baker Page</a>
                             </li>
                         }
                         <li class="nav-item">

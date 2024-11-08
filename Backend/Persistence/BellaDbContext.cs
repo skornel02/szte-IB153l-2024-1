@@ -22,13 +22,20 @@ public class BellaDbContext : DbContext
     {
         var hasher = new PasswordHasher<UserEntity>();
 
+        var adminCreation = new DateTime(2024, 10, 13, 15, 10, 57, 968, DateTimeKind.Utc).AddTicks(9422);
+
+        modelBuilder.Entity<UserEntity>()
+            .HasIndex(_ => _.EmailAddress)
+            .IsUnique();
+
         modelBuilder.Entity<UserEntity>()
             .HasData([
-                new UserEntity() {
+                new UserEntity()
+                {
                     Id = Guid.Parse("4ab7c985-1a55-4866-90b3-fd9678d32203"),
                     EmailAddress = "admin@bellacroissant.fr",
                     PasswordHash = hasher.HashPassword(null!, "admin"),
-                    Registered = DateTime.UtcNow,
+                    Registered = adminCreation,
                     Role = Enums.UserRole.Admin,
                 }
                 ]);
