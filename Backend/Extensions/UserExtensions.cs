@@ -19,4 +19,9 @@ public static class UserExtensions
     {
         return user?.FindFirst(ClaimTypes.Email)?.Value;
     }
+
+    public static string GetEmailOrVisitor(this ClaimsPrincipal? user)
+    {
+        return GetEmail(user) ?? "visitor";
+    }
 }
