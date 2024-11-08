@@ -1,5 +1,5 @@
 ﻿@page
-@model Backend.Pages.LoginModel
+@model Backend.Pages.RegisterModel
 @{
 }
 
@@ -10,11 +10,11 @@
     <div class="col-md-6 d-flex flex-column justify-content-center">
         <div class="card">
             <h5 class="card-header">
-                Login
+                Register
             </h5>
             <div class="card-body">
                 <form method="post">
-                    <input asp-for="RedirectTo" value="@Model.RedirectTo" type="hidden"/>
+                    <input asp-for="RedirectTo" value="@Model.RedirectTo" type="hidden" />
                     <div class="form-floating my-2">
                         <input asp-for="EmailAddress" class="form-control" placeholder="address@example.com" />
                         <label asp-for="EmailAddress" class="form-label">E-mail</label>
@@ -23,19 +23,26 @@
                         </span>
                     </div>
                     <div class="form-floating my-2">
-                        <input asp-for="Password" class="form-control" placeholder="*******"/>
+                        <input asp-for="Password" class="form-control" placeholder="*******" />
                         <label asp-for="Password" class="form-label">Password</label>
                         <span class="form-text text-danger" asp-validation-for="Password">
 
                         </span>
                     </div>
+                    <div class="form-floating my-2">
+                        <input asp-for="PasswordAgain" class="form-control" placeholder="*******" />
+                        <label asp-for="PasswordAgain" class="form-label>">Password Again</label>
+                        <span class="form-text text-danger" asp-validation-for="PasswordAgain">
+
+                        </span>
+                    </div>
                     <div class="my-2 d-flex justify-content-between">
-                        <a asp-page="/Register"
+                        <a asp-page="/Login"
                            asp-route-redirect-to="@Model.RedirectTo"
                            class="btn btn-secondary">
-                            Create new account
+                            Login instead
                         </a>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                 </form>
             </div>
