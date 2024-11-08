@@ -1,0 +1,49 @@
+﻿@page
+@model Backend.Pages.Ingredients.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>IngredientEntity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IngredientEntity.Name" class="control-label"></label>
+                <input asp-for="IngredientEntity.Name" class="form-control" />
+                <span asp-validation-for="IngredientEntity.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IngredientEntity.ImageUrl" class="control-label"></label>
+                <input asp-for="IngredientEntity.ImageUrl" class="form-control" />
+                <span asp-validation-for="IngredientEntity.ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IngredientEntity.Stock" class="control-label"></label>
+                <input asp-for="IngredientEntity.Stock" class="form-control" />
+                <span asp-validation-for="IngredientEntity.Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IngredientEntity.MaxStock" class="control-label"></label>
+                <input asp-for="IngredientEntity.MaxStock" class="form-control" />
+                <span asp-validation-for="IngredientEntity.MaxStock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
