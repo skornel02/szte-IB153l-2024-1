@@ -1,10 +1,11 @@
 ﻿@page
+@using System.Globalization
 @model Backend.Pages.DigitalSalesPage.IndexModel
 @{
-    ViewData["Title"] = "Digital Sales Page";
+    ViewData["Title"] = "Placed Orders";
 }
 
-<h1>Digital Sales Page</h1>
+<h1>Placed Orders</h1>
 
 @if (Model.Orders.Count == 0)
 {
@@ -43,7 +44,7 @@ else
                 <tr>
                     <td>@order.Id </td>
                     <td>@order.Status </td>
-                    <td>@order.TotalPrice €</td>
+                    <td>@String.Format(new CultureInfo("fr-FR"), "{0:C}", order.TotalPrice)</td>
                     <td>
                         <ul style="list-style-type: none; padding: 0;">
 
