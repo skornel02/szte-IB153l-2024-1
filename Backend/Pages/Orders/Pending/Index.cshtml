@@ -1,0 +1,87 @@
+﻿@page
+@using System.Globalization
+@model Backend.Pages.DigitalSalesPage.IndexModel
+@{
+    ViewData["Title"] = "Pending Orders";
+}
+
+<h1>Pending Orders</h1>
+
+@if (Model.Orders.Count == 0)
+{
+    <span class="text-danger">There is no order right now that waiting for acceptance!</span>
+}
+else
+{
+    <table class="table col-12 col-sm-6 col-md-4 col-lg-3">
+        <thead>
+            <tr>
+                <th>Order Id</th>
+                <th>Order Status</th>
+                <th>Order Total Price</th>
+                <th>Ordered Products</th>
+                <th>Accept/Reject</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                var buttonDisabled = false;
+                void OrderCanBeAccepted()
+                {
+                    foreach (var item in order.OrderItems)
+                    {
+                        if (item.Quantity > item.Product.Stock)
+                        {
+                            buttonDisabled = true;
+                            break;
+                        }
+                    }
+                }
+
+                OrderCanBeAccepted();
+
+                <tr>
+                    <td>@order.Id </td>
+                    <td>@order.Status </td>
+                    <td>@String.Format(new CultureInfo("fr-FR"), "{0:C}", order.TotalPrice)</td>
+                    <td>
+                        <ul style="list-style-type: none; padding: 0;">
+
+                            @foreach (var item in order.OrderItems)
+                            {
+                                var inStock = item.Product.Stock - item.Product.Reserved;
+                                <li>@item.Product.Name: @item.Quantity  |  in stock: @inStock |</li>
+                            }
+
+                        </ul>
+                    </td>
+                    <td>
+                        <div class="d-flex flex-column flex-md-row align-items-md-center">
+                            <form method="post">
+                                <div class="input-group mb-2">
+                                    <input type="submit" class="btn btn-sm btn-success" asp-page-handler="Accept" value="Accept" disabled="@buttonDisabled" />
+
+                                    @if (buttonDisabled)
+                                    {
+                                        <span class="text-danger">There is not enough products in the stock!</span>
+                                    }
+                                </div>
+                                <div class="input-group">
+                                    <input type="submit" class="btn btn-sm btn-danger" asp-page-handler="Reject" value="Reject" />
+                                </div>
+                                <div class="input-group ">
+                                    <input type="hidden" name="id" value="@order.Id" />
+                                </div>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+}
+
+
+
