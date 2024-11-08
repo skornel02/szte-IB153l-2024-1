@@ -1,4 +1,3 @@
-using Backend.Attributes;
 using Backend.Entities;
 using Backend.Extensions;
 using Backend.Models;
@@ -7,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Linq;
 
 namespace Backend.Pages.Cart;
 
@@ -47,7 +45,6 @@ public class IndexModel : PageModel
                 Products.Add(product);
                 TotalPrice += item.Quantity * product.Price;
             }
-
         }
     }
 }
