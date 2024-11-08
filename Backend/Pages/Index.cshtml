@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Globalization
 @model IndexModel
 @{
     ViewData["Title"] = "Webshop";
@@ -29,7 +30,7 @@
                                    value="@(shoppingCart?.Quantity ?? 0)"
                                    class="form-control" />
                         </div>
-                        <p class="m-0 fw-bold">@product.Price Ft</p>
+                        <p class="m-0 fw-bold">@product.Price.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</p>
                     </div>
                 </div>
             </div>
