@@ -76,12 +76,12 @@ public class LoginModel : BasePageModel
 
         var homePage = user.Role switch
         {
-            Enums.UserRole.Admin => "/Users",
+            Enums.UserRole.Admin => "/Users/Index",
             //Enums.UserRole.DigitalSales => "/Orders",
             //Enums.UserRole.PhysicalSales => "/PhyiscalSales",
             //Enums.UserRole.Inventory => "/Ingreients",
-            Enums.UserRole.Baker => "/BakerPage",
-            Enums.UserRole.Chef => "/Products",
+            Enums.UserRole.Baker => "/BakerPage/Index",
+            Enums.UserRole.Chef => "/Products/Index",
             _ => "/Index",
         };
 
