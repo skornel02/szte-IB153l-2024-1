@@ -53,7 +53,7 @@
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.Chef))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Products">Baker Page</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Products">Chef Page</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.Baker))
@@ -65,7 +65,7 @@
                         @if (User.HasRole(Enums.UserRole.WebshopUser))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Products">Baker Page</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Orders/MyOrders/Index">MyOrders</a>
                             </li>
                         }
                         <li class="nav-item">

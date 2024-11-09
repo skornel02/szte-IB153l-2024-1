@@ -32,6 +32,7 @@ else
                         <td>@item.Product.Name</td>
                         <td>@item.Quantity</td>
                     }
+                    <td>@order.TotalPrice.ToString("C", new System.Globalization.CultureInfo("fr-FR"))</td>
                     <td>@order.OrderPlaced.ToString("yyyy-MM-dd HH:mm:ss")</td>
                     <td>@order.Status.ToString()</td>
                 </tr>

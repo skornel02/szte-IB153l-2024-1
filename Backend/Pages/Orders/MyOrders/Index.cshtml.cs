@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Backend.Entities;
 using Backend.Extensions;
 using Backend.Persistence;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Pages.Orders.MyOrders
 {
@@ -20,6 +19,7 @@ namespace Backend.Pages.Orders.MyOrders
 
         public async Task OnGetAsync()
         {
+            var userEmail = User.GetEmail();
 
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.EmailAddress == userEmail);
@@ -32,18 +32,6 @@ namespace Backend.Pages.Orders.MyOrders
                     .ThenInclude(item => item.Product)
                     .ToListAsync();
             }
-
-                if (Orders.Count == 0)
-                {
-                    Console.WriteLine("No orders found for this user.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("User not found.");
-            }
         }
-
-
     }
 }
