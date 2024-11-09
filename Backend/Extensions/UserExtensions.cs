@@ -20,8 +20,16 @@ public static class UserExtensions
         return user?.FindFirst(ClaimTypes.Email)?.Value;
     }
 
-    public static string GetEmailOrVisitor(this ClaimsPrincipal? user)
+    public static string GetEmailOrSessionId(this ClaimsPrincipal? user, HttpContext context)
     {
-        return GetEmail(user) ?? "visitor";
+        var email = GetEmail(user);
+        if (email is null)
+        {
+            // Save something in the session so id does not change every request.
+            context.Session.SetString("id", context.Session.Id);
+            return context.Session.Id;
+        }
+
+        return email;
     }
 }

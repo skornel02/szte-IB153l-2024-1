@@ -28,7 +28,7 @@ public class IndexModel : PageModel
     public async Task OnGetAsync()
     {
         ShoppingCartItems = ShoppingCartContext
-                            .GetShoppingCart(HttpContext.User.GetEmailOrVisitor())
+                            .GetShoppingCart(HttpContext.User.GetEmailOrSessionId(HttpContext))
                             .Where(item => item.Quantity != 0)
                             .ToList();
 

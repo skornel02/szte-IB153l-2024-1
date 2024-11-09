@@ -28,12 +28,12 @@ public class IndexModel : PageModel
     public async Task OnGetAsync()
     {
         Products = await _context.Products.ToListAsync();
-        ShoppingCartItems = ShoppingCartContext.GetShoppingCart(HttpContext.User.GetEmailOrVisitor());
+        ShoppingCartItems = ShoppingCartContext.GetShoppingCart(HttpContext.User.GetEmailOrSessionId(HttpContext));
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        ShoppingCartContext.SaveShoppingCart(HttpContext.User.GetEmailOrVisitor(), ShoppingCartItems);
+        ShoppingCartContext.SaveShoppingCart(HttpContext.User.GetEmailOrSessionId(HttpContext), ShoppingCartItems);
 
         return RedirectToPage("./Index");
     }
