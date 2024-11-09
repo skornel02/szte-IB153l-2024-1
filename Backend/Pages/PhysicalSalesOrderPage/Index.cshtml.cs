@@ -33,5 +33,30 @@ public class IndexModel : PageModel
         ShoppingCartItems = ShoppingCartContext.GetShoppingCart(HttpContext.User.GetEmailOrSessionId(HttpContext));
     }
 
+    public async Task<IActionResult> OnPostAsync()
+    {
+        Products = await _context.Products.ToListAsync();
 
+        foreach (var item in ShoppingCartItems)
+        {
+            var product = Products.FirstOrDefault(p => p.Id == item.ProductId);
+
+            if (product == null || item.Quantity < 0)
+            {
+                ModelState.AddModelError("", "Hibás mennyiség.");
+                return Page();
+            }
+
+            if (product.Stock < item.Quantity)
+            {
+                ModelState.AddModelError("", $"Nincs elegendõ készlet a(z) {product?.Name ?? "termékhez"}.");
+                return Page();
+            }
+
+            product.Stock -= item.Quantity;
+        }
+
+        await _context.SaveChangesAsync();
+        return RedirectToPage("./Index");
+    }
 }
