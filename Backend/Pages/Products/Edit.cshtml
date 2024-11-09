@@ -1,0 +1,96 @@
+@page
+@using Backend.Enums
+@using Backend.Helpers
+@model EditModel
+
+@{
+    ViewData["Title"] = "Edit product";
+}
+
+<h1>Edit</h1>
+
+<h4>UserEntity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <h5 class="card-header">Edit details</h5>
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="ProductEntity.Id" />
+                    <div class="form-group">
+                        <label asp-for="ProductEntity.Name" class="control-label"></label>
+                        <input asp-for="ProductEntity.Name" class="form-control" />
+                        <span asp-validation-for="ProductEntity.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input type="number" min="0" asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductEntity.ImageUrl" class="control-label"></label>
+                        @Html.DropDownListFor(_ => _.ProductEntity.ImageUrl, ImageHelper.ImagesDropdown, null, new
+                            {
+                                @class = "form-control"
+                            })
+                        <span asp-validation-for="ProductEntity.ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <h5 class="card-header">Ingrediens</h5>
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach (var ingredient in Model.ProductEntity.Ingredients)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-content-center">
+                                <span>@ingredient.Ingredient.Name</span>
+                                <span>@ingredient.Quantity</span>
+                            <a asp-page="./Edit"
+                               asp-page-handler="RemoveIngredient"
+                               asp-route-productId="@Model.ProductEntity.Id"
+                               asp-route-ingredientId="@ingredient.IngredientId" class="btn btn-danger">Remove</a>
+
+                        </li>
+                    }
+                    <li class="list-group-item">
+                        <form method="post" asp-page="./Edit" asp-page-handler="AddIngredient">
+                            <input type="hidden" asp-for="ProductEntity.Id" />
+                            <div class="form-group">
+                                <label class="control-label">Ingredient</label>
+                                <select name="ingredientId" class="form-control">
+                                    @foreach (var ingredient in Model.Ingredients)
+                                    {
+                                        <option value="@ingredient.Id">@ingredient.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Quantity</label>
+                                <input type="number" min="0" name="quantity" class="form-control" />
+                            </div>
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 d-flex justify-content-center my-4">
+        <a asp-page="./Index" class="btn btn-warning">Back to List</a>
+    </div>
+</div>
+
