@@ -1,0 +1,39 @@
+﻿@page
+@using System.Globalization
+@model IndexModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1 class="mb-4">Cart</h1>
+
+@if (!Model.Products.Any())
+{
+    <h2 class="text-center">Your cart is empty!</h2>
+}
+else
+{
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-4">
+    @for (var i = 0; i < Model.Products.Count; i++)
+    {
+        var product = Model.Products[i];
+        var shoppingCart = Model.ShoppingCartItems.FirstOrDefault(_ => _.ProductId == product.Id);
+
+        <div class="card p-0 col-12 col-md-4 col-lg-3">
+            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Description">
+            <div class="card-body">
+                <h5 class="card-title">@product.Name</h5>
+                <p class="card-text">@product.Description</p>
+                <div class="d-flex flex-column flex-md-row justify-content-md-between gap-4">
+                    <p class="m-0">Qty: @shoppingCart.Quantity</p>
+                        <p class="m-0 fw-bold">@((shoppingCart.Quantity * product.Price).ToString("C", CultureInfo.GetCultureInfo("fr-FR")))</p>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+    <h3 class="text-end mt-3">
+        Total: @Model.TotalPrice.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))
+    </h3>
+}
+

@@ -1,12 +1,39 @@
 ﻿@page
+@using System.Globalization
 @model IndexModel
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Webshop";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bella Croissant</h1>
-    <p>
-        This is a webshop. This is a solution.
-    </p>
-</div>
+<h1 class="mb-4">Webshop</h1>
+
+<form method="post">
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-4">
+        @for (var i = 0; i < Model.Products.Count; i++)
+        {
+            var product = Model.Products[i];
+            var shoppingCart = Model.ShoppingCartItems.FirstOrDefault(_ => _.ProductId == product.Id);
+
+            <div class="card p-0 col-12 col-md-4 col-lg-3">
+                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Description">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <div method="post" class="d-flex flex-column flex-md-row align-items-md-center gap-4">
+                        <input type="submit" class="btn btn-warning" value="Add">
+                        <input type="hidden" name="ShoppingCartItems[@i].ProductId" value="@product.Id" />
+                        <div class="form-group col-12 col-md-3">
+                            <input min="0"
+                                   max="@(product.Stock - product.Reserved)"
+                                   name="ShoppingCartItems[@i].Quantity"
+                                   type="number"
+                                   value="@(shoppingCart?.Quantity ?? 0)"
+                                   class="form-control" />
+                        </div>
+                        <p class="m-0 fw-bold">@product.Price.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</form>
