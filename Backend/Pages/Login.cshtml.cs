@@ -74,6 +74,17 @@ public class LoginModel : BasePageModel
             return Redirect(RedirectTo);
         }
 
-        return RedirectToPage("/Index", new { SuccessMessage = "You logged in successfully!" });
+        var homePage = user.Role switch
+        {
+            Enums.UserRole.Admin => "/Users/Index",
+            Enums.UserRole.DigitalSales => "/Orders/Pending/Index",
+            //Enums.UserRole.PhysicalSales => "/PhyiscalSales",
+            Enums.UserRole.Inventory => "/Ingreients/Index",
+            Enums.UserRole.Baker => "/BakerPage/Index",
+            Enums.UserRole.Chef => "/Products/Index",
+            _ => "/Index",
+        };
+
+        return RedirectToPage(homePage, new { SuccessMessage = "You logged in successfully!" });
     }
 }
