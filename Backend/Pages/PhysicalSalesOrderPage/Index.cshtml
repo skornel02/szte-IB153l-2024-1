@@ -50,3 +50,35 @@
     </div>
 </form>
 
+<script>
+    function updateOrderSummary() {
+        let totalQuantity = 0;
+        let totalCost = 0;
+        let orderSummary = "";
+
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            let quantity = parseInt(input.value) || 0;
+
+            if (quantity < 0) {
+                quantity = 0;
+                input.value = quantity;
+            }
+
+            const price = parseFloat(input.getAttribute('data-price'));
+            const productName = input.closest('.card').querySelector('.card-title').innerText;
+
+            if (quantity > 0) {
+                totalQuantity += quantity;
+                totalCost += quantity * price;
+                orderSummary += `<p>${productName}: ${quantity} db, Egységár: €${price.toFixed(2)}</p>`;
+            }
+        });
+
+        document.getElementById('totalQuantity').innerText = totalQuantity;
+        document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+        document.getElementById('orderSummary').innerHTML = orderSummary;
+    }
+
+    updateOrderSummary();
+</script>
+
