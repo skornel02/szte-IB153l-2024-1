@@ -1,3 +1,4 @@
+using Backend.Endpoints;
 using Backend.Persistence;
 using HealthChecks.UI.Client;
 using Microsoft.EntityFrameworkCore;
@@ -74,11 +75,15 @@ app.UseRouting();
 //  .UseEndpoints(config => config.MapHealthChecksUI());
 
 app.UseAuthorization();
-app.UseAuthorization();
 
 app.UseSession();
 
 app.MapRazorPages();
+
+var api = app.MapGroup("/api")
+    .WithOpenApi()
+    .RequireAuthorization();
+api.MapIngredientsEndpoints();
 
 await using (var scope = app.Services.CreateAsyncScope())
 {

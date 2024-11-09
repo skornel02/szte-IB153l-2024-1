@@ -1,0 +1,119 @@
+﻿@page
+@model Backend.Pages.Ingredients.IndexModel
+
+@{
+    ViewData["Title"] = "Ingredients";
+
+    var ingredientsSorted = Model.IngredientEntities.OrderBy(i => i.Name);
+}
+
+<div class="row align-items-center">
+    <div class="col-12 col-md-3">
+        <h1>Ingredients</h1>
+    </div>
+    <div class="col-12 col-md">
+        <a class="btn btn-warning" role="button" asp-page="Create">Create ingredient</a>
+    </div>
+</div>
+
+<div class="table-responsive-md mt-4">
+    <table class="table" style="min-width: 512px">
+        <thead>
+            <tr>
+                <th scope="col">
+                    #
+                </th>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Maximum stock
+                </th>
+                <th scope="col">
+                    Stock
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ingredientsSorted.Count() != 0)
+            {
+                @for (int i = 0; i < ingredientsSorted.Count(); i++)
+                {
+                    <tr class="align-middle">
+                        <th scope="row">
+                            @(i+1)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => ingredientsSorted.ElementAt(i).Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => ingredientsSorted.ElementAt(i).MaxStock)
+                        </td>
+                        <td>
+                            
+                            <div class="d-flex justify-content-between">
+                                @Html.DisplayFor(modelItem => ingredientsSorted.ElementAt(i).Stock)
+                                <input type="range" class="form-range w-75" value="@ingredientsSorted.ElementAt(i).Stock"
+                                       min="0" max="@ingredientsSorted.ElementAt(i).MaxStock" step="1"
+                                       data-bs-toggle="tooltip" data-bs-placement="top"
+                                       data-bs-title="@ingredientsSorted.ElementAt(i).Stock"
+                                       onchange="updateStock(event, '@ingredientsSorted.ElementAt(i).Id')"
+                                       oninput="updateTooltip(event)">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a asp-page="./Delete" asp-route-id="@ingredientsSorted.ElementAt(i).Id" class="link-danger text-decoration-none fs-3">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                                &nbsp;
+                                <a asp-page="./Edit" asp-route-id="@ingredientsSorted.ElementAt(i).Id" class="text-decoration-none fs-3">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5">
+                        No ingredients found!
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    function updateStock(event, id) {
+        const newStock = event.target.value;
+        $.ajax({
+            url: `/api/ingredients`,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ id, stock: newStock }),
+            success: function (result) {
+                window.location.href = window.location.pathname + "?" + $.param({ 'updated': id })
+            },
+            error: function (error) {
+                window.location.href = window.location.pathname + "?" + $.param({ 'failed': id })
+            }
+        });
+    }
+
+    function updateTooltip(event) {
+        const newStock = event.target.value;
+        event.target.setAttribute("data-bs-original-title", newStock);
+        var tooltip = bootstrap.Tooltip.getInstance(event.target);
+        if (tooltip) {
+            tooltip._config.animation = false;
+            tooltip.setContent({ '.tooltip-inner': newStock});
+        }
+    }
+</script>
