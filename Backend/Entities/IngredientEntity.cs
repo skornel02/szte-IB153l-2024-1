@@ -20,5 +20,5 @@ public class IngredientEntity
     [Display(Name = "Maximum raktáron")]
     public double MaxStock { get; set; }
 
-    public List<ProductIngredientsEntity> Products { get; set; } = null!;
+    public List<ProductIngredientsEntity> Products { get; set; } = new List<ProductIngredientsEntity>();
 }

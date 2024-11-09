@@ -8,70 +8,71 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Backend.Entities;
 using Backend.Persistence;
+using Backend.Attributes;
 
-namespace Backend.Pages.Ingredients
+namespace Backend.Pages.Ingredients;
+
+[RoleAuthorize(Enums.UserRole.Admin, Enums.UserRole.Inventory)]
+public class EditModel : BasePageModel
 {
-    public class EditModel : BasePageModel
-    {
-        private readonly Backend.Persistence.BellaDbContext _context;
+    private readonly Backend.Persistence.BellaDbContext _context;
 
-        public EditModel(Backend.Persistence.BellaDbContext context)
+    public EditModel(Backend.Persistence.BellaDbContext context)
+    {
+        _context = context;
+    }
+
+    [BindProperty]
+    public IngredientEntity IngredientEntity { get; set; } = default!;
+
+    public async Task<IActionResult> OnGetAsync(Guid? id)
+    {
+        if (id == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        [BindProperty]
-        public IngredientEntity IngredientEntity { get; set; } = default!;
-
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        var ingrediententity =  await _context.Ingredients.FirstOrDefaultAsync(m => m.Id == id);
+        if (ingrediententity == null)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            return NotFound();
+        }
+        IngredientEntity = ingrediententity;
+        return Page();
+    }
 
-            var ingrediententity =  await _context.Ingredients.FirstOrDefaultAsync(m => m.Id == id);
-            if (ingrediententity == null)
-            {
-                return NotFound();
-            }
-            IngredientEntity = ingrediententity;
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more information, see https://aka.ms/RazorPagesCRUD.
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
+        {
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        _context.Attach(IngredientEntity).State = EntityState.Modified;
+
+        try
         {
-            if (!ModelState.IsValid)
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!IngredientEntityExists(IngredientEntity.Id))
             {
-                return Page();
+                return NotFound();
             }
-
-            _context.Attach(IngredientEntity).State = EntityState.Modified;
-
-            try
+            else
             {
-                await _context.SaveChangesAsync();
+                throw;
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!IngredientEntityExists(IngredientEntity.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
         }
 
-        private bool IngredientEntityExists(Guid id)
-        {
-            return _context.Ingredients.Any(e => e.Id == id);
-        }
+        return RedirectToPage("./Index");
+    }
+
+    private bool IngredientEntityExists(Guid id)
+    {
+        return _context.Ingredients.Any(e => e.Id == id);
     }
 }
