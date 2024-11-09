@@ -77,9 +77,9 @@ public class LoginModel : BasePageModel
         var homePage = user.Role switch
         {
             Enums.UserRole.Admin => "/Users/Index",
-            //Enums.UserRole.DigitalSales => "/Orders",
+            Enums.UserRole.DigitalSales => "/Orders/Pending/Index",
             //Enums.UserRole.PhysicalSales => "/PhyiscalSales",
-            //Enums.UserRole.Inventory => "/Ingreients",
+            Enums.UserRole.Inventory => "/Ingreients/Index",
             Enums.UserRole.Baker => "/BakerPage/Index",
             Enums.UserRole.Chef => "/Products/Index",
             _ => "/Index",
