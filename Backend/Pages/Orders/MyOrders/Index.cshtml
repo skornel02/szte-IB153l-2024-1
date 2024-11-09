@@ -1,0 +1,42 @@
+﻿@page
+@model Backend.Pages.Orders.MyOrders.IndexModel
+
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<h1>Your Orders</h1>
+
+@if (Model.Orders.Count == 0)
+{
+    <p class="text-danger">You have no orders at the moment.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Qantity</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                    }
+                    <td>@order.TotalPrice.ToString("C", new System.Globalization.CultureInfo("fr-FR"))</td>
+                    <td>@order.OrderPlaced.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@order.Status.ToString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
