@@ -1,3 +1,4 @@
+using Backend.Endpoints;
 using Backend.Persistence;
 using HealthChecks.UI.Client;
 using Microsoft.EntityFrameworkCore;
@@ -79,6 +80,11 @@ app.UseAuthorization();
 app.UseSession();
 
 app.MapRazorPages();
+
+var api = app.MapGroup("/api")
+    .WithOpenApi()
+    .RequireAuthorization();
+IngredientsEndpoints.MapIngredientsEndpoints(api);
 
 await using (var scope = app.Services.CreateAsyncScope())
 {
