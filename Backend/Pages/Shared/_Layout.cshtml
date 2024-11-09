@@ -50,6 +50,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Orders/Pending/Index">Pending Orders</a>
                             </li>
                         }
+                        @if (User.HasRole(Enums.UserRole.WebshopUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Orders/MyOrders/Index">My Orders</a>
+                            </li>
+                        }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.Baker))
                         {
                             <li class="nav-item">
