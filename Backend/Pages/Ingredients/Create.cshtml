@@ -2,12 +2,12 @@
 @model Backend.Pages.Ingredients.CreateModel
 
 @{
-    ViewData["Title"] = "Alapanyag létrehozása";
+    ViewData["Title"] = "Create ingredient";
 }
 
 <div class="row">
     <div class="col-12 col-md-6">
-        <h1>Új alapanyag felvétele</h1>
+        <h1>Create new ingredient</h1>
     </div>
 </div>
 
@@ -30,10 +30,10 @@
         <span asp-validation-for="IngredientEntity.MaxStock" class="text-danger"></span>
     </div>
     <div class="col-6">
-        <button type="submit" class="btn btn-primary ms-auto d-block">Mentés</button>
+        <button type="submit" class="btn btn-primary ms-auto d-block">Save</button>
     </div>
 
     <div class="col-6">
-        <a asp-page="./Index" role="button" class="btn btn-outline-secondary">Mégsem</a>
+        <a asp-page="./Index" role="button" class="btn btn-outline-secondary">Cancel</a>
     </div>
 </form>

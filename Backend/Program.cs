@@ -75,7 +75,6 @@ app.UseRouting();
 //  .UseEndpoints(config => config.MapHealthChecksUI());
 
 app.UseAuthorization();
-app.UseAuthorization();
 
 app.UseSession();
 
@@ -84,7 +83,7 @@ app.MapRazorPages();
 var api = app.MapGroup("/api")
     .WithOpenApi()
     .RequireAuthorization();
-IngredientsEndpoints.MapIngredientsEndpoints(api);
+api.MapIngredientsEndpoints();
 
 await using (var scope = app.Services.CreateAsyncScope())
 {
