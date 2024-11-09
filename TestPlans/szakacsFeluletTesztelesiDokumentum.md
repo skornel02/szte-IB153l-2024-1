@@ -67,19 +67,25 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.6. Szak
 
 #### 3.1. Szakács felület tesztriportjai
 
+#### 3.1.1. TR-01 (TC-01)
+
 * TP: TP-01
   * 2-t beírtam
   * a gombot megnyomtam
   * `in stock` 2 lett; az Egg(pcs) maradt 4, az egg in stock 12 lett
   * helyes eredményt kaptam
 
-* TP: TP-02
+#### 3.1.2. TR-02 (TC-02)
+
+* TP: TP-01
   * 4-t beírtam
   * a gombot megnyomtam
   * minden maradt, amennyi volt, a hibaüzenet: Please enter a value less than or equal to 3.
   * helyes eredményt kaptam
 
-* TP: TP-03
+#### 3.1.3. TR-03 (TC-03)
+
+* TP: TP-01
     * 1-t beírtam
     * a gombot megnyomtam
     * a gombot nem lehet megnyomni, mert ki van kapcsolva, a hibaüzenet: There is not enough ingredients!
