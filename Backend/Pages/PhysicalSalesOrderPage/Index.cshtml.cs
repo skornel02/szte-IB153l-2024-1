@@ -21,5 +21,17 @@ public class IndexModel : PageModel
     [BindProperty]
     public List<ShoppingCartItem> ShoppingCartItems { get; set; } = null!;
 
-    
+    public IndexModel(ILogger<IndexModel> logger, BellaDbContext context)
+    {
+        _logger = logger;
+        _context = context;
+    }
+
+    public async Task OnGetAsync()
+    {
+        Products = await _context.Products.ToListAsync();
+        ShoppingCartItems = ShoppingCartContext.GetShoppingCart(HttpContext.User.GetEmailOrSessionId(HttpContext));
+    }
+
+
 }
