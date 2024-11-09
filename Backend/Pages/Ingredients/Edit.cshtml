@@ -2,12 +2,12 @@
 @model Backend.Pages.Ingredients.EditModel
 
 @{
-    ViewData["Title"] = Model.IngredientEntity.Name + " szerkesztése";
+    ViewData["Title"] = Model.IngredientEntity.Name + " edit";
 }
 
 <div class="row align-items-center">
     <div class="col-12 col-md-6">
-        <h1>Alapanyag szerkesztése</h1>
+        <h1>Edit ingredient</h1>
     </div>
     <div class="col-12 col-md">
         <h2>@Model.IngredientEntity.Name</h2>
@@ -35,10 +35,10 @@
         <span asp-validation-for="IngredientEntity.MaxStock" class="text-danger"></span>
     </div>
     <div class="col-6">
-        <button type="submit" class="btn btn-primary ms-auto d-block">Mentés</button>
+        <button type="submit" class="btn btn-primary ms-auto d-block">Save</button>
     </div>
 
     <div class="col-6">
-        <a asp-page="./Index" role="button" class="btn btn-outline-secondary">Mégsem</a>
+        <a asp-page="./Index" role="button" class="btn btn-outline-secondary">Cancel</a>
     </div>
 </form>

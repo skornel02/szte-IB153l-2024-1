@@ -7,38 +7,39 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Backend.Entities;
 using Backend.Persistence;
+using Backend.Attributes;
 
-namespace Backend.Pages.Ingredients
+namespace Backend.Pages.Ingredients;
+
+[RoleAuthorize(Enums.UserRole.Admin, Enums.UserRole.Inventory)]
+public class CreateModel : BasePageModel
 {
-    public class CreateModel : BasePageModel
+    private readonly Backend.Persistence.BellaDbContext _context;
+
+    public CreateModel(Backend.Persistence.BellaDbContext context)
     {
-        private readonly Backend.Persistence.BellaDbContext _context;
+        _context = context;
+    }
 
-        public CreateModel(Backend.Persistence.BellaDbContext context)
-        {
-            _context = context;
-        }
+    public IActionResult OnGet()
+    {
+        return Page();
+    }
 
-        public IActionResult OnGet()
+    [BindProperty]
+    public IngredientEntity IngredientEntity { get; set; } = default!;
+
+    // For more information, see https://aka.ms/RazorPagesCRUD.
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
         {
             return Page();
         }
 
-        [BindProperty]
-        public IngredientEntity IngredientEntity { get; set; } = default!;
+        _context.Ingredients.Add(IngredientEntity);
+        await _context.SaveChangesAsync();
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Ingredients.Add(IngredientEntity);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
-        }
+        return RedirectToPage("./Index");
     }
 }

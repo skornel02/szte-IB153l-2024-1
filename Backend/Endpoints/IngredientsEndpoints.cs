@@ -12,17 +12,20 @@ public static class IngredientsEndpoints
 {
     public static void MapIngredientsEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapPost("/ingredients", [RoleAuthorize(Enums.UserRole.Admin, Enums.UserRole.Inventory)] async ([FromServices] BellaDbContext context, [FromBody] IngredientEntity modIngredient) =>
+        endpoints.MapPost("/ingredients", 
+        [RoleAuthorize(Enums.UserRole.Admin, Enums.UserRole.Inventory)] async (
+            [FromServices] BellaDbContext context, 
+            [FromBody] IngredientEntity modIngredient
+        ) =>
         {
-            var ingredient = await context.Ingredients.FindAsync(modIngredient.Id);
-            if (ingredient == null)
+            var ingredient = await context.Ingredients.FirstOrDefaultAsync(i => i.Id == modIngredient.Id);
+            if (ingredient is null)
             {
                 Results.NotFound();
                 return;
             }
 
             ingredient.Stock = modIngredient.Stock;
-            context.Ingredients.Update(ingredient);
 
             await context.SaveChangesAsync();
             Results.Ok();

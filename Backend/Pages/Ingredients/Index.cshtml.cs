@@ -21,31 +21,26 @@ public class IndexModel : BasePageModel
         _context = context;
     }
 
-    public IList<IngredientEntity> IngredientEntitys { get; set; } = default!;
+    public IList<IngredientEntity> IngredientEntities { get; set; } = default!;
+
+    [BindProperty(SupportsGet = true)]
+    public Guid? Updated { get; set; }
+
+    [BindProperty(SupportsGet = true)]
+    public Guid? Failed { get; set; }
 
     public async Task<IActionResult> OnGetAsync()
     {
-        Guid? updated = null;
-        Guid? failed = null;
-        if (Guid.TryParse(Request.Query["updated"], out Guid parsedUpdatedGuid))
-        {
-            updated = parsedUpdatedGuid;
-        } 
-        else if (Guid.TryParse(Request.Query["failed"], out Guid parsedFailedGuid))
-        {
-            updated = parsedFailedGuid;
-        }
+        IngredientEntities = await _context.Ingredients.ToListAsync();
 
-        IngredientEntitys = await _context.Ingredients.ToListAsync();
-
-        if (updated.HasValue)
+        if (Updated.HasValue)
         {
-            SuccessMessage = $"Ingredient {IngredientEntitys.First(i => i.Id == updated).Name} was successfully updated.";
+            SuccessMessage = $"Ingredient {IngredientEntities.First(i => i.Id == Updated).Name} was successfully updated.";
             return RedirectToPage("./Index", new { SuccessMessage });
         }
-        else if (failed.HasValue)
+        else if (Failed.HasValue)
         {
-            ErrorMessage = $"Ingredient {IngredientEntitys.First(i => i.Id == updated).Name} cannot be updated.";
+            ErrorMessage = $"Ingredient {IngredientEntities.First(i => i.Id == Failed).Name} cannot be updated.";
             return RedirectToPage("./Index", new { ErrorMessage });
         }
 

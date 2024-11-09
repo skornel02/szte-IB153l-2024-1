@@ -2,17 +2,17 @@
 @model Backend.Pages.Ingredients.IndexModel
 
 @{
-    ViewData["Title"] = "Alapanyagok";
+    ViewData["Title"] = "Ingredients";
 
-    int counter = 0;
+    var ingredientsSorted = Model.IngredientEntities.OrderBy(i => i.Name);
 }
 
 <div class="row align-items-center">
     <div class="col-12 col-md-3">
-        <h1>Alapanyagok</h1>
+        <h1>Ingredients</h1>
     </div>
     <div class="col-12 col-md">
-        <a class="btn btn-warning" role="button" asp-page="Create">Új alapanyag</a>
+        <a class="btn btn-warning" role="button" asp-page="Create">Create ingredient</a>
     </div>
 </div>
 
@@ -24,52 +24,51 @@
                     #
                 </th>
                 <th scope="col">
-                    Megnevezés
+                    Name
                 </th>
                 <th scope="col">
-                    Maximum raktár
+                    Maximum stock
                 </th>
                 <th scope="col">
-                    Raktáron
+                    Stock
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @if (Model.IngredientEntitys.Any())
+            @if (ingredientsSorted.Count() != 0)
             {
-                @foreach (var item in Model.IngredientEntitys.OrderBy(i => i.Name))
+                @for (int i = 0; i < ingredientsSorted.Count(); i++)
                 {
-                    counter++;
                     <tr class="align-middle">
                         <th scope="row">
-                            @counter
+                            @(i+1)
                         </th>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => ingredientsSorted.ElementAt(i).Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.MaxStock)
+                            @Html.DisplayFor(modelItem => ingredientsSorted.ElementAt(i).MaxStock)
                         </td>
                         <td>
                             
                             <div class="d-flex justify-content-between">
-                                @Html.DisplayFor(modelItem => item.Stock)
-                                <input type="range" class="form-range w-75" value="@item.Stock"
-                                       min="0" max="@item.MaxStock" step="1"
+                                @Html.DisplayFor(modelItem => ingredientsSorted.ElementAt(i).Stock)
+                                <input type="range" class="form-range w-75" value="@ingredientsSorted.ElementAt(i).Stock"
+                                       min="0" max="@ingredientsSorted.ElementAt(i).MaxStock" step="1"
                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                       data-bs-title="@item.Stock"
-                                       onchange="updateStock(event, '@item.Id')"
+                                       data-bs-title="@ingredientsSorted.ElementAt(i).Stock"
+                                       onchange="updateStock(event, '@ingredientsSorted.ElementAt(i).Id')"
                                        oninput="updateTooltip(event)">
                             </div>
                         </td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a asp-page="./Delete" asp-route-id="@item.Id" class="link-danger text-decoration-none fs-3">
+                                <a asp-page="./Delete" asp-route-id="@ingredientsSorted.ElementAt(i).Id" class="link-danger text-decoration-none fs-3">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                                 &nbsp;
-                                <a asp-page="./Edit" asp-route-id="@item.Id" class="text-decoration-none fs-3">
+                                <a asp-page="./Edit" asp-route-id="@ingredientsSorted.ElementAt(i).Id" class="text-decoration-none fs-3">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                             </div>

@@ -2,12 +2,12 @@
 @model Backend.Pages.Ingredients.DeleteModel
 
 @{
-    ViewData["Title"] = Model.IngredientEntity.Name + " törlése";
+    ViewData["Title"] = Model.IngredientEntity.Name + " delete";
 }
 
 <div class="row align-items-center">
     <div class="col-12 col-md-6">
-        <h1>Alapanyag törlése</h1>
+        <h1>Delete ingredient</h1>
     </div>
     <div class="col-12 col-md">
         <h2>@Model.IngredientEntity.Name</h2>
@@ -16,8 +16,8 @@
 
 <hr />
 
-<h3>Biztos vagy benne, hogy törlöd az alapanyagot?</h3>
-<h3 class="text-muted">Ez a művelet nem vonható vissza!</h3>
+<h3>Are you sure you want to delete this ingredient?</h3>
+<h3 class="text-muted">This action cannot be undone!</h3>
 
 <hr />
 
@@ -45,8 +45,8 @@
     
     <form method="post">
         <input type="hidden" asp-for="IngredientEntity.Id" />
-        <a asp-page="./Index" role="button" class="btn btn-outline-primary">Mégsem</a>
-        <input type="submit" value="Törlés" class="btn btn-danger" />
+        <a asp-page="./Index" role="button" class="btn btn-outline-primary">Cancel</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
         
     </form>
 </div>
