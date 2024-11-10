@@ -25,15 +25,19 @@ public class DetailsModel : BasePageModel
             return NotFound();
         }
 
-        var productEntity = await _context.Products.FirstOrDefaultAsync(m => m.Id == id);
-        if (productEntity == null)
+        // Load the product along with the Ingredients and Ingredient details
+        ProductEntity = await _context.Products
+            .Include(p => p.Ingredients)          // Include the Ingredients collection
+            .ThenInclude(i => i.Ingredient)       // Include the Ingredient details for each entry
+            .FirstOrDefaultAsync(m => m.Id == id);
+
+        if (ProductEntity == null)
         {
             return NotFound();
         }
-        else
-        {
-            ProductEntity = productEntity;
-        }
+
         return Page();
     }
+
+
 }
