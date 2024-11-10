@@ -15,9 +15,9 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
 
 ---
 
-• Azonosító: TP-01
-• Tesztesetek: TC-01, TC-02
-• Leírás: Alapanyag hozzáadása funkció tesztelése
+* Azonosító: TP-01
+* Tesztesetek: TC-01, TC-02
+* Leírás: Alapanyag hozzáadása funkció tesztelése
        0. lépés: Nyissuk meg az alkalmazást, lépjünk be egy admin felhasználóval és menjünk az Ingredients oldalra és nyomjuk meg a `Create ingredient` gombot.
        1. lépés: A `Name` mezőbe írjuk be az alapanyag nevét.
        2. lépés: Az `Stock` mezőbe írjuk be a készlet mennyiség értéket.
@@ -26,9 +26,9 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
        5. lépés: Ellenőrizzük az eredményt. Elvárt eredmény: az alapanyag hozzáadása sikeres, és megjelenik az alapanyag listában.
 
 ### 1.2. Alapanyag szerkesztése funkció tesztelése
-• Azonosító: TP-02
-• Tesztesetek: TC-01
-• Leírás: Alapanyag szerkesztése funkció tesztelése
+* Azonosító: TP-02
+* Tesztesetek: TC-01
+* Leírás: Alapanyag szerkesztése funkció tesztelése
        0. lépés: Nyissuk meg az alkalmazást, lépjünk be egy admin felhasználóval és menjünk az Ingredients oldalra, és válasszuk ki a szerkesztésre kijelölt alapanyagot, a "ceruza" ikonra kattintva.
        1. lépés: A `Name` mezőben módosítsuk a nevet az új alapanyag névre.
        2. lépés: A `Stock` mezőben módosítsuk a készletet az új mennyiségre.
@@ -37,9 +37,9 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
        5. lépés: Ellenőrizzük az eredményt. Elvárt eredmény: a alapanyag adatai frissülnek a listában.
 
 ### 1.3. Alapanyag törlése funkció tesztelése
-• Azonosító: TP-03
-• Tesztesetek: TC-01
-• Leírás: Alapanyag törlése funkció tesztelése
+* Azonosító: TP-03
+* Tesztesetek: TC-01
+* Leírás: Alapanyag törlése funkció tesztelése
        0. lépés: Nyissuk meg az alkalmazást, lépjünk be egy admin felhasználóval és menjünk az Ingredients oldalra, és válasszunk ki egy törölni kívánt alapanyagot.
        1. lépés: Válasszuk ki a `Kuka` gombot a kijelölt alapanyagnál.
        2. lépés: Erősítsük meg a törlést a `Delete` gomb kiválasztásával.
@@ -55,28 +55,28 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
 
 ### 2.1.1. TC-01
 
-• TP: TP-01
-• Leírás: Alapanyag hozzáadása tesztelése (hiányzó adat)
-• Bemenet: ALAPANYAGNÉV = `Egg (pcs)`, ÁR =``, KATEGÓRIA = ``
-• Művelet: Nyomjuk meg a `Create` gombot.
-• Elvárt kimenet: Stock mezőnél megjelenik az alábbi üzenet: `The Stock field is required.`  a Maximum stock mezőnél megjelenik az alábbi üzenet: `The Maximum stock field is required.` 
+* TP: TP-01
+* Leírás: Alapanyag hozzáadása tesztelése (hiányzó adat)
+* Bemenet: ALAPANYAGNÉV = `Egg (pcs)`, ÁR =``, KATEGÓRIA = ``
+* Művelet: Nyomjuk meg a `Create` gombot.
+* Elvárt kimenet: Stock mezőnél megjelenik az alábbi üzenet: `The Stock field is required.`  a Maximum stock mezőnél megjelenik az alábbi üzenet: `The Maximum stock field is required.` 
 
 ### 2.1.2. TC-02
-• TP: TP-01
-• Leírás: Alapanyag hozzáadása tesztelése (sikeres eset)
-• Bemenet: ALAPANYAGNÉV = `Milk (dl)`, Stock = 300, Max stock = `500`
-• Művelet: Nyomjuk meg a `Create` gombot.
-• Elvárt kimenet: Az alapanyagok listában megjelenik egy új alapanyag: `Milk (dl), 300, 500`.
+* TP: TP-01
+* Leírás: Alapanyag hozzáadása tesztelése (sikeres eset)
+* Bemenet: ALAPANYAGNÉV = `Milk (dl)`, Stock = 300, Max stock = `500`
+* Művelet: Nyomjuk meg a `Create` gombot.
+* Elvárt kimenet: Az alapanyagok listában megjelenik egy új alapanyag: `Milk (dl), 300, 500`.
 
 ---
 
 ### 2.2. Alapanyag szerkesztése tesztesetei
 ### 2.2.1. TC-01
-• TP: TP-02
-• Leírás: Alapanyag maximum mennyiség értékének módosítása (sikeres eset)
-• Bemenet: Eredeti  `Maximum stock` = 150           Új  `Maximum stock` = 200
-• Művelet: Nyomjuk meg a `Save` gombot.
-• Elvárt kimenet: A alapanyaglistában a régi maximum mennyiség helyett a `200` érték jelenik meg.
+* TP: TP-02
+* Leírás: Alapanyag maximum mennyiség értékének módosítása (sikeres eset)
+* Bemenet: Eredeti  `Maximum stock` = 150           Új  `Maximum stock` = 200
+* Művelet: Nyomjuk meg a `Save` gombot.
+* Elvárt kimenet: A alapanyaglistában a régi maximum mennyiség helyett a `200` érték jelenik meg.
 
 
 
