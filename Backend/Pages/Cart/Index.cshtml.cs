@@ -20,7 +20,7 @@ public class IndexModel : PageModel
     public List<ShoppingCartItem> ShoppingCartItems { get; set; } = null!;
 
     public decimal TotalPrice { get; set; }
-    public decimal price = 0;
+    private decimal price = 0;
 
     public IndexModel(BellaDbContext context)
     {
@@ -66,8 +66,14 @@ public class IndexModel : PageModel
                                      .Where(p => productIds.Contains(p.Id))
                                      .ToListAsync();
 
-        if (products.Count != ShoppingCartItems.Count)
+        var validProductIds = products.Select(p => p.Id).ToHashSet();
+        ShoppingCartItems = ShoppingCartItems
+                            .Where(item => validProductIds.Contains(item.ProductId))
+                            .ToList();
+
+        if (!ShoppingCartItems.Any())
         {
+            ShoppingCartContext.ClearCart(userEmail);
             return RedirectToPage("/Cart/Index");
         }
 
@@ -91,15 +97,12 @@ public class IndexModel : PageModel
             }).ToList()
         };
 
-        foreach (var orderItem in order.OrderItems)
-        {
-            orderItem.OrderId = order.Id;
-        }
-
         _context.Orders.Add(order);
         await _context.SaveChangesAsync();
 
         ShoppingCartContext.ClearCart(userEmail);
+
+        TempData["SuccessMessage"] = "Your order has been successfully placed!";
 
         return RedirectToPage("/Orders/MyOrders/Index");
     }

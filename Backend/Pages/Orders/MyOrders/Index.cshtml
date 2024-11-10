@@ -7,6 +7,13 @@
 
 <h1>Your Orders</h1>
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
 @if (Model.Orders.Count == 0)
 {
     <p class="text-danger">You have no orders at the moment.</p>
