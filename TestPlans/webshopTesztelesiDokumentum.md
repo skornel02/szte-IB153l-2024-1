@@ -53,7 +53,7 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.7. Webs
 * Választott termék: -
 * Bemenet: -
 * Művelet: Átmegyünk a `Cart` oldalra
-* Elvárt kimenet: 
+* Elvárt kimenet:
   * Your cart is empty!
 
 #### 2.1.2. TC-02
@@ -124,7 +124,7 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.7. Webs
 * Elvárt kimenet:
   * A gom megnyomására a rendelés mentésre kerül, átirányítanak a `MyOrders` oldalra, ahol látjuk a rendelést:
   * `Product Name`: croissant, Pain au chocolat, Dénes Donut
-  * `Qantity`: 2, 2, 2 
+  * `Qantity`: 2, 2, 2
   * `Price`: 201538,00 €
   * `Order Status`: OrderPlaced
 
@@ -173,7 +173,7 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.7. Webs
   * `Total`: 3490,00 €
   * helyes eredményt kaptam
 
-#### 3.2. Webshop tesztriportjai, fizetés, rendelések
+#### 3.2. Webshop tesztriportjai, rendelés leadása, rendelések
 
 ---
 
@@ -198,5 +198,5 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.7. Webs
   * a `Cart` oldalra átmentem
   * a `Submit Order` gombot megnyomtam
   * Átkerültem a `MyOrders` oldalra
-  * egy táblázatban: croissant, Pain au chocolat, Dénes Donut | 2, 2 2 | 201538,00 € | OrderPlaced
+  * egy táblázatban: croissant, Pain au chocolat, Dénes Donut | 2, 2, 2 | 201538,00 € | OrderPlaced
   * helyes eredményt kaptam
