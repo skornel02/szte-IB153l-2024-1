@@ -54,7 +54,7 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
 2.2. Alapanyag szerkesztése tesztesetei
 2.2.1. TC-01
 • TP: TP-02
-• Leírás: Alapanyag maximum mennyiség értékének módosítása
+• Leírás: Alapanyag maximum mennyiség értékének módosítása (sikeres eset)
 • Bemenet: Eredeti  `Maximum stock` = 150           Új  `Maximum stock` = 200
 • Művelet: Nyomjuk meg a `Save` gombot.
 • Elvárt kimenet: A alapanyaglistában a régi maximum mennyiség helyett a `200` érték jelenik meg.
