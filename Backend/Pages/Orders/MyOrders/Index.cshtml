@@ -27,11 +27,18 @@ else
             @foreach (var order in Model.Orders)
             {
                 <tr>
-                    @foreach (var item in order.OrderItems)
-                    {
-                        <td>@item.Product.Name</td>
-                        <td>@item.Quantity</td>
-                    }
+                    <td>
+                        @foreach (var item in order.OrderItems)
+                        {
+                            <div>@item.Product.Name</div>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var item in order.OrderItems)
+                        {
+                            <div>@item.Quantity</div>
+                        }
+                    </td>
                     <td>@order.TotalPrice.ToString("C", new System.Globalization.CultureInfo("fr-FR"))</td>
                     <td>@order.OrderPlaced.ToString("yyyy-MM-dd HH:mm:ss")</td>
                     <td>@order.Status.ToString()</td>
