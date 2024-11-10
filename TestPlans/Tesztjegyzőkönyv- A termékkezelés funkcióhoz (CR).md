@@ -13,9 +13,9 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.4.1 Ter
 
 ---
 
-• Azonosító: TP-01
-• Tesztesetek: TC-01
-• Leírás: Termék hozzáadása funkció tesztelése
+* Azonosító: TP-01
+* Tesztesetek: TC-01
+* Leírás: Termék hozzáadása funkció tesztelése
        0. lépés: Nyissuk meg az alkalmazást, lépjünk be egy admin felhasználóval és menjünk a Products oldalra, és nyomjuk meg az `Add new product` gombot.
        1. lépés: Az `Name` mezőbe írjuk be a termék nevét.
        2. lépés: Az `Description` mezőbe írjuk be az jellemzőjét.
@@ -35,9 +35,9 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.4.1 Ter
 
 ###2.1.1. TC-01
 
-• TP: TP-01
-• Leírás: Termék hozzáadása tesztelése (sikeres eset)
-• Bemenet: Name = `croissant`, Description = `honhonhon`, Price = 650, ImageUrl = `croissant-cocoa`
-• Művelet: Nyomjuk meg a `Create` gombot.
-• Elvárt kimenet: A terméklistában megjelenik egy új termék: `croissant, honhonhon, 650, croissant-cocoa`.
+* TP: TP-01
+* Leírás: Termék hozzáadása tesztelése (sikeres eset)
+* Bemenet: Name = `croissant`, Description = `honhonhon`, Price = 650, ImageUrl = `croissant-cocoa`
+* Művelet: Nyomjuk meg a `Create` gombot.
+* Elvárt kimenet: A terméklistában megjelenik egy új termék: `croissant, honhonhon, 650, croissant-cocoa`.
 
