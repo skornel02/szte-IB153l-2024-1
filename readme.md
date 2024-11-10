@@ -179,7 +179,31 @@ A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problém�
  - Időpont: 2021.10.02.
  - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
  - Résztvevők: Horváth Gergely Zsolt, Pilter Zsófia, Vad Avar, Vass Kinga, Gyenge Angéla
- - Érintett témák: Git használati szabályok (merge requestek) megbeszélése 
+ - Érintett témák: Git használati szabályok (merge requestek) megbeszélése
+
+4. megbeszélés:
+ - Időpont: 2021.10.09.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Teljes csoport
+ - Érintett témák: 1. mérföldkőhöz tartozó feladatok megbeszélése
+
+5. megbeszélés:
+ - Időpont: 2021.10.16.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Teljes csoport
+ - Érintett témák: 1. mérföldkőhöz tartozó feladatok kijavítása, 2. mérföldkő feladatai
+
+6. megbeszélés:
+ - Időpont: 2021.10.30.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Teljes csoport
+ - Érintett témák: 2. mérföldkő feladatain módosítások
+
+7. megbeszélés:
+ - Időpont: 2021.11.06.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Teljes csoport
+ - Érintett témák: 3. mérföldkőhöz segítség, oldalak kinézetének megbeszélése
 
 ### 6.3. Minőségbiztosítás
 
