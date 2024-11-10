@@ -48,7 +48,7 @@
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.PhysicalSales))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/PhysicalSalesOrderPage/Index">Cashier Purchase</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/CashierPage/Index">Cashier Purchase</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.DigitalSales))

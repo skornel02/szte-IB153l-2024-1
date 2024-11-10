@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.Pages.PhysicalSalesOrderPage;
+namespace Backend.Pages.CashierPage;
 
 [RoleAuthorize(Enums.UserRole.PhysicalSales, Enums.UserRole.Admin)]
 public class IndexModel : PageModel
@@ -43,13 +43,13 @@ public class IndexModel : PageModel
 
             if (product == null || item.Quantity < 0)
             {
-                ModelState.AddModelError("", "Hibás mennyiség.");
+                ModelState.AddModelError("", "Incorrect quantity.");
                 return Page();
             }
 
             if (product.Stock < item.Quantity)
             {
-                ModelState.AddModelError("", $"Nincs elegendõ készlet a(z) {product?.Name ?? "termékhez"}.");
+                ModelState.AddModelError("", $"There is not enough stock for {product?.Name ?? "product"}.");
                 return Page();
             }
 

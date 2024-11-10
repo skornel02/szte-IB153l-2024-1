@@ -2,7 +2,7 @@
 @using System.Globalization
 @model IndexModel
 @{
-    ViewData["Title"] = "CashierPurchase";
+    ViewData["Title"] = "Cashier Purchase Page";
 }
 
 <h1 class="mb-4">Cashier Purchase</h1>
@@ -39,13 +39,13 @@
     </div>
 
     <div class="mt-4 text-center">
-        <h4>Rendelés összegzés</h4>
+        <h4>Order summary</h4>
         <div id="orderSummary">
         </div>
-        <p>Összesen: <span id="totalQuantity">0</span> db, Teljes ár: €<span id="totalCost">0.00</span></p>
+        <p>In total: <span id="totalQuantity">0</span> pcs, Total Cost: €<span id="totalCost">0.00</span></p>
 
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-success btn-lg mt-4 mb-4">Vásárlás</button>
+            <button type="submit" class="btn btn-success btn-lg mt-4 mb-4">Purchase</button>
         </div>
     </div>
 </form>
@@ -70,7 +70,7 @@
             if (quantity > 0) {
                 totalQuantity += quantity;
                 totalCost += quantity * price;
-                orderSummary += `<p>${productName}: ${quantity} db, Egységár: €${price.toFixed(2)}</p>`;
+                orderSummary += `<p>${productName}: ${quantity} pcs, Total Cost: €${price.toFixed(2)}</p>`;
             }
         });
 
