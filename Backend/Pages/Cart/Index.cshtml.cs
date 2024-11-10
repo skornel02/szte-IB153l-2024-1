@@ -20,7 +20,6 @@ public class IndexModel : PageModel
     public List<ShoppingCartItem> ShoppingCartItems { get; set; } = null!;
 
     public decimal TotalPrice { get; set; }
-    private decimal price = 0;
 
     public IndexModel(BellaDbContext context)
     {
@@ -48,7 +47,6 @@ public class IndexModel : PageModel
                 TotalPrice += item.Quantity * product.Price;
             }
         }
-        price = TotalPrice;
     }
     public async Task<IActionResult> OnPostPlaceOrderAsync()
     {
