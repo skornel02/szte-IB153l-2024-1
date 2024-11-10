@@ -13,7 +13,7 @@ public class EditModel : BasePageModel
 {
     private readonly BellaDbContext _context;
 
-    public List<IngredientEntity> Ingredients { get; set; } = null!;
+    public List<IngredientEntity> Ingredients { get; set; } = default!;
 
 
     [BindProperty]
@@ -29,6 +29,13 @@ public class EditModel : BasePageModel
     [Required]
     public decimal Price { get; set; }
 
+    [BindProperty]
+    public Dictionary<Guid, int> Quantities { get; set; } = new(); 
+
+    [BindProperty]
+    public Dictionary<Guid, string> IngredientNames { get; set; } = new(); 
+
+
     public EditModel(BellaDbContext context)
     {
         _context = context;
@@ -41,16 +48,20 @@ public class EditModel : BasePageModel
             return NotFound();
         }
 
+        
         var productEntity = await _context.Products
-            .Include(_ => _.Ingredients)
-                .ThenInclude(_ => _.Ingredient)
+            .Include(p => p.Ingredients) 
+            .ThenInclude(pi => pi.Ingredient) 
             .FirstOrDefaultAsync(m => m.Id == id);
+
         if (productEntity == null)
         {
             return NotFound();
         }
+
         
         ProductEntity = productEntity;
+        ProductEntity.Ingredients ??= new List<ProductIngredientsEntity>();
         Price = productEntity.Price;
         Description = productEntity.Description;
 
@@ -60,6 +71,9 @@ public class EditModel : BasePageModel
 
         return Page();
     }
+
+
+
 
     public async Task<IActionResult> OnPostAsync()
     {
@@ -107,32 +121,42 @@ public class EditModel : BasePageModel
         return _context.Products.Any(e => e.Id == id);
     }
 
-    public async Task<IActionResult> OnPostAddIngredientAsync(Guid ingredientId, int quantity)
+    public async Task<IActionResult> OnPostEditIngredientsAsync()
     {
-            var ingredient = await _context.Ingredients.FindAsync(ingredientId);
-        if (ingredient == null)
+        if (!ModelState.IsValid)
         {
-            return RedirectToPage("/Products/Edit", new {
-                id = ProductEntity.Id,
-                ErrorMessage = "Ingredient not found"
-            });
+            return Page();
         }
 
-        var productIngredient = new ProductIngredientsEntity
-        {
-            IngredientId = ingredientId,
-            ProductId = ProductEntity.Id,
-            Quantity = quantity
-        };
+        // Retrieve the product entity along with its ingredients
+        var productEntity = await _context.Products
+            .Include(p => p.Ingredients)
+            .ThenInclude(pi => pi.Ingredient)
+            .FirstOrDefaultAsync(p => p.Id == ProductEntity.Id);
 
-        await _context.ProductIngredients.AddAsync(productIngredient);
+        if (productEntity == null)
+        {
+            return NotFound();
+        }
+
+        // Update ingredient quantities based on the Quantities dictionary from the form
+        foreach (var productIngredient in productEntity.Ingredients)
+        {
+            if (Quantities.TryGetValue(productIngredient.IngredientId, out var newQuantity))
+            {
+                productIngredient.Quantity = newQuantity;
+            }
+        }
+
+        // Attach and save changes
+        _context.Attach(productEntity).State = EntityState.Modified;
         await _context.SaveChangesAsync();
 
-        return RedirectToPage("/Products/Edit", new {
-            Id = ProductEntity.Id,
-            SuccessMessage = "Ingredient added"
-        });
+        return RedirectToPage("/Products/Edit", new { id = ProductEntity.Id, SuccessMessage = "Ingredients updated successfully" });
     }
+
+
+
 
     public async Task<IActionResult> OnGetRemoveIngredientAsync(Guid productId, Guid ingredientId)
     {
@@ -145,7 +169,8 @@ public class EditModel : BasePageModel
         var productIngredient = productEntity.Ingredients.FirstOrDefault(_ => _.IngredientId == ingredientId);
         if (productIngredient == null)
         {
-            return RedirectToPage("/Products/Edit", new {
+            return RedirectToPage("/Products/Edit", new
+            {
                 id = productId,
                 ErrorMessage = "Ingredient not found"
             });
@@ -154,9 +179,11 @@ public class EditModel : BasePageModel
         _context.ProductIngredients.Remove(productIngredient);
         await _context.SaveChangesAsync();
 
-        return RedirectToPage("/Products/Edit", new {
+        return RedirectToPage("/Products/Edit", new
+        {
             Id = productId,
             SuccessMessage = "Ingredient removed"
         });
     }
 }
+

@@ -1,5 +1,6 @@
 @page
 @using Backend.Enums
+@using Backend.Entities
 @using Backend.Helpers
 @model EditModel
 
@@ -49,6 +50,7 @@
             </div>
         </div>
     </div>
+
     <div class="col-md-6">
         <div class="card">
             <h5 class="card-header">Ingrediens</h5>
@@ -57,8 +59,8 @@
                     @foreach (var ingredient in Model.ProductEntity.Ingredients)
                     {
                         <li class="list-group-item d-flex justify-content-between align-content-center">
-                                <span>@ingredient.Ingredient.Name</span>
-                                <span>@ingredient.Quantity</span>
+                            <span>@ingredient.Ingredient.Name</span>
+                            <span>@ingredient.Quantity</span>
                             <a asp-page="./Edit"
                                asp-page-handler="RemoveIngredient"
                                asp-route-productId="@Model.ProductEntity.Id"
@@ -89,6 +91,43 @@
             </div>
         </div>
     </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <h5 class="card-header">Edit Ingredients</h5>
+            <div class="card-body">
+                <form method="post" asp-page-handler="EditIngredients">
+                    <input type="hidden" asp-for="ProductEntity.Id" />
+
+                    @if (Model.ProductEntity.Ingredients != null)
+                    {
+                        @foreach (var productIngredient in Model.ProductEntity.Ingredients)
+                        {
+                            <div class="form-group">
+                                <label class="control-label">Ingredient</label>
+                                <input type="text" name="IngredientNames[@productIngredient.IngredientId]" value="@productIngredient.Ingredient.Name" class="form-control" readonly />
+                                <input type="hidden" name="IngredientIds[@productIngredient.IngredientId]" value="@productIngredient.IngredientId" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Quantity</label>
+                                <input type="number" name="Quantities[@productIngredient.IngredientId]" value="@productIngredient.Quantity" class="form-control" min="0" />
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div>No ingredients found for this product.</div>
+                    }
+
+                    <input type="submit" value="Save Changes" class="btn btn-primary" />
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
     <div class="col-12 d-flex justify-content-center my-4">
         <a asp-page="./Index" class="btn btn-warning">Back to List</a>
     </div>
