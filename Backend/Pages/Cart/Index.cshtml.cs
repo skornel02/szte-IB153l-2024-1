@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Backend.Pages.Cart;
 
@@ -85,7 +84,7 @@ public class IndexModel : PageModel
             OrderItems = ShoppingCartItems.Select(item => new OrderItemEntity
             {
                 Id = Guid.NewGuid(),
-                OrderId = id, 
+                OrderId = id,
                 ProductId = item.ProductId,
                 Quantity = item.Quantity,
                 Price = products.First(p => p.Id == item.ProductId).Price
