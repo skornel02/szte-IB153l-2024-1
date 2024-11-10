@@ -51,21 +51,32 @@
     </div>
     <div class="col-md-6">
         <div class="card">
-            <h5 class="card-header">Ingrediens</h5>
+            <h5 class="card-header">Ingredients</h5>
             <div class="card-body">
                 <ul class="list-group">
                     @foreach (var ingredient in Model.ProductEntity.Ingredients)
                     {
-                        <li class="list-group-item d-flex justify-content-between align-content-center">
-                                <span>@ingredient.Ingredient.Name</span>
-                                <span>@ingredient.Quantity</span>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>@ingredient.Ingredient.Name</span>
+                            <span>@ingredient.Quantity</span>
+
+                           
+                            <form method="post" asp-page="./Edit" asp-page-handler="EditIngredient">
+                                <input type="hidden" name="productId" value="@Model.ProductEntity.Id" />
+                                <input type="hidden" name="ingredientId" value="@ingredient.IngredientId" />
+                                <input type="number" name="quantity" value="@ingredient.Quantity" min="0" class="form-control" style="width: 100px; display: inline-block;" />
+                                <button type="submit" class="btn btn-warning">Save</button>
+                            </form>
+
+                            
                             <a asp-page="./Edit"
                                asp-page-handler="RemoveIngredient"
                                asp-route-productId="@Model.ProductEntity.Id"
                                asp-route-ingredientId="@ingredient.IngredientId" class="btn btn-danger">Remove</a>
-
                         </li>
                     }
+
+                    
                     <li class="list-group-item">
                         <form method="post" asp-page="./Edit" asp-page-handler="AddIngredient">
                             <input type="hidden" asp-for="ProductEntity.Id" />
@@ -87,6 +98,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </div>
     <div class="col-12 d-flex justify-content-center my-4">

@@ -13,7 +13,7 @@ public class EditModel : BasePageModel
 {
     private readonly BellaDbContext _context;
 
-    public List<IngredientEntity> Ingredients { get; set; } = null!;
+    public List<IngredientEntity> Ingredients { get; set; } = default!;
 
 
     [BindProperty]
@@ -49,7 +49,7 @@ public class EditModel : BasePageModel
         {
             return NotFound();
         }
-        
+
         ProductEntity = productEntity;
         Price = productEntity.Price;
         Description = productEntity.Description;
@@ -109,10 +109,11 @@ public class EditModel : BasePageModel
 
     public async Task<IActionResult> OnPostAddIngredientAsync(Guid ingredientId, int quantity)
     {
-            var ingredient = await _context.Ingredients.FindAsync(ingredientId);
+        var ingredient = await _context.Ingredients.FindAsync(ingredientId);
         if (ingredient == null)
         {
-            return RedirectToPage("/Products/Edit", new {
+            return RedirectToPage("/Products/Edit", new
+            {
                 id = ProductEntity.Id,
                 ErrorMessage = "Ingredient not found"
             });
@@ -128,11 +129,62 @@ public class EditModel : BasePageModel
         await _context.ProductIngredients.AddAsync(productIngredient);
         await _context.SaveChangesAsync();
 
-        return RedirectToPage("/Products/Edit", new {
+        return RedirectToPage("/Products/Edit", new
+        {
             Id = ProductEntity.Id,
             SuccessMessage = "Ingredient added"
         });
     }
+    public async Task<IActionResult> OnPostEditIngredientAsync(Guid productId, Guid ingredientId, int quantity)
+    {
+        // Ensure the product entity exists.
+        var productEntity = await _context.Products
+            .Include(p => p.Ingredients)
+            .ThenInclude(pi => pi.Ingredient)
+            .FirstOrDefaultAsync(p => p.Id == productId);
+
+        if (productEntity == null)
+        {
+            return NotFound();
+        }
+
+        // Find the specific ingredient to update
+        var productIngredient = await _context.ProductIngredients
+            .FirstOrDefaultAsync(pi => pi.ProductId == productId && pi.IngredientId == ingredientId);
+
+        if (productIngredient == null)
+        {
+            return NotFound("Ingredient not found.");
+        }
+
+        // Update the ingredient quantity.
+        productIngredient.Quantity = quantity;
+
+        // Save changes to the database.
+        _context.Attach(productIngredient).State = EntityState.Modified;
+
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!ProductEntityExists(productId))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        // Redirect back to the product edit page with a success message.
+        return RedirectToPage("/Products/Edit", new { Id = productId, SuccessMessage = "Ingredient quantity updated successfully." });
+    }
+
+  
+
 
     public async Task<IActionResult> OnGetRemoveIngredientAsync(Guid productId, Guid ingredientId)
     {
@@ -145,7 +197,8 @@ public class EditModel : BasePageModel
         var productIngredient = productEntity.Ingredients.FirstOrDefault(_ => _.IngredientId == ingredientId);
         if (productIngredient == null)
         {
-            return RedirectToPage("/Products/Edit", new {
+            return RedirectToPage("/Products/Edit", new
+            {
                 id = productId,
                 ErrorMessage = "Ingredient not found"
             });
@@ -154,7 +207,8 @@ public class EditModel : BasePageModel
         _context.ProductIngredients.Remove(productIngredient);
         await _context.SaveChangesAsync();
 
-        return RedirectToPage("/Products/Edit", new {
+        return RedirectToPage("/Products/Edit", new
+        {
             Id = productId,
             SuccessMessage = "Ingredient removed"
         });
