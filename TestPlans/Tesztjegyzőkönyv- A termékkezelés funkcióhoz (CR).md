@@ -33,7 +33,7 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.4.1 Ter
 
 ---
 
-###2.1.1. TC-01
+### 2.1.1. TC-01
 
 * TP: TP-01
 * Leírás: Termék hozzáadása tesztelése (sikeres eset)
