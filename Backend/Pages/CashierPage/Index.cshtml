@@ -1,0 +1,84 @@
+﻿@page
+@using System.Globalization
+@model IndexModel
+@{
+    ViewData["Title"] = "Cashier Purchase Page";
+}
+
+<h1 class="mb-4">Cashier Purchase</h1>
+
+<form method="post" id="orderForm">
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-4">
+        @for (var i = 0; i < Model.Products.Count; i++)
+        {
+            var product = Model.Products[i];
+            var shoppingCartItem = Model.ShoppingCartItems.FirstOrDefault(x => x.ProductId == product.Id);
+
+            <div class="card p-0 col-12 col-md-4 col-lg-3">
+                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Description">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
+                        <input type="hidden" name="ShoppingCartItems[@i].ProductId" value="@product.Id" />
+                        <div class="form-group col-12 col-md-3">
+                            <input min="0"
+                                   max="@(product.Stock - product.Reserved)"
+                                   name="ShoppingCartItems[@i].Quantity"
+                                   type="number"
+                                   value="@(shoppingCartItem?.Quantity ?? 0)"
+                                   class="form-control quantity-input"
+                                   data-price="@product.Price"
+                                   onchange="updateOrderSummary()" />
+                        </div>
+                        <p class="m-0 fw-bold">@product.Price.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="mt-4 text-center">
+        <h4>Order summary</h4>
+        <div id="orderSummary">
+        </div>
+        <p>In total: <span id="totalQuantity">0</span> pcs, Total Cost: €<span id="totalCost">0.00</span></p>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success btn-lg mt-4 mb-4">Purchase</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function updateOrderSummary() {
+        let totalQuantity = 0;
+        let totalCost = 0;
+        let orderSummary = "";
+
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            let quantity = parseInt(input.value) || 0;
+
+            if (quantity < 0) {
+                quantity = 0;
+                input.value = quantity;
+            }
+
+            const price = parseFloat(input.getAttribute('data-price'));
+            const productName = input.closest('.card').querySelector('.card-title').innerText;
+
+            if (quantity > 0) {
+                totalQuantity += quantity;
+                totalCost += quantity * price;
+                orderSummary += `<p>${productName}: ${quantity} pcs, Total Cost: €${price.toFixed(2)}</p>`;
+            }
+        });
+
+        document.getElementById('totalQuantity').innerText = totalQuantity;
+        document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+        document.getElementById('orderSummary').innerHTML = orderSummary;
+    }
+
+    updateOrderSummary();
+</script>
+
