@@ -32,15 +32,15 @@
             Ingredients
         </dt>
         <dd class="col-sm-10">
-
-            @foreach (var ingredient in Model.ProductEntity.Ingredients)
-            {
-                <li class="list-group-item">
-                    <strong>Ingredient:</strong> <span>@ingredient.Ingredient.Name</span><br />
-                    <strong>Quantity:</strong> <span>@ingredient.Quantity</span>
-                </li>
-            }
-
+            <ul>
+                @foreach (var ingredient in Model.ProductEntity.Ingredients)
+                {
+                    <li class="list-group-item">
+                        <strong>Ingredient:</strong> <span>@ingredient.Ingredient.Name</span><br />
+                        <strong>Quantity:</strong> <span>@ingredient.Quantity</span>
+                    </li>
+                }
+            </ul>
         </dd>
 
 
