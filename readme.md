@@ -30,7 +30,7 @@ A raktáras kollégának igénye lehet egy kiegészítő modulra, ami segíti az
 
 A vásárlók felületén is felmerült igény egy kiegészítő modul fejlesztésére. Ez a modul azt tartalmazza, hogy a vásárló látja a rendelésének az aktuális állapotát, egyenesen a rendelés leadásától a házhoz szállítás pillanatáig. Ezt egy futárszolgálat integrálásával tehetjük meg.
 
-![alt text](Administration/UseCaseDiagram.png)
+![alt text](Administration/PrettyUseCaseDiagram.png)
 
 ### 2.2. Funkcionális követelmények
 
