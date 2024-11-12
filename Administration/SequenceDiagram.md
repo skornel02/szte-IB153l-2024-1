@@ -8,28 +8,34 @@
 sequenceDiagram
     autonumber
 
-    participant Payment provider
-    actor Customer
-    participant Webshop
-    participant Order Management System
+    actor User
+    participant Webshop as RegisterPage
+    participant Model as RegisterModel
+    participant Database as DbContext
 
-    Customer->>+Webshop: Place order
+    User->>+Webshop: Opens registration page
+    Webshop-->>User: Sends registration form
 
-    Webshop->>+Payment provider: Create payment request
-    Payment provider-->>Webshop: Payment url
+    loop Until form is valid
 
-    Webshop-->>Customer: Payment url
+        loop Enters email
+            User->>Webshop: sends e-mail address
+            Webshop->>Model: calls method to check if e-mail is already in use
+            Model->>+Database: Exists query
+            Database-->>-Model: Query result
+            Model-->>Webshop: Returns whether e-mail is already in use
+            Webshop-->>User: Returns whether e-mail is already in use
+        end
 
-    Customer->>Payment provider: Pays
-    Payment provider-->>Customer: Redirects to order stats
-    
-    Payment provider->>-Webshop: Payment confirmation
-
-    Webshop->>-Order Management System: Reserve order items
-
-
-    loop Check order status
-        Customer->>+Webshop: Request order status
-        Webshop-->>-Customer: Order status
+        loop Enters passwords
+            User->>User: Validate passwords
+        end
     end
+
+    User->>Webshop: Submits valid form
+    Webshop->>Model: Calls method to insert user
+    Model->>+Database: Insert user
+    Database-->>-Model: Insertion result
+    Model-->>Webshop: Returns insertion result
+    Webshop-->>-User: Redirects to login page or shows error
 ```
