@@ -82,9 +82,7 @@
                             </li>
                         }
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+                      
                         @if (!User.IsLoggedIn() || User.HasRole(Enums.UserRole.WebshopUser))
                         {
                             <li class="ms-sm-auto nav-item">
