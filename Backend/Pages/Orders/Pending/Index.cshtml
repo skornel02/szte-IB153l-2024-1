@@ -58,23 +58,24 @@ else
                         </ul>
                     </td>
                     <td>
-                        <div class="d-flex flex-column flex-md-row align-items-md-center">
+                        <div class="d-flex flex-row flex-md-row align-items-md-center">
                             <form method="post">
-                                <div class="input-group mb-2">
+                                <div class="mb-2 gap-2 d-inline-flex">
                                     <input type="submit" class="btn btn-sm btn-success" asp-page-handler="Accept" value="Accept" disabled="@buttonDisabled" />
-
-                                    @if (buttonDisabled)
-                                    {
-                                        <span class="text-danger">There is not enough products in the stock!</span>
-                                    }
-                                </div>
-                                <div class="input-group">
+                                    </div>
+                                <div class="mb-2 gap-2 d-inline-flex">
                                     <input type="submit" class="btn btn-sm btn-danger" asp-page-handler="Reject" value="Reject" />
                                 </div>
                                 <div class="input-group ">
                                     <input type="hidden" name="id" value="@order.Id" />
                                 </div>
                             </form>
+                        </div>
+                        <div>
+                            @if (buttonDisabled)
+                            {
+                                <span class="text-danger">There is not enough products in the stock!</span>
+                            }
                         </div>
                     </td>
                 </tr>
