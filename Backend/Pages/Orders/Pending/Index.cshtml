@@ -17,9 +17,9 @@ else
     <table class="table col-12 col-sm-6 col-md-4 col-lg-3">
         <thead>
             <tr>
-                <th>Order Id</th>
-                <th>Order Status</th>
-                <th>Order Total Price</th>
+                <th class="d-none d-md-table-cell">Id</th>
+                <th>Status</th>
+                <th>Total Price</th>
                 <th>Ordered Products</th>
                 <th>Accept/Reject</th>
             </tr>
@@ -43,8 +43,11 @@ else
                 OrderCanBeAccepted();
 
                 <tr>
-                    <td>@order.Id </td>
-                    <td>@order.Status.GetDisplayName()</td>
+                    <td class="d-none d-md-flex flex-column align-content-center justify-items-center barcode-cell">
+                        <img id="barcode-container-@order.Id" src="" class="barcode"/>
+                        <span>@order.Id</span>
+                    </td>
+                    <td>@order.Status.GetDisplayName() </td>
                     <td>@String.Format(new CultureInfo("fr-FR"), "{0:C}", order.TotalPrice)</td>
                     <td>
                         <ul style="list-style-type: none; padding: 0;">
@@ -85,5 +88,32 @@ else
     </table>
 }
 
+@section Scripts {
+    <script>var exports = {"__esModule": true};</script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.1.1/dist/cjs/index.js">
+    </script>
+
+    <script>
+        const onLoad = async () => {
+            const barcodeCells = document.querySelectorAll('.barcode-cell');
+
+            for (const cell of barcodeCells) {
+                const orderIdCell = cell.querySelector('span');
+                const orderId = orderIdCell.innerText;
+                const barcodeContainer = cell.querySelector('img');
+                const barcodeContainerId = barcodeContainer.id;
+
+                const payload = { elementId: barcodeContainerId, value: orderId };
+                const options = {};
+
+                generateBarcode(payload, options);
+
+                orderIdCell.remove();
+            }
+        }
+
+        $(document).ready(onLoad);
+    </script>
+}
 
 
