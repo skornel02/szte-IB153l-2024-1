@@ -23,6 +23,7 @@ else
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th class="d-none d-md-table-cell">Identifier</th>
                 <th>Product Name</th>
                 <th>Qantity</th>
                 <th>Price</th>
@@ -34,6 +35,10 @@ else
             @foreach (var order in Model.Orders)
             {
                 <tr>
+                    <td class="d-none d-md-flex flex-column align-content-center justify-items-center barcode-cell">
+                        <img id="barcode-container-@order.Id" src="" class="barcode"/>
+                        <span>@order.Id</span>
+                    </td>
                     <td>
                         @foreach (var item in order.OrderItems)
                         {
@@ -54,3 +59,32 @@ else
         </tbody>
     </table>
 }
+
+@section Scripts {
+    <script>var exports = {"__esModule": true};</script>
+    <script src="https://cdn.jsdelivr.net/npm/barcode-tool@1.1.1/dist/cjs/index.js">
+    </script>
+
+    <script>
+        const onLoad = async () => {
+            const barcodeCells = document.querySelectorAll('.barcode-cell');
+
+            for (const cell of barcodeCells) {
+                const orderIdCell = cell.querySelector('span');
+                const orderId = orderIdCell.innerText;
+                const barcodeContainer = cell.querySelector('img');
+                const barcodeContainerId = barcodeContainer.id;
+
+                const payload = { elementId: barcodeContainerId, value: orderId };
+                const options = {};
+
+                generateBarcode(payload, options);
+
+                orderIdCell.remove();
+            }
+        }
+
+        $(document).ready(onLoad);
+    </script>
+}
+
