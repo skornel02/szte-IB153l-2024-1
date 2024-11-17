@@ -10,8 +10,8 @@ public static class OrderStatusExtensions
     {
         return enumValue.GetType()
                         .GetMember(enumValue.ToString())
-                        .First()
-                        .GetCustomAttribute<DisplayAttribute>()!
-                        .Name!;
+                        .FirstOrDefault()?
+                        .GetCustomAttribute<DisplayAttribute>()?
+                        .Name ?? "-";
     }
 }
