@@ -1,6 +1,6 @@
 Kérdőív: Kutya vagy macska?
 
-| név              |        sütemény  |
+| név              |      állat       |
 |------------------|------------------|
 | Stefán Kornél    |   kutya          |
 | Vad Avar         |   kucska         |
