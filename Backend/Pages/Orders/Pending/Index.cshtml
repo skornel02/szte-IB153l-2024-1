@@ -1,5 +1,6 @@
 ﻿@page
 @using System.Globalization
+@using Backend.Extensions
 @model Backend.Pages.DigitalSalesPage.IndexModel
 @{
     ViewData["Title"] = "Pending Orders";
@@ -43,7 +44,7 @@ else
 
                 <tr>
                     <td>@order.Id </td>
-                    <td>@order.Status </td>
+                    <td>@order.Status.GetDisplayName()</td>
                     <td>@String.Format(new CultureInfo("fr-FR"), "{0:C}", order.TotalPrice)</td>
                     <td>
                         <ul style="list-style-type: none; padding: 0;">
