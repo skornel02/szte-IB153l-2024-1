@@ -31,8 +31,14 @@
             <div class="card">
                 <img src="@item.ImageUrl" class="card-img-top position-relative" alt="@item.Description" />
 
-                <span class="badge position-absolute end-0 text-dark bg-warning m-2 p-2">Maximum @maxNumberToMake can be make </span>
-
+                @if (maxNumberToMake == int.MaxValue)
+                {
+                    <span class="badge position-absolute end-0 text-dark bg-warning m-2 p-2">Max: ∞ pcs </span>
+                }
+                else
+                {
+                    <span class="badge position-absolute end-0 text-dark bg-warning m-2 p-2">Max: @maxNumberToMake pcs </span>
+                }
 
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
