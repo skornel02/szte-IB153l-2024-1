@@ -11,32 +11,20 @@
 <div class="row">
     @foreach (var item in Model.Products)
     {
-        var buttonDisabled = false;
         var maxNumberToMake = int.MaxValue;
 
-        void IsNotEnoughIngredientsToMake()
+        foreach (var ingredient in item.Ingredients)
         {
-            var maxWithThisIngerdients = 0.0;
-            var maxIntWithIngredient = 0;
+            var maxWithThisIngerdients = ingredient.Ingredient.Stock / ingredient.Quantity;
+            var maxIntWithIngredient = Convert.ToInt32(Math.Floor(maxWithThisIngerdients));
 
-            foreach (var ingredient in item.Ingredients)
+            if (maxIntWithIngredient < maxNumberToMake)
             {
-                if (ingredient.Ingredient.Stock <= 0 || ingredient.Ingredient.Stock < ingredient.Quantity)
-                {
-                    buttonDisabled = true;
-                    break;
-                }
-                maxWithThisIngerdients = ingredient.Ingredient.Stock / ingredient.Quantity;
-                maxIntWithIngredient = Convert.ToInt32(Math.Floor(maxWithThisIngerdients));
-
-                if (maxIntWithIngredient < maxNumberToMake)
-                {
-                    maxNumberToMake = maxIntWithIngredient;
-                }
+                maxNumberToMake = maxIntWithIngredient;
             }
         }
 
-        IsNotEnoughIngredientsToMake();
+        var buttonDisabled = maxNumberToMake == 0;
 
 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -44,8 +32,8 @@
                 <img src="@item.ImageUrl" class="card-img-top position-relative" alt="@item.Description" />
 
                 <span class="badge position-absolute end-0 text-dark bg-warning m-2 p-2">Maximum @maxNumberToMake can be make </span>
-                
-                
+
+
                 <div class="card-body">
                     <h5 class="card-title">@item.Name</h5>
                     <div class="form-group col-12 mb-2">
@@ -70,7 +58,7 @@
 
                         }
                     </ul>
-                    
+
                     <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
                         <form method="post">
                             <div class="input-group mb-3">
