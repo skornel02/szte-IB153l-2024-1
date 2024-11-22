@@ -33,7 +33,9 @@
                         <p class="m-0 fw-bold">@product.Price.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</p>
                     </div>
                 </div>
-                @(product.Stock - product.Reserved) in stock
+                <div class="card-footer text-body-secondary">
+                    @(product.Stock - product.Reserved) in stock
+                </div>
             </div>
         }
     </div>
