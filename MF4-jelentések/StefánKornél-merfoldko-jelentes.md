@@ -16,7 +16,7 @@ ___
     ##### A feladat elvégzését alátámasztó commit(ok):
 
      - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/82/commits
-     - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/94/commits
+     - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/93/commits
      - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/94/commits
 
 A csata véget ért. A mérföldkő teljesítve. A projekt sikeresen elbukott.
