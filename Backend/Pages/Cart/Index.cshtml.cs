@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Backend.Pages.Cart;
 
-public class IndexModel : PageModel
+public class IndexModel : BasePageModel
 {
     private readonly BellaDbContext _context;
 
@@ -100,9 +100,7 @@ public class IndexModel : PageModel
 
         ShoppingCartContext.ClearCart(userEmail);
 
-        TempData["SuccessMessage"] = "Your order has been successfully placed!";
-
-        return RedirectToPage("/Orders/MyOrders/Index");
+        return RedirectToPage("/Orders/MyOrders/Index", new { SuccessMessage = "Your order has been placed." });
     }
 
 }
