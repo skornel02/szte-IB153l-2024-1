@@ -55,7 +55,7 @@ public class IndexModel : BasePageModel
 
         if (email is null)
         {
-            return RedirectToPage("/Login", new { ErrorMessage = "Please log in or register before placing your order!" });
+            return RedirectToPage("/Login", new { ErrorMessage = "Please log in or register before placing your order!", RedirectTo = "/Cart/Index" });
         }
 
         var user = await _context.Users.FirstOrDefaultAsync(u => u.EmailAddress == userEmail);
