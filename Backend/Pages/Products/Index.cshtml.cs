@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Pages.Products;
 
-[RoleAuthorize(Enums.UserRole.Admin, Enums.UserRole.DigitalSales)]
+[RoleAuthorize(Enums.UserRole.Admin, Enums.UserRole.DigitalSales, Enums.UserRole.Chef)]
 public class IndexModel : PageModel
 {
     private readonly BellaDbContext _context;
