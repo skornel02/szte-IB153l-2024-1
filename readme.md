@@ -103,7 +103,7 @@ A rendelkezésünkre áll összesen $7\cdot70=490$ pont.
 A projekt megrendelője XIV. Lajos. A Bella Croissant Lyonnass projektet a projektcsapat fogja végrehajtani, amely jelenleg hét fejlesztőből áll. A csapatban található tapasztalt és pályakezdő fejlesztő is, A tapasztalt projekttagok több éve dolgoznak az iparban, számos sikeres projektten vannak túl.
  - Farkas Dominika Eliza (15 millió év szoftverfejlesztői tapasztalat)
  - Gyenge Angéla (a kedvenc játéka a planning poker)
- - Horváth Gergely Zsolt (A pápa személyes programozója)
+ - Horváth Gergely Zsolt (A pápa személyes programozója lesz nemsokára)
  - Pilter Zsófia (Az általa készített programozási nyelvben dolgozunk)
  - Stefán Kornél (Csak a világ harmadik legjobb szoftverfejlesztője)
  - Vad Avar (Említésre se méltó, mindenki tudja, hogy ért hozzá)
