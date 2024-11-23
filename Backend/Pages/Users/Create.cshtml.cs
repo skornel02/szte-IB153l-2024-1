@@ -1,5 +1,6 @@
 using Backend.Attributes;
 using Backend.Entities;
+using Backend.Enums;
 using Backend.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -23,11 +24,22 @@ public class CreateModel : BasePageModel
     }
 
     [BindProperty]
-    public UserEntity UserEntity { get; set; } = default!;
+    [PageRemote(
+        ErrorMessage = "User already exists with that E-mail address!",
+        AdditionalFields = "__RequestVerificationToken",
+        PageName = "/Register",
+        HttpMethod = "post",
+        PageHandler = "CheckEmail")]
+    [DataType(DataType.EmailAddress)]
+    [Required]
+    public string EmailAddress { get; set; } = null!;
+
+    [BindProperty]
+    public UserRole Role { get; set; }
 
     [BindProperty]
     [DataType(DataType.Password)]
-    [Required]
+    [Length(3, 20), Required]
     public string Password { get; set; } = string.Empty;
 
     [BindProperty]
@@ -39,13 +51,19 @@ public class CreateModel : BasePageModel
     public async Task<IActionResult> OnPostAsync()
     {
         var hasher = new PasswordHasher<UserEntity>();
-        UserEntity.PasswordHash = hasher.HashPassword(UserEntity, Password);
-        UserEntity.Registered = DateTime.UtcNow;
-        UserEntity.LastSeen = DateTime.MinValue;
 
-        _context.Users.Add(UserEntity);
+        var user = new UserEntity()
+        {
+            EmailAddress = EmailAddress,
+            Role = Role,
+            PasswordHash = hasher.HashPassword(null!, Password),
+            Registered = DateTime.UtcNow,
+            LastSeen = DateTime.MinValue,
+        };
+
+        _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
-        return RedirectToPage("./Index");
+        return RedirectToPage("./Index", new { SuccessMessage = "User created successfully!"});
     }
 }

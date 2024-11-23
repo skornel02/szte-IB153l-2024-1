@@ -23,7 +23,7 @@ public class EditModel : BasePageModel
 
     [BindProperty]
     [DataType(DataType.Password)]
-    [Required]
+    [Required(AllowEmptyStrings = true)]
     public string Password { get; set; } = string.Empty;
 
     public async Task<IActionResult> OnGetAsync(Guid? id)
@@ -46,13 +46,19 @@ public class EditModel : BasePageModel
     // For more information, see https://aka.ms/RazorPagesCRUD.
     public async Task<IActionResult> OnPostAsync()
     {
+        ModelState.Remove($"{nameof(UserEntity)}.{nameof(UserEntity.PasswordHash)}");
+        ModelState.Remove($"{nameof(UserEntity)}.{nameof(UserEntity.Orders)}");
+
         if (!ModelState.IsValid)
         {
             return Page();
         }
 
-        var hasher = new PasswordHasher<UserEntity>();
-        UserEntity.PasswordHash = hasher.HashPassword(UserEntity, Password);
+        if (!string.IsNullOrEmpty(Password))
+        {
+            var hasher = new PasswordHasher<UserEntity>();
+            UserEntity.PasswordHash = hasher.HashPassword(UserEntity, Password);
+        }
 
         _context.Attach(UserEntity).State = EntityState.Modified;
 
@@ -72,7 +78,7 @@ public class EditModel : BasePageModel
             }
         }
 
-        return RedirectToPage("./Index");
+        return RedirectToPage("./Index", new {SuccessMessage = "User updated successfully!"});
     }
 
     private bool UserEntityExists(Guid id)
