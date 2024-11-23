@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Pages.Orders.MyOrders
 {
-    public class IndexModel : PageModel
+    public class IndexModel : BasePageModel
     {
         private readonly BellaDbContext _context;
 
