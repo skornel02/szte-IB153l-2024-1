@@ -67,6 +67,15 @@ public class LoginModel : BasePageModel
 
         var principal = new ClaimsPrincipal([new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme)]);
 
+        var sessionId = HttpContext.Session.Id;
+
+        if (!ShoppingCartContext.IsShoppingCartEmpty(sessionId))
+        {
+            var shoppingCart = ShoppingCartContext.GetShoppingCart(sessionId);
+            ShoppingCartContext.SaveShoppingCart(EmailAddress, shoppingCart);
+            ShoppingCartContext.ClearCart(sessionId);
+        }
+
         await HttpContext.SignInAsync(principal);
 
         if (RedirectTo is not null)

@@ -50,9 +50,10 @@ public class IndexModel : BasePageModel
     }
     public async Task<IActionResult> OnPostPlaceOrderAsync()
     {
-        var userEmail = User.GetEmail();
+        var email = User.GetEmail();
+        var userEmail = User.GetEmailOrSessionId(HttpContext);
 
-        if (userEmail is null)
+        if (email is null)
         {
             return RedirectToPage("/Login", new { ErrorMessage = "Please log in or register before placing your order!" });
         }
