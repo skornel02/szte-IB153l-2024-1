@@ -35,7 +35,7 @@ else
     <h3 class="text-end mt-3">
         Total: @Model.TotalPrice.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))
     </h3>
-    @if (Model.ShoppingCartItems.Any() && User.Identity.IsAuthenticated)
+    @if (Model.ShoppingCartItems.Any())
     {
         <form method="post" asp-page-handler="PlaceOrder" class="text-end mt-4">
             @for (int i = 0; i < Model.ShoppingCartItems.Count; i++)
@@ -46,10 +46,6 @@ else
             }
             <button type="submit" class="btn btn-primary">Submit Order</button>
         </form>
-    }
-    else if (!User.Identity.IsAuthenticated)
-    {
-        <p class="text-danger">You need to log in to place an order.</p>
     }
 }
 

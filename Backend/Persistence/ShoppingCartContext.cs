@@ -56,4 +56,19 @@ public static class ShoppingCartContext
             shoppingCart.Remove(item);
         }
     }
+
+    public static bool IsShoppingCartEmpty(string? email)
+    {
+        if (email is null)
+        {
+            return true;
+        }
+
+        if (!ShoppingCart.TryGetValue(email, out List<ShoppingCartItem>? shoppingCart))
+        {
+            return true;
+        }
+
+        return !shoppingCart.Any(_ => _.Quantity > 0);
+    }
 }
