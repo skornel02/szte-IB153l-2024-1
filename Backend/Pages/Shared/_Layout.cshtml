@@ -33,19 +33,6 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        @if (User.IsLoggedIn())
-                        {
-                            <li>
-                                <a class="nav-link" asp-area="" asp-page="/Logout">Logout</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page="/Login">Login</a>
-                            </li>
-                        }
-
                         @if (User.HasRole(Enums.UserRole.Admin))
                         {
                             <li class="nav-item">
@@ -79,7 +66,7 @@
                         @if (User.HasRole(Enums.UserRole.WebshopUser))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page="/Orders/MyOrders/Index">MyOrders</a>
+                                <a class="nav-link" asp-area="" asp-page="/Orders/MyOrders/Index">My Orders</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.Inventory))
@@ -105,6 +92,19 @@
                                     </span>
                                     }
                                 </a>
+                            </li>
+                        }
+
+                        @if (User.IsLoggedIn())
+                        {
+                            <li class="nav-item @(User.HasRole(Enums.UserRole.WebshopUser) ? "ms-md-4" : "ms-md-auto")">
+                                <a class="nav-link bg-danger text-white" asp-area="" asp-page="/Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Login">Login</a>
                             </li>
                         }
                     </ul>
