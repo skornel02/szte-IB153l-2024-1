@@ -146,7 +146,7 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.7. Webs
 #### 3.1.2. TR-02 (TC-02)
 
 * TP: TP-01
-  * 2000-t beírtam
+  * 2010-et beírtam
   * a gombot megnyomtam
   * a gomb nem működött, hibaüzenet: Az érték legyen kisebb vagy egyenlő mint 20.
   * helyes eredményt kaptam
