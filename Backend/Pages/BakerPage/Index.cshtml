@@ -5,10 +5,9 @@
     ViewData["Title"] = "Baker Page";
 }
 
-
 <h1 class="mb-4">Baker Page</h1>
 
-<div class="row">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     @foreach (var item in Model.Products)
     {
         var maxNumberToMake = int.MaxValue;
@@ -26,68 +25,62 @@
 
         var buttonDisabled = maxNumberToMake == 0;
 
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card">
+        <div class="col">
+            <div class="card shadow-sm h-100">
                 <img src="@item.ImageUrl" class="card-img-top position-relative" alt="@item.Description" />
 
                 @if (maxNumberToMake == int.MaxValue)
                 {
-                    <span class="badge position-absolute end-0 text-dark bg-warning m-2 p-2">Max: ∞ pcs </span>
+                    <span class="badge position-absolute end-0 top-0 m-3 p-2 text-dark bg-warning">Max: ∞ pcs</span>
                 }
                 else
                 {
-                    <span class="badge position-absolute end-0 text-dark bg-warning m-2 p-2">Max: @maxNumberToMake pcs </span>
+                    <span class="badge position-absolute end-0 top-0 m-3 p-2 text-dark bg-warning">Max: @maxNumberToMake pcs</span>
                 }
 
                 <div class="card-body">
-                    <h5 class="card-title">@item.Name</h5>
-                    <div class="form-group col-12 mb-2">
-                        <p class="card-text">In stock: @item.Stock</p>
-                    </div>
+                    <h5 class="card-title text-center">@item.Name</h5>
+                    <p class="card-text text-center">In stock: <strong>@item.Stock</strong></p>
 
-                    <div class="form-group">
-                        <p class="card-text">Ingredients: </p>
-                    </div>
-                    <ul class="list-group list-group-flush mb-3">
+                    <div class="mb-3">
+                        <p class="fw-bold">Ingredients:</p>
 
                         @if (item.Ingredients.Count == 0)
                         {
-                            <li class="list-group-item">
-                                This product has no ingredients!
-                            </li>
+                            <p class="text-muted">This product has no ingredients!</p>
                         }
+                        <div class="list-group">
+                            @foreach (var ingredient in item.Ingredients)
+                            {
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span><strong>@ingredient.Ingredient.Name</strong>: @ingredient.Quantity</span>
+                                    <span class="badge bg-secondary">@ingredient.Ingredient.Stock in stock</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
 
-                        @foreach (var ingredient in item.Ingredients)
-                        {
-                            <li class="list-group-item">@ingredient.Ingredient.Name: @ingredient.Quantity  |  in stock: @ingredient.Ingredient.Stock</li>
-
-                        }
-                    </ul>
-
-                    <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
-                        <form method="post">
+                    <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+                        <form method="post" class="w-100">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="numberToMake">Number of products</span>
                                 <input asp-for="NumberToMake" type="number" class="form-control" aria-describedby="numberToMake" min="1" max="@maxNumberToMake" />
                                 <span asp-validation-for="NumberToMake" class="text-danger"></span>
                             </div>
-                            <div class="input-group ">
-                                <input type="submit" class="btn btn-warning" value="Make product(s)" disabled="@buttonDisabled">
 
-                                @if (buttonDisabled)
-                                {
-                                    <span class="text-danger">There is not enough ingredients!</span>
-                                }
-                            </div>
-                            <div class="input-group ">
-                                <input type="hidden" name="id" value="@item.Id" />
-                            </div>
+                            <button type="submit" class="btn btn-warning w-100" disabled="@buttonDisabled">
+                                Make product(s)
+                            </button>
+
+                            @if (buttonDisabled)
+                            {
+                                <div class="text-center mt-2 text-danger">Not enough ingredients!</div>
+                            }
+                            <input type="hidden" name="id" value="@item.Id" />
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     }
-
 </div>
