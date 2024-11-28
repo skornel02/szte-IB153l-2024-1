@@ -5,7 +5,10 @@
     ViewData["Title"] = "Cart";
 }
 
-<h1 class="mb-4">Cart</h1>
+<h1 class="mb-4 d-flex justify-content-between">
+    <span>Cart</span>
+    <span>@Model.ShoppingCartItems.Count Items</span>
+</h1>
 
 @if (!Model.Products.Any())
 {
@@ -13,39 +16,73 @@
 }
 else
 {
-    <div class="d-flex flex-column flex-md-row justify-content-center gap-4">
-    @for (var i = 0; i < Model.Products.Count; i++)
-    {
-        var product = Model.Products[i];
-        var shoppingCart = Model.ShoppingCartItems.FirstOrDefault(_ => _.ProductId == product.Id);
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="cart-container">
+                @for (var i = 0; i < Model.Products.Count; i++)
+                {
+                    var product = Model.Products[i];
+                    var shoppingCart = Model.ShoppingCartItems.FirstOrDefault(_ => _.ProductId == product.Id);
 
-        <div class="card p-0 col-12 col-md-4 col-lg-3">
-            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Description">
-            <div class="card-body">
-                <h5 class="card-title">@product.Name</h5>
-                <p class="card-text">@product.Description</p>
-                <div class="d-flex flex-column flex-md-row justify-content-md-between gap-4">
-                    <p class="m-0">Qty: @shoppingCart.Quantity</p>
-                        <p class="m-0 fw-bold">@((shoppingCart.Quantity * product.Price).ToString("C", CultureInfo.GetCultureInfo("fr-FR")))</p>
-                </div>
+                    <div id="cart-item-@product.Id" class="cart-item card mb-4 shadow-sm">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-3">
+                                <img src="@product.ImageUrl" class="img-fluid rounded-start" alt="@product.Description" style="height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">@product.Name</h5>
+                                    <p class="card-text text-muted">@product.Description</p>
+                                    <p class="mb-1"><strong>Price:</strong> @product.Price.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="mb-3">
+                                    <p class="fw-bold mb-1">Quantity:</p>
+                                    <form method="post" asp-page-handler="UpdateQuantity" class="d-inline-flex">
+                                        <input type="hidden" name="productId" value="@product.Id" />
+                                        <input type="number" name="quantity" min="0" max="@(product.Stock - product.Reserved)"
+                                               value="@(shoppingCart?.Quantity ?? 0)" class="form-control me-2 text-center" style="width: 80px;" />
+                                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                    </form>
+                                </div>
+                                <p class="fw-bold">Total: @((shoppingCart.Quantity * product.Price).ToString("C", CultureInfo.GetCultureInfo("fr-FR")))</p>
+                                <form method="post" asp-page-handler="RemoveItem">
+                                    <input type="hidden" name="productId" value="@product.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
-    }
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm p-3">
+                <h4 class="card-title text-center mb-3">Order Summary</h4>
+                <div class="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span>@Model.TotalPrice.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</span>
+                </div>
+                <hr />
+                <h5 class="d-flex justify-content-between">
+                    <span>Total:</span>
+                    <span>@Model.TotalPrice.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</span>
+                </h5>
+                @if (Model.ShoppingCartItems.Any())
+                {
+                    <form method="post" asp-page-handler="PlaceOrder" class="mt-3">
+                        @for (int i = 0; i < Model.ShoppingCartItems.Count; i++)
+                        {
+                            <input type="hidden" name="ShoppingCartItems[@i].ProductId" value="@Model.ShoppingCartItems[i].ProductId" />
+                            <input type="hidden" name="ShoppingCartItems[@i].Quantity" value="@Model.ShoppingCartItems[i].Quantity" />
+                        }
+                        <button type="submit" class="btn btn-success w-100">Place Order</button>
+                    </form>
+                }
+            </div>
+        </div>
     </div>
-    <h3 class="text-end mt-3">
-        Total: @Model.TotalPrice.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))
-    </h3>
-    @if (Model.ShoppingCartItems.Any())
-    {
-        <form method="post" asp-page-handler="PlaceOrder" class="text-end mt-4">
-            @for (int i = 0; i < Model.ShoppingCartItems.Count; i++)
-            {
-                <input type="hidden" name="ShoppingCartItems[@i].ProductId" value="@Model.ShoppingCartItems[i].ProductId
-                " />
-                <input type="hidden" name="ShoppingCartItems[@i].Quantity" value="@Model.ShoppingCartItems[i].Quantity" />
-            }
-            <button type="submit" class="btn btn-primary">Submit Order</button>
-        </form>
-    }
 }
 

@@ -109,4 +109,48 @@ public class IndexModel : BasePageModel
         return RedirectToPage("/Orders/MyOrders/Index", new { SuccessMessage = "Your order has been placed." });
     }
 
+    public async Task<IActionResult> OnPostRemoveItemAsync(Guid productId)
+    {
+        var userEmail = User.GetEmailOrSessionId(HttpContext);
+
+        var shoppingCart = ShoppingCartContext.GetShoppingCart(userEmail);
+        var itemToRemove = shoppingCart.FirstOrDefault(item => item.ProductId == productId);
+
+        if (itemToRemove != null)
+        {
+            shoppingCart.Remove(itemToRemove);
+            ShoppingCartContext.SaveShoppingCart(userEmail, shoppingCart);
+
+            var products = await _context.Products
+                                         .Where(p => shoppingCart.Select(i => i.ProductId).Contains(p.Id))
+                                         .ToListAsync();
+            TotalPrice = shoppingCart.Sum(item => item.Quantity * products.First(p => p.Id == item.ProductId).Price);
+        }
+
+        return RedirectToPage();
+    }
+    public IActionResult OnPostUpdateQuantity(Guid productId, int quantity)
+    {
+        var userEmail = User.GetEmailOrSessionId(HttpContext);
+
+        var shoppingCart = ShoppingCartContext.GetShoppingCart(userEmail);
+        var itemToUpdate = shoppingCart.FirstOrDefault(item => item.ProductId == productId);
+
+        if (itemToUpdate != null)
+        {
+            var updatedItem = new ShoppingCartItem(productId, quantity);
+
+            shoppingCart.Remove(itemToUpdate);
+            if (quantity > 0)
+            {
+                shoppingCart.Add(updatedItem);
+            }
+
+            ShoppingCartContext.SaveShoppingCart(userEmail, shoppingCart);
+        }
+
+        return RedirectToPage();
+    }
+
+
 }
