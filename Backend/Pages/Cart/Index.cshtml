@@ -3,6 +3,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Cart";
+    var sortedProducts = Model.Products.OrderBy(p => p.Name).ToList();
 }
 
 <h1 class="mb-4 d-flex justify-content-between">
@@ -10,7 +11,7 @@
     <span>@Model.ShoppingCartItems.Count Items</span>
 </h1>
 
-@if (!Model.Products.Any())
+@if (!sortedProducts.Any())
 {
     <h2 class="text-center">Your cart is empty!</h2>
 }
@@ -19,9 +20,9 @@ else
     <div class="row">
         <div class="col-lg-8">
             <div class="cart-container">
-                @for (var i = 0; i < Model.Products.Count; i++)
+                @for (var i = 0; i < sortedProducts.Count; i++)
                 {
-                    var product = Model.Products[i];
+                    var product = sortedProducts[i];
                     var shoppingCart = Model.ShoppingCartItems.FirstOrDefault(_ => _.ProductId == product.Id);
 
                     <div id="cart-item-@product.Id" class="cart-item card mb-4 shadow-sm">
@@ -85,4 +86,3 @@ else
         </div>
     </div>
 }
-
