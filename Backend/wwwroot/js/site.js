@@ -7,3 +7,13 @@
 //Maybe we don't need to do this but whatevs.
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href').toLowerCase() === location.pathname.toLowerCase()) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+})
