@@ -24,6 +24,8 @@ ___
      - 2072d299 - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/98/diffs?commit_id=2072d2993e3734ec0c249593ef1bfa3e87bb21e2
      - d7582c95 - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/97/diffs?commit_id=d7582c95302b01e977c3e10a38e6019349709e83
      - 82c713b5 - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/100/diffs?commit_id=82c713b53e69f025a434b1596795ea92c6d8b2ed
+     - 826efa0c - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/100/diffs?commit_id=826efa0c88dea21df3d910bdd7634876190f04a2
+     - 8ae28c01 - https://git-okt.sed.inf.szte.hu/2024_ib153l-13_d/2024_ib153l-13_d/-/merge_requests/105/diffs?commit_id=8ae28c014c6c23a038c2682fbfbe7570e22f1de4
    
 
 #### Megjegyzések
