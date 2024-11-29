@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Pages.Products;
 
-[RoleAuthorize(Enums.UserRole.Admin, Enums.UserRole.DigitalSales)]
+[RoleAuthorize(Enums.UserRole.Admin, Enums.UserRole.DigitalSales, Enums.UserRole.Chef)]
 public class EditModel : BasePageModel
 {
     private readonly BellaDbContext _context;
