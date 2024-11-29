@@ -31,61 +31,48 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        @if (User.IsLoggedIn())
-                        {
-                            <li>
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Login">Login</a>
-                            </li>
-                        }
-
                         @if (User.HasRole(Enums.UserRole.Admin))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Users/Index">Users</a>
+                                <a class="nav-link" asp-area="" asp-page="/Users/Index">Users</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.PhysicalSales))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/CashierPage/Index">Cashier Purchase</a>
+                                <a class="nav-link" asp-area="" asp-page="/CashierPage/Index">Cashier Purchase</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.DigitalSales))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Orders/Pending/Index">Pending Orders</a>
+                                <a class="nav-link" asp-area="" asp-page="/Orders/Pending/Index">Pending Orders</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.Chef))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Products/Index">Chef Page</a>
+                                <a class="nav-link" asp-area="" asp-page="/Products/Index">Chef Page</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.Baker))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/BakerPage/Index">Baker Page</a>
+                                <a class="nav-link" asp-area="" asp-page="/BakerPage/Index">Baker Page</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.WebshopUser))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Orders/MyOrders/Index">MyOrders</a>
+                                <a class="nav-link" asp-area="" asp-page="/Orders/MyOrders/Index">My Orders</a>
                             </li>
                         }
                         @if (User.HasRole(Enums.UserRole.Admin, Enums.UserRole.Inventory))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Ingredients/Index">Ingredients</a>
+                                <a class="nav-link" asp-area="" asp-page="/Ingredients/Index">Ingredients</a>
                             </li>
                         }
 
@@ -105,6 +92,19 @@
                                     </span>
                                     }
                                 </a>
+                            </li>
+                        }
+
+                        @if (User.IsLoggedIn())
+                        {
+                            <li class="nav-item @(User.HasRole(Enums.UserRole.WebshopUser) ? "ms-md-4" : "ms-md-auto")">
+                                <a class="nav-link" asp-area="" asp-page="/Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/Login">Login</a>
                             </li>
                         }
                     </ul>
