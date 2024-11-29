@@ -46,10 +46,3 @@ img.barcode {
   max-width: 450px;
   width: 100%;
 }
-
-
-/* This is copied here from BS. */
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: var(--bs-nav-pills-link-active-color);
-    background-color: var(--bs-nav-pills-link-active-bg);
-}

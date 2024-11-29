@@ -29,7 +29,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex">
-                    <ul class="navbar-nav flex-grow-1 nav nav-pills">
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
                         </li>
@@ -98,7 +98,7 @@
                         @if (User.IsLoggedIn())
                         {
                             <li class="nav-item @(User.HasRole(Enums.UserRole.WebshopUser) ? "ms-md-4" : "ms-md-auto")">
-                                <a class="nav-link bg-danger text-white" asp-area="" asp-page="/Logout">Logout</a>
+                                <a class="nav-link" asp-area="" asp-page="/Logout">Logout</a>
                             </li>
                         }
                         else
