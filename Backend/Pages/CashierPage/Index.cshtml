@@ -8,44 +8,55 @@
 <h1 class="mb-4">Cashier Purchase</h1>
 
 <form method="post" id="orderForm">
-    <div class="d-flex flex-column flex-md-row justify-content-center gap-4">
-        @for (var i = 0; i < Model.Products.Count; i++)
-        {
-            var product = Model.Products[i];
-            var shoppingCartItem = Model.ShoppingCartItems.FirstOrDefault(x => x.ProductId == product.Id);
+    <div class="row">
+        <!-- Termékek oszlop - 9 oszlop -->
+        <div class="col-md-9">
+            <div class="row">
+                @for (var i = 0; i < Model.Products.Count; i++)
+                {
+                    var product = Model.Products[i];
+                    var shoppingCartItem = Model.ShoppingCartItems.FirstOrDefault(x => x.ProductId == product.Id);
 
-            <div class="card p-0 col-12 col-md-4 col-lg-3">
-                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Description">
-                <div class="card-body">
-                    <h5 class="card-title">@product.Name</h5>
-                    <p class="card-text">@product.Description</p>
-                    <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
-                        <input type="hidden" name="ShoppingCartItems[@i].ProductId" value="@product.Id" />
-                        <div class="form-group col-12 col-md-3">
-                            <input min="0"
-                                   max="@(product.Stock - product.Reserved)"
-                                   name="ShoppingCartItems[@i].Quantity"
-                                   type="number"
-                                   value="@(shoppingCartItem?.Quantity ?? 0)"
-                                   class="form-control quantity-input"
-                                   data-price="@product.Price"
-                                   onchange="updateOrderSummary()" />
+                    <div class="col-md-4">
+                        <div class="card p-0 m-2">
+                            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Description">
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Name</h5>
+                                <p class="card-text">@product.Description</p>
+                                <div class="d-flex flex-column align-items-center gap-2">
+                                    <input type="hidden" name="ShoppingCartItems[@i].ProductId" value="@product.Id" />
+                                    <div class="input-group">
+                                        <button class="btn btn-danger minus-button" type="button" data-id="@i">-</button>
+                                        <input min="0"
+                                               max="@(product.Stock - product.Reserved)"
+                                               name="ShoppingCartItems[@i].Quantity"
+                                               type="number"
+                                               value="@(shoppingCartItem?.Quantity ?? 0)"
+                                               class="form-control text-center quantity-input"
+                                               data-price="@product.Price"
+                                               onchange="updateOrderSummary()" />
+                                        <button class="btn btn-primary plus-button" type="button" data-id="@i">+</button>
+                                    </div>
+                                    <p class="m-0 fw-bold">@product.Price.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="m-0 fw-bold">@product.Price.ToString("C", CultureInfo.GetCultureInfo("fr-FR"))</p>
                     </div>
+                }
+            </div>
+        </div>
+        <!-- Összesítő és vásárlás oszlop - 3 oszlop -->
+        <div class="col-md-3">
+            <div class="mt-4 text-center sticky-summary">
+                <h4>Order summary</h4>
+                <div id="orderSummary">
+                </div>
+                <p>In total: <span id="totalQuantity">0</span> pcs, Total Cost: €<span id="totalCost">0.00</span></p>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn-lg mt-4 mb-4">Purchase</button>
                 </div>
             </div>
-        }
-    </div>
-
-    <div class="mt-4 text-center">
-        <h4>Order summary</h4>
-        <div id="orderSummary">
-        </div>
-        <p>In total: <span id="totalQuantity">0</span> pcs, Total Cost: €<span id="totalCost">0.00</span></p>
-
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-success btn-lg mt-4 mb-4">Purchase</button>
         </div>
     </div>
 </form>
