@@ -16,7 +16,7 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
 ---
 
 * Azonosító: TP-01
-* Tesztesetek: TC-01, TC-02
+* Tesztesetek: TC-01, TC-02, TC-03, TC-04
 * Leírás: Alapanyag hozzáadása funkció tesztelése
        0. lépés: Nyissuk meg az alkalmazást, lépjünk be egy admin felhasználóval és menjünk az Ingredients oldalra és nyomjuk meg a `Create ingredient` gombot.
        1. lépés: A `Name` mezőbe írjuk be az alapanyag nevét.
@@ -27,7 +27,7 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
 
 ### 1.2. Alapanyag szerkesztése funkció tesztelése
 * Azonosító: TP-02
-* Tesztesetek: TC-01
+* Tesztesetek: TC-01, TC-02, TC-03, TC-04, TC-05
 * Leírás: Alapanyag szerkesztése funkció tesztelése
        0. lépés: Nyissuk meg az alkalmazást, lépjünk be egy admin felhasználóval és menjünk az Ingredients oldalra, és válasszuk ki a szerkesztésre kijelölt alapanyagot, a "ceruza" ikonra kattintva.
        1. lépés: A `Name` mezőben módosítsuk a nevet az új alapanyag névre.
@@ -56,17 +56,35 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
 ### 2.1.1. TC-01
 
 * TP: TP-01
-* Leírás: Alapanyag hozzáadása tesztelése (hiányzó adat)
-* Bemenet: ALAPANYAGNÉV = `Egg (pcs)`, ÁR =``, KATEGÓRIA = ``
+* Leírás: Alapanyag hozzáadása tesztelése, a készlet üresen hagyjuk (hiányzó adat)
+* Bemenet: `Name` = `Egg (pcs)`, `Stock` =``, `Maximum stock` = 100
 * Művelet: Nyomjuk meg a `Create` gombot.
-* Elvárt kimenet: Stock mezőnél megjelenik az alábbi üzenet: `The Stock field is required.`  a Maximum stock mezőnél megjelenik az alábbi üzenet: `The Maximum stock field is required.` 
+* Elvárt kimenet: Stock mezőnél megjelenik az alábbi üzenet: `The Stock field is required.`
 
 ### 2.1.2. TC-02
 * TP: TP-01
 * Leírás: Alapanyag hozzáadása tesztelése (sikeres eset)
-* Bemenet: ALAPANYAGNÉV = `Milk (dl)`, Stock = 300, Max stock = `500`
+* Bemenet: `Name` = `Milk (dl)`, `Stock` = 300, `Maximum stock` = `500`
 * Művelet: Nyomjuk meg a `Create` gombot.
 * Elvárt kimenet: Az alapanyagok listában megjelenik egy új alapanyag: `Milk (dl), 300, 500`.
+
+
+### 2.1.3. TC-03
+* TP: TP-01
+* Leírás: Alapanyag hozzáadása tesztelése, alapanyag nevét üresen hagyjuk (rossz eset)
+* Bemenet: `Name` = ``,  `Stock` = `300`, `Maximum stock` = `500`
+* Művelet: Nyomjuk meg a `Create` gombot.
+* Elvárt kimenet: A `Name` mező alatt megjelenik az alábbi hibaüzenet: `The Name field is required.`
+
+
+
+### 2.1.4. TC-04
+* TP: TP-01
+* Leírás: Alapanyag hozzáadása tesztelése, a maximális készlet értéket üresen hagyjuk (hiányzó adat)
+* Bemenet: `Name` = `Egg (pcs)`, Stock =`50`, `Maximum stock` = ``
+* Művelet: Nyomjuk meg a `Create` gombot.
+* Elvárt kimenet: `Maximum stock` mezőnél megjelenik az alábbi üzenet: `The Maximum stock field is required.` 
+
 
 ---
 
@@ -74,9 +92,42 @@ Az alábbi tesztdokumentum a `2024_IB153l-13_D` projekthez tartozó `8.3.3. Alap
 ### 2.2.1. TC-01
 * TP: TP-02
 * Leírás: Alapanyag maximum mennyiség értékének módosítása (sikeres eset)
-* Bemenet: Eredeti  `Maximum stock` = 150           Új  `Maximum stock` = 200
-* Művelet: Nyomjuk meg a `Save` gombot.
+* Bemenet:  `Name`=`Egg`, `Stock`=`40`,   `Maximum stock` = `150`  
+* Művelet: A `Maxstock` mezőt állítsuk át 200-ra.  Nyomjuk meg a `Save` gombot.
 * Elvárt kimenet: A alapanyaglistában a régi maximum mennyiség helyett a `200` érték jelenik meg.
+
+
+### 2.2.2. TC-02
+* TP: TP-02
+* Leírás: Alapanyag nevének módosítása, úgy, hogy kitöröljük az eredeti nevet és üresen hagyjuk (rossz eset)
+* Bemenet: `Name`=`Sugar`, `Stock`=`50`,  `Maximum stock` = `200`
+* Művelet: Töröljük ki az alapanyag nevét, és hagyjuk üresen. Nyomjuk meg a `Save` gombot.
+* Elvárt kimenet: Hibaüzenet a `Name` mező alatt: `The Name field is required.`
+
+
+### 2.2.3. TC-03
+* TP: TP-02
+* Leírás: Alapanyag készlet mennyiség értéket állítsuk át negatív értékre (rossz eset)
+* Bemenet: `Name`=`Milk`, `Stock`=`150`,  `Maximum stock` = `300`
+* Művelet: A `Stock` mezőt állítsuk át -1-re. Nyomjuk meg a `Save` gombot.
+* Elvárt kimenet: Hibaüzenet a `Stock` mező alatt: `Please enter a value greater than or equal to 0.`
+
+
+
+### 2.2.4. TC-04
+* TP: TP-02
+* Leírás: Alapanyag maximum készlet mennyiség értéket állítsuk át negatív értékre (rossz eset)
+* Bemenet: `Name`=`Egg`, `Stock`=`123`,  `Maximum stock` = `210`
+* Művelet: A `Maxstock` mezőt állítsuk át -1-re. Nyomjuk meg a `Save` gombot.
+* Elvárt kimenet: Hibaüzenet a `Maxstock` mező alatt: `Please enter a value greater than or equal to 0.`
+
+
+### 2.2.5. TC-05
+* TP: TP-02
+* Leírás: Alapanyag készlet mennyiség értéket állítsuk át nagyobb értékre mint a maximális készlet mennyiség értéket (rossz eset)
+* Bemenet: `Name`=`Egg`, `Stock`=`123`,  `Maximum stock` = `150`
+* Művelet: A `Stock` mezőt állítsuk át 170-re. Nyomjuk meg a `Save` gombot.
+* Elvárt kimenet: Hibaüzenet a `Stock` mező alatt: `Please enter a value less than or equal to 150.`
 
 
 
