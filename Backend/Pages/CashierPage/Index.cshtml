@@ -98,6 +98,22 @@
         document.getElementById('orderSummary').innerHTML = orderSummary;
     }
 
+    document.querySelectorAll('.plus-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const index = button.getAttribute('data-id');
+            const input = document.querySelector(`input[name="ShoppingCartItems[${index}].Quantity"]`);
+            if (input) {
+                const max = parseInt(input.getAttribute('max'));
+                let value = parseInt(input.value) || 0;
+                if (value < max) {
+                    value += 1;
+                    input.value = value;
+                    updateOrderSummary();
+                }
+            }
+        });
+    });
+
     updateOrderSummary();
 </script>
 
