@@ -205,6 +205,24 @@ A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problém�
  - Résztvevők: Teljes csoport
  - Érintett témák: 3. mérföldkőhöz segítség, oldalak kinézetének megbeszélése
 
+8. megbeszélés:
+ - Időpont: 2021.11.13.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Teljes csoport
+ - Érintett témák: 3. mérföldkőben apróbb módosítások megbeszélése
+
+9. megbeszélés:
+ - Időpont: 2021.11.20.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Teljes csoport
+ - Érintett témák: 4. mérföldkő megbeszélése
+
+10. megbeszélés:
+ - Időpont: 2021.11.27.
+ - Hely: SZTE Irinyi épület - Szeged, Tisza Lajos krt. 103
+ - Résztvevők: Teljes csoport
+ - Érintett témák: ZH, 4. mérföldkő módosításai megbeszélése
+
 ### 6.3. Minőségbiztosítás
 
 Az elkészült terveket a terveken nem dolgozó csapattársak közül átnézik, hogy megfelel-e a specifikációnak és az egyes diagramtípusok összhangban vannak-e egymással. A meglévő rendszerünk helyes működését a prototípusok bemutatása előtt a tesztelési dokumentumban leírtak végrehajtása alapján ellenőrizzük és összevetjük a specifikációval, hogy az elvárt eredményt kapjuk-e. További tesztelési lehetőségek: unit tesztek írása az egyes modulokhoz vagy a kód közös átnézése (code review) egy, a vizsgált modul programozásában nem résztvevő csapattaggal. Szoftverünk minőségét a végső leadás előtt javítani kell a rendszerünkre lefuttatott kódelemzés során kapott metrikaértékek és szabálysértések figyelembevételével.
