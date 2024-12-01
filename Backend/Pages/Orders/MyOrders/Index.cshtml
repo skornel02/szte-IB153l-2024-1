@@ -1,4 +1,6 @@
 ﻿@page
+@using System.Globalization
+@using Backend.Extensions
 @model Backend.Pages.Orders.MyOrders.IndexModel
 
 @{
@@ -46,7 +48,7 @@ else
                     </td>
                     <td>@order.TotalPrice.ToString("C", new System.Globalization.CultureInfo("fr-FR"))</td>
                     <td>@order.OrderPlaced.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                    <td>@order.Status.ToString()</td>
+                    <td>@order.Status.GetDisplayName()</td>
                 </tr>
             }
         </tbody>
